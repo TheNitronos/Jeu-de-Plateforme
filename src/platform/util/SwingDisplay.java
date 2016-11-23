@@ -156,12 +156,9 @@ public class SwingDisplay implements Display, KeyListener, MouseListener, MouseW
         graphics.setTransform(new AffineTransform(1.0, 0.0, 0.0, -1.0, 0.0, height));
         
         // Update mouse location
-        if (MouseInfo.getPointerInfo() != null) {
-            Point point = MouseInfo.getPointerInfo().getLocation();
-            SwingUtilities.convertPointFromScreen(point, canvas);
-            mouseLocation = new Vector(point.getX(), height - point.getY());
-        } else
-            mouseLocation = Vector.ZERO;
+        Point point = MouseInfo.getPointerInfo().getLocation();
+        SwingUtilities.convertPointFromScreen(point, canvas);
+        mouseLocation = new Vector(point.getX(), height - point.getY());
         
         // Update input buffers
         synchronized (this) {
