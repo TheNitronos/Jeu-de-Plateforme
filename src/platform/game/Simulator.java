@@ -38,9 +38,13 @@ public class Simulator implements World {
      */
 	public void update(Input input, Output output) {
         
+	View view = new View(input, output);
+	Vector center = new Vector(0.0, 0.0);
+	double radius = 10.0;
+	view.setTarget(center, radius);
 	Sprite sprite = loader.getSprite("heart.full");
-	Box zone = new Box(new Vector(100.0,100.0), 32, 32);
-	output.drawSprite(sprite, zone);
+	Box zone = new Box(new Vector(0.0, 0.0), 2, 2);
+	view.drawSprite(sprite, zone);
 	}
 
     @Override
