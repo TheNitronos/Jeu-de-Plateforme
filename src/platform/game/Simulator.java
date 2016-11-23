@@ -18,6 +18,10 @@ import platform.util.View;
 public class Simulator implements World {
 
     private Loader loader;
+    private Vector currentCenter;
+    private double currentRadius;
+    private Vector expectedCenter;
+    private double expectedRadius;
   
     /**
      * Create a new simulator.
@@ -28,7 +32,25 @@ public class Simulator implements World {
         if (loader == null)
             throw new NullPointerException();
         this.loader = loader;
+        
+        currentCenter = Vector.ZERO;
+        currentRadius = 10.0;
+        
+        expectedCenter = Vector.ZERO;
+        expectedRadius = 10.0;
       
+	}
+	@Override
+	public void setView(Vector center, double radius){
+		if (center == null){
+			throw new NullPointerException();
+		}
+		if (radius <= 0.0){
+			throw new IllegalArgumentException("radius must be positive");
+		}
+		currentCenter = center;
+		currentRadius = radius;
+	
 	}
 	
     /**
@@ -39,13 +61,20 @@ public class Simulator implements World {
 	public void update(Input input, Output output) {
         
 	View view = new View(input, output);
-	Vector center = new Vector(0.0, 0.0);
-	double radius = 10.0;
-	view.setTarget(center, radius);
+	view.setTarget(currentCenter, currentRadius);
+	
 	Sprite sprite = loader.getSprite("heart.full");
 	Box zone = new Box(new Vector(0.0, 0.0), 2, 2);
+	
 	view.drawSprite(sprite, zone);
+	
+	if (view.getMouseButton(1).isPressed()){
+		setView(view.getMouseLocation(), 10.0);
 	}
+	
+	}
+	
+	
 
     @Override
     public Loader getLoader() {
