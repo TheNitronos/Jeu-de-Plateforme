@@ -18,6 +18,13 @@ public interface World {
      * @param radius viewport radius, positive
      */
     public void setView(Vector center, double radius);
+    
+    
+    public void register(Actor actor);
+    
+    public void unregistered(Actor actor);
+    
+    
   
 }
 

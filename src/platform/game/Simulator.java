@@ -11,6 +11,7 @@ import platform.util.Output;
 import platform.util.Sprite;
 import platform.util.Vector;
 import platform.util.View;
+import platform.util.SortedCollection;
 
 /**
  * Basic implementation of world, managing a complete collection of actors.
@@ -22,6 +23,9 @@ public class Simulator implements World {
     private double currentRadius;
     private Vector expectedCenter;
     private double expectedRadius;
+    private SortedCollection<Actor> actors;
+    private ArrayList<Actor> registered;
+    private ArrayList<Actor> unregistered;
   
     /**
      * Create a new simulator.
@@ -38,6 +42,12 @@ public class Simulator implements World {
         
         expectedCenter = Vector.ZERO;
         expectedRadius = 10.0;
+        
+        actors = new SortedCollection<Actor>();
+        registered = new ArrayList<Actor>();
+        unregistered = new ArrayList<Actor>();
+
+        
       
 	}
 	@Override
@@ -48,8 +58,8 @@ public class Simulator implements World {
 		if (radius <= 0.0){
 			throw new IllegalArgumentException("radius must be positive");
 		}
-		currentCenter = center;
-		currentRadius = radius;
+		expectedCenter = center;
+		expectedRadius = radius;
 	
 	}
 	
@@ -59,18 +69,50 @@ public class Simulator implements World {
      * @param output output object to use, not null
      */
 	public void update(Input input, Output output) {
+		
+	double factor = 0.001;
+	
+	
+	currentCenter = currentCenter.mul(1.0 - factor).add(expectedCenter.mul(factor));
+	currentRadius = currentRadius * (1.0 - factor) + expectedRadius*factor;
+	
         
 	View view = new View(input, output);
 	view.setTarget(currentCenter, currentRadius);
 	
-	Sprite sprite = loader.getSprite("heart.full");
-	Box zone = new Box(new Vector(0.0, 0.0), 2, 2);
+//	Sprite sprite = loader.getSprite("heart.full");
+//	Box zone = new Box(new Vector(0.0, 0.0), 2, 2);
 	
-	view.drawSprite(sprite, zone);
+//	view.drawSprite(sprite, zone);
 	
 	if (view.getMouseButton(1).isPressed()){
 		setView(view.getMouseLocation(), 10.0);
 	}
+	
+	//apply update
+	for (Actor a : actors){
+		a.update(view);
+	}
+	
+	//Draw everything
+	for (Actor a : actors.descending()){
+		a.draw(view, view);
+	}
+	
+	//add registered actors
+	for (int i = 0 ; i < registered.size() ; ++i){
+		Actor actor = registered.get(i);
+		actors.add(actor);
+	}
+	registered.clear();
+	
+	//remove unregistered actors
+	for (int i = 0 ; i < unregistered.size() ; ++i){
+		Actor actor = unregistered.get(i);
+		actors.remove(actor);
+	}
+	unregistered.clear();
+	
 	
 	}
 	
@@ -80,6 +122,15 @@ public class Simulator implements World {
     public Loader getLoader() {
         return loader;
     }
-
+    
+    @Override
+    public void register(Actor actor){
+    	registered.add(actor);
+    }
+    
+    @Override
+    public void unregistered(Actor actor){
+    	unregistered.add(actor);
+    }
     
 }
