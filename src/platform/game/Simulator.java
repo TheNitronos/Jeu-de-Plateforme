@@ -8,6 +8,7 @@ import platform.util.Box;
 import platform.util.Input;
 import platform.util.Loader;
 import platform.util.Output;
+import platform.util.Sprite;
 import platform.util.Vector;
 import platform.util.View;
 
@@ -37,7 +38,9 @@ public class Simulator implements World {
      */
 	public void update(Input input, Output output) {
         
-      // TO BE COMPLETED
+	Sprite sprite = loader.getSprite("heart.full");
+	Box zone = new Box(new Vector(100.0,100.0), 32, 32);
+	output.drawSprite(sprite, zone);
 	}
 
     @Override
