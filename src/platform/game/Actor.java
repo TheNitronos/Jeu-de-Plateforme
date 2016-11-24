@@ -12,6 +12,11 @@ import platform.util.Sprite;
 public abstract class Actor implements Comparable<Actor> {
 	
 	private int priority;
+	private World world;
+	
+	public Actor(int p){
+		priority = p;
+	}
 	
 	//pour evoluer au cours du temps	
 	public void update(Input input) {}
@@ -59,4 +64,18 @@ public abstract class Actor implements Comparable<Actor> {
 		}
 	}
 	
+	public void register(World world){
+		this.world = world;
+	}
+	
+	public void unregister(){
+		world = null;
+	}
+	
+	protected World getWorld(){
+		return world;
+	}
+	public Sprite getSprite(String name){
+		return world.getLoader().getSprite(name);
+	}
 }

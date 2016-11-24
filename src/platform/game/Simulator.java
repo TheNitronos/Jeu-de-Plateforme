@@ -85,8 +85,17 @@ public class Simulator implements World {
 	
 //	view.drawSprite(sprite, zone);
 	
-	if (view.getMouseButton(1).isPressed()){
-		setView(view.getMouseLocation(), 10.0);
+//	if (view.getMouseButton(1).isPressed()){
+//		setView(view.getMouseLocation(), 10.0);
+//	}
+	
+	actors.add(new Block(new Box(new Vector(-4.0, -1.0), new Vector(4.0 , 0.0)), loader.getSprite("box.empty")));
+	actors.add(new Block(new Box(new Vector(-2.0, 0.0), new Vector(-1.0 , 1.0)), loader.getSprite("box.empty")));
+	
+	actors.add(new Fireball(new Vector(3.0, 2.0), new Vector(-3.0, 5.0)));
+	
+	for (Actor a : actors){
+		a.register(this);
 	}
 	
 	//apply update before physics
@@ -123,6 +132,7 @@ public class Simulator implements World {
 	//add registered actors
 	for (int i = 0 ; i < registered.size() ; ++i){
 		Actor actor = registered.get(i);
+		actor.register(this);
 		actors.add(actor);
 	}
 	registered.clear();
@@ -130,6 +140,7 @@ public class Simulator implements World {
 	//remove unregistered actors
 	for (int i = 0 ; i < unregistered.size() ; ++i){
 		Actor actor = unregistered.get(i);
+		actor.unregister();
 		actors.remove(actor);
 	}
 	unregistered.clear();

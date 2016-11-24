@@ -24,6 +24,10 @@ public interface World {
     
     public void unregistered(Actor actor);
     
+    public default Vector getGravity(){
+    	return new Vector(0.0, -9.81);
+    }
+    
     
   
 }
