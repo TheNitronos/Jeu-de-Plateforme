@@ -10,5 +10,12 @@ import platform.util.Output;
  */
 public class Block extends Actor {
 
-   // TO BE COMPLETED
+   private Box box;
+   private Sprite sprite;
+   
+   public Block(Box b, Sprite s){
+	   box = b;
+	   sprite = s;
+	   
+   }
 }

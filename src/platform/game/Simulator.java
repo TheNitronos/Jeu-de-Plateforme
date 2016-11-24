@@ -89,6 +89,22 @@ public class Simulator implements World {
 		setView(view.getMouseLocation(), 10.0);
 	}
 	
+	//apply update before physics
+	for (Actor a : actors){
+		a.preUpdate(view);
+	}
+	
+	//interact each actor who need with others
+	for (Actor actor : actors){
+		for (Actor other : actors){
+			if (actor.getPriority() > other.getPriority()){
+				actor.interact(other);
+			}
+		}
+	}
+	
+	
+	
 	//apply update
 	for (Actor a : actors){
 		a.update(view);
@@ -97,6 +113,11 @@ public class Simulator implements World {
 	//Draw everything
 	for (Actor a : actors.descending()){
 		a.draw(view, view);
+	}
+	
+	//apply update after drawing
+	for (Actor a : actors){
+		a.postUpdate(view);
 	}
 	
 	//add registered actors

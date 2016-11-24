@@ -16,12 +16,35 @@ public abstract class Actor implements Comparable<Actor> {
 	//pour evoluer au cours du temps	
 	public void update(Input input) {}
 	
+	//pour evoluer avant la physique et apres le dessin
+	public void preUpdate(Input input){}
+	
+	public void postUpdate(Input input){}
+	
 	//pour etre dessiné	
 	public void draw(Input input, Output output) {}
 	
 	public int getPriority(){
 		return priority;
 	}
+	
+	public boolean isSolid(){
+		return false;
+	}
+	
+	public Box getBox(){
+		return null;
+	}
+	
+	public Vector getPosition(){
+		Box box = getBox();
+		if (box == null) {
+			return null;
+		}
+		return box.getCenter();
+	}
+	
+	public void interact(Actor other) {}
 	
 	@Override
 	public int compareTo(Actor other){
