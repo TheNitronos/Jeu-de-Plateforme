@@ -92,12 +92,13 @@ public class Simulator implements World {
 	actors.add(new Block(new Box(new Vector(-4.0, -1.0), new Vector(4.0 , 0.0)), loader.getSprite("box.empty")));
 	actors.add(new Block(new Box(new Vector(-2.0, 0.0), new Vector(-1.0 , 1.0)), loader.getSprite("box.empty")));
 	
-	actors.add(new Fireball(new Vector(3.0, 2.0), new Vector(-3.0, 5.0)));
+	actors.add(new Fireball(new Vector(-3.0, 5.0), new Vector(3.0, 2.0)));
 	
 	for (Actor a : actors){
 		a.register(this);
-	}
-	
+		
+		}
+
 	//apply update before physics
 	for (Actor a : actors){
 		a.preUpdate(view);

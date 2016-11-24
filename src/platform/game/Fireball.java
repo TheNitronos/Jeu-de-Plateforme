@@ -18,6 +18,7 @@ public class Fireball extends Actor{
 	private final double SIZE = 0.4;
 	private Vector velocity;
 	private Vector position;
+	private Sprite sprite;
 
 	
 	public Fireball(Vector vel, Vector pos){
@@ -29,9 +30,9 @@ public class Fireball extends Actor{
 		velocity = vel;
 		position = pos;
 		
-
 	}
 	
+		
 	
 	@Override
 	public Box getBox(){
@@ -52,12 +53,16 @@ public class Fireball extends Actor{
 	}
 	
 	public void draw(Input in, Output out){
-		Sprite sprite =getSprite("fireball");
-		if (sprite != null){
-			super.draw(in, out);
+		super.draw(in, out);
+		if (sprite != null){			;
 			out.drawSprite(sprite, getBox(), in.getTime());
 		}
 	
+	}
+	public void register(World world){
+		super.register(world);
+		sprite = super.getSprite("fireball");
+		
 	}
 	
 }
