@@ -77,5 +77,11 @@ public class Fireball extends Actor {
 				velocity = velocity.mirrored(delta);
 			}
 		}
+		if (other.getBox().isColliding(getBox())){
+			if(other.hurt(this, Damage.FIRE, 1.0, getPosition())){
+				//la boule disparait si elle a brule qqn ou qqch
+				getWorld().unregister(this);
+			}
+		}
 	}
 }
