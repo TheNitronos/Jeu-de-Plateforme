@@ -15,9 +15,8 @@ public abstract class Actor implements Comparable<Actor> {
 	private int priority;
 	private World world;
 	
-	public Actor(int p){
-		priority = p;
-	}
+	
+	
 	
 	//pour evoluer au cours du temps	
 	public void update(Input input) {}

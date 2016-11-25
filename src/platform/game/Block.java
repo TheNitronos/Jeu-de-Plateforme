@@ -14,11 +14,15 @@ public class Block extends Actor {
    private Sprite sprite;
    
    public Block(Box b, Sprite s){
-	   super(0);
 	   box = b;
 	   sprite = s;
 	   
    }
+   @Override
+	public int getPriority(){
+		return 0;
+   }
+   
    public void draw(Input in, Output out){
 	   if (sprite != null){
 		   super.draw(in, out);

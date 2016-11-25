@@ -79,7 +79,7 @@ public class Simulator implements World {
      */
 	public void update(Input input, Output output) {
 		
-	double factor = 0.001;
+	double factor = 0.1;
 	
 	
 	currentCenter = currentCenter.mul(1.0 - factor).add(expectedCenter.mul(factor));

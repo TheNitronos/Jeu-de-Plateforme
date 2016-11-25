@@ -17,7 +17,6 @@ public class Player extends Actor {
 	private boolean colliding;
 	
 	public Player(Vector vel, Vector pos) {
-		super(42);
 		
 		if(vel == null || pos == null){
 			throw new NullPointerException();
@@ -25,6 +24,11 @@ public class Player extends Actor {
 		
 		velocity = vel;
 		position = pos;
+	}
+	
+	@Override
+	public int getPriority(){
+		return 42;
 	}
 	
 	@Override
@@ -54,6 +58,7 @@ public class Player extends Actor {
 	
 	@Override
 	public void update(Input input){
+		super.update(input);
 		
 		if (colliding){
 			double scale = Math.pow(0.001, input.getDeltaTime());
@@ -89,8 +94,15 @@ public class Player extends Actor {
 			}
 		}
 		
+		if (input.getKeyboardButton(KeyEvent.VK_SPACE).isPressed()){
+			Vector v = velocity.add(velocity.resized(4.0));
+			Fireball fireball = new Fireball(v, position);
+			super.getWorld().register(fireball);
+					
+		}
 		
-		super.update(input);
+		
+		
 		double delta = input.getDeltaTime();
 		Vector acceleration = this.getWorld().getGravity();
 		velocity = velocity.add(acceleration.mul(delta));
@@ -121,5 +133,11 @@ public class Player extends Actor {
 	@Override
 	public void preUpdate(Input input){
 		colliding = false;
+	}
+	
+	@Override
+	public void postUpdate(Input input){
+		super.postUpdate(input);
+		getWorld().setView(position, 8.0);
 	}
 }
