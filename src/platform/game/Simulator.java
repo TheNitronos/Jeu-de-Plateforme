@@ -133,8 +133,11 @@ public class Simulator implements World {
 	//add registered actors
 	for (int i = 0 ; i < registered.size() ; ++i){
 		Actor actor = registered.get(i);
-		actor.register(this);
-		actors.add(actor);
+		if (!actors.contains(actor)){
+			actor.register(this);
+			actors.add(actor);
+		}
+		
 	}
 	
 	registered.clear();

@@ -1,6 +1,9 @@
 package platform.game;
 
 import platform.util.Vector;
+
+import com.sun.glass.events.KeyEvent;
+
 import platform.util.Box;
 import platform.util.Input;
 import platform.util.Sprite;
@@ -11,6 +14,7 @@ public class Player extends Actor {
 	private Vector velocity;
 	private Vector position;
 	private Sprite sprite;
+	private boolean colliding;
 	
 	public Player(Vector vel, Vector pos) {
 		super(42);
@@ -50,6 +54,42 @@ public class Player extends Actor {
 	
 	@Override
 	public void update(Input input){
+		
+		if (colliding){
+			double scale = Math.pow(0.001, input.getDeltaTime());
+			velocity = velocity.mul(scale);
+		}
+		
+		double maxSpeed = 5.0;
+		if (input.getKeyboardButton(KeyEvent.VK_RIGHT).isDown()){
+			if (velocity.getX() < maxSpeed){
+				double increase = 6000.0 * input.getDeltaTime();
+				double speed = velocity.getX() + increase;
+				if (speed > maxSpeed){
+					speed = maxSpeed;
+				velocity = new Vector(speed, velocity.getY());
+				}
+			}
+		}
+		
+		if (input.getKeyboardButton(KeyEvent.VK_LEFT).isDown()){
+			if (velocity.getX() > -maxSpeed){
+				double increase = 6000.0 * input.getDeltaTime();
+				double speed = velocity.getX() - increase;
+				if (speed < -maxSpeed){
+					speed = -maxSpeed;
+				velocity = new Vector(speed, velocity.getY());
+				}
+			}
+		}
+		
+		if (input.getKeyboardButton(KeyEvent.VK_UP).isPressed()){
+			if (colliding){
+				velocity = new Vector(velocity.getX(), 7.0);
+			}
+		}
+		
+		
 		super.update(input);
 		double delta = input.getDeltaTime();
 		Vector acceleration = this.getWorld().getGravity();
@@ -57,12 +97,16 @@ public class Player extends Actor {
 		position = position.add(velocity.mul(delta));
 	}
 	
+	
+	
 	@Override
 	public void interact(Actor other){
 		super.interact(other);
 		if (other.isSolid()){
+			
 			Vector delta = other.getBox().getCollision(getBox());
 			if (delta != null){
+				colliding = true;
 				position = position.add(delta);
 				if (delta.getX() != 0.0) {
 					velocity = new Vector(0.0, velocity.getY());
@@ -72,5 +116,10 @@ public class Player extends Actor {
 				}
 			}
 		}
+	}
+	
+	@Override
+	public void preUpdate(Input input){
+		colliding = false;
 	}
 }
