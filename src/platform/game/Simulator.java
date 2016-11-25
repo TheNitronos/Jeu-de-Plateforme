@@ -80,14 +80,17 @@ public class Simulator implements World {
 	View view = new View(input, output);
 	view.setTarget(currentCenter, currentRadius);
 	
-//	Sprite sprite = loader.getSprite("heart.full");
-//	Box zone = new Box(new Vector(0.0, 0.0), 2, 2);
+	/*
+	 * Affichage du coeur et déplacement de la vue
+	 Sprite sprite = loader.getSprite("heart.full");
+	Box zone = new Box(new Vector(0.0, 0.0), 2, 2);
 	
-//	view.drawSprite(sprite, zone);
+	view.drawSprite(sprite, zone);
 	
-//	if (view.getMouseButton(1).isPressed()){
-//		setView(view.getMouseLocation(), 10.0);
-//	}
+	if (view.getMouseButton(1).isPressed()){
+		setView(view.getMouseLocation(), 10.0);
+	}
+	*/
 	
 	actors.add(new Block(new Box(new Vector(-4.0, -1.0), new Vector(4.0 , 0.0)), loader.getSprite("box.empty")));
 	actors.add(new Block(new Box(new Vector(-2.0, 0.0), new Vector(-1.0 , 1.0)), loader.getSprite("box.empty")));
