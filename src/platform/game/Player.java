@@ -101,16 +101,12 @@ public class Player extends Actor {
 					
 		}
 		
-		
-		
 		double delta = input.getDeltaTime();
 		Vector acceleration = this.getWorld().getGravity();
 		velocity = velocity.add(acceleration.mul(delta));
 		position = position.add(velocity.mul(delta));
 	}
-	
-	
-	
+
 	@Override
 	public void interact(Actor other){
 		super.interact(other);
@@ -138,6 +134,6 @@ public class Player extends Actor {
 	@Override
 	public void postUpdate(Input input){
 		super.postUpdate(input);
-		getWorld().setView(position, 8.0);
+		getWorld().setView(position, 7.0);
 	}
 }

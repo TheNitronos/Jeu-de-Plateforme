@@ -105,6 +105,7 @@ public class Simulator implements World {
 	for (Actor actor : actors){
 		for (Actor other : actors){
 			if (actor.getPriority() > other.getPriority()){
+				System.out.println(actor.getPriority() + " " + other.getPriority());
 				actor.interact(other);
 			}
 		}
