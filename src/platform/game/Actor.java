@@ -23,9 +23,9 @@ public abstract class Actor implements Comparable<Actor> {
 	public void update(Input input) {}
 	
 	//pour evoluer avant la physique et apres le dessin
-	public void preUpdate(Input input){}
+	public void preUpdate(Input input) {}
 	
-	public void postUpdate(Input input){}
+	public void postUpdate(Input input) {}
 	
 	//pour etre dessiné	
 	public void draw(Input input, Output output) {}
@@ -65,8 +65,8 @@ public abstract class Actor implements Comparable<Actor> {
 		}
 	}
 	
-	public void register(World world){
-		this.world = world;
+	public void register(World nWorld){
+		world = nWorld;
 	}
 	
 	public void unregister(){

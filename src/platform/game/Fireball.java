@@ -29,7 +29,6 @@ public class Fireball extends Actor{
 		
 		velocity = vel;
 		position = pos;
-		
 	}
 	
 	@Override
@@ -47,12 +46,19 @@ public class Fireball extends Actor{
 		double delta = input.getDeltaTime();
 		Vector acceleration = this.getWorld().getGravity();
 		velocity = velocity.add(acceleration.mul(delta));
-		position = position.add(velocity);
+		
+		System.out.println("vitesse " + velocity);
+		System.out.println("position " + position);
+		System.out.println("position + vitesse " + position.add(velocity.mul(delta)));
+		
+		position = position.add(velocity.mul(delta));
+		
 	}
 	
 	public void draw(Input in, Output out){
 		super.draw(in, out);
-		if (sprite != null){			;
+		
+		if (sprite != null) {			;
 			out.drawSprite(sprite, getBox(), in.getTime());
 		}
 	}
@@ -61,5 +67,4 @@ public class Fireball extends Actor{
 		super.register(world);
 		sprite = super.getSprite("fireball");
 	}
-	
 }
