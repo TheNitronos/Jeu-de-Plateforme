@@ -96,7 +96,7 @@ public class Player extends Actor {
 		
 		if (input.getKeyboardButton(KeyEvent.VK_SPACE).isPressed()){
 			Vector v = velocity.add(velocity.resized(4.0));
-			Fireball fireball = new Fireball(v, position);
+			Fireball fireball = new Fireball(v, position, this);
 			super.getWorld().register(fireball);
 					
 		}
@@ -135,5 +135,21 @@ public class Player extends Actor {
 	public void postUpdate(Input input){
 		super.postUpdate(input);
 		getWorld().setView(position, 7.0);
+	}
+	
+	@Override
+	public boolean hurt(Actor instigator, Damage type, double amount, Vector location){
+		switch (type){
+			case AIR:
+				velocity = getPosition().sub(location).resized(amount);
+				return true;
+			default:
+				return super.hurt(instigator, type, amount, location);
+				
+				
+		}
+		
+		
+				
 	}
 }

@@ -17,9 +17,10 @@ public class Fireball extends Actor {
 	private Vector velocity;
 	private Vector position;
 	private Sprite sprite;
+	private Actor owner;
 
 	
-	public Fireball(Vector vel, Vector pos){
+	public Fireball(Vector vel, Vector pos, Actor owner){
 		
 		if(vel == null || pos == null){
 			throw new NullPointerException();
@@ -78,7 +79,7 @@ public class Fireball extends Actor {
 			}
 		}
 		if (other.getBox().isColliding(getBox())){
-			if(other.hurt(this, Damage.FIRE, 1.0, getPosition())){
+			if(other != owner && other.hurt(this, Damage.FIRE, 1.0, getPosition())){
 				//la boule disparait si elle a brule qqn ou qqch
 				getWorld().unregister(this);
 			}

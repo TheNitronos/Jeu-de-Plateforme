@@ -1,0 +1,53 @@
+/*
+ *	Author:      Samuel Chassot
+ *	Date:        25 nov. 2016
+ */
+
+
+package platform.game;
+
+import platform.util.Box;
+import platform.util.Input;
+import platform.util.Sprite;
+import platform.util.Output;
+import platform.util.Vector;
+
+public class Jumper extends Actor{
+	
+	private final double SIZE = 1.0;
+	private Vector position;
+	private Sprite sprite;
+	private double coolDown;
+	
+	public Jumper(Vector pos){
+		position = pos;
+		coolDown = 2;
+	}
+	
+	@Override
+	public void update(Input input){
+		super.update(input);
+		coolDown -= input.getDeltaTime();
+		if(coolDown >= 0){
+			sprite = super.getSprite("jumper.extended")
+		}
+		
+	}
+	
+	@Override
+	public Box getBox(){
+		return new Box(position, SIZE, SIZE);
+	}
+	
+	@Override
+	public void interact(Actor other){
+		super.interact(other);
+		if (coolDown <= 0 && getBox().isColliding(other.getBox())){
+			Vector below = new Vector(position.getX(), position.getY() - 1.0);
+			if (other.hurt(this, Damage.AIR, 10.0, below)){
+				coolDown = 0.5;
+			}
+			
+		}
+	}
+}
