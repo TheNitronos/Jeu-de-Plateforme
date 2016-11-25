@@ -65,10 +65,10 @@ public class Player extends Actor {
 			velocity = velocity.mul(scale);
 		}
 		
-		double maxSpeed = 5.0;
+		double maxSpeed = 4.0;
 		if (input.getKeyboardButton(KeyEvent.VK_RIGHT).isDown()){
 			if (velocity.getX() < maxSpeed){
-				double increase = 6000.0 * input.getDeltaTime();
+				double increase = 4000.0 * input.getDeltaTime();
 				double speed = velocity.getX() + increase;
 				if (speed > maxSpeed){
 					speed = maxSpeed;
@@ -79,7 +79,7 @@ public class Player extends Actor {
 		
 		if (input.getKeyboardButton(KeyEvent.VK_LEFT).isDown()){
 			if (velocity.getX() > -maxSpeed){
-				double increase = 6000.0 * input.getDeltaTime();
+				double increase = 4000.0 * input.getDeltaTime();
 				double speed = velocity.getX() - increase;
 				if (speed < -maxSpeed){
 					speed = -maxSpeed;
