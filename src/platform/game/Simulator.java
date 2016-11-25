@@ -26,6 +26,8 @@ public class Simulator implements World {
     private SortedCollection<Actor> actors;
     private ArrayList<Actor> registered;
     private ArrayList<Actor> unregistered;
+    private Level next;
+    private boolean transition;
   
     /**
      * Create a new simulator.
@@ -46,16 +48,19 @@ public class Simulator implements World {
         actors = new SortedCollection<Actor>();
         registered = new ArrayList<Actor>();
         unregistered = new ArrayList<Actor>();
+        
+        next = Level.createDefaultLevel();
+        transition = true;
 
-        Block bloc1 = new Block(new Box(new Vector(-4.0, -1.0), new Vector(4.0 , 0.0)), loader.getSprite("box.empty"));
-    	Block bloc2 = new Block(new Box(new Vector(-2.0, 0.0), new Vector(-1.0 , 1.0)), loader.getSprite("box.empty"));
-    	Fireball bouleDeFeu1 = new Fireball(new Vector(-3.0, 5.0), new Vector(3.0, 2.0));
-    	Player joueur1 = new Player(new Vector(0, -1), new Vector(2,3));
-    			
-    	this.register(bloc1);
-    	this.register(bloc2);
-    	this.register(bouleDeFeu1);
-    	this.register(joueur1);
+//        Block bloc1 = new Block(new Box(new Vector(-4.0, -1.0), new Vector(4.0 , 0.0)), loader.getSprite("box.empty"));
+//    	Block bloc2 = new Block(new Box(new Vector(-2.0, 0.0), new Vector(-1.0 , 1.0)), loader.getSprite("box.empty"));
+//    	Fireball bouleDeFeu1 = new Fireball(new Vector(-3.0, 5.0), new Vector(3.0, 2.0));
+//    	Player joueur1 = new Player(new Vector(0, -1), new Vector(2,3));
+//    			
+//    	this.register(bloc1);
+//    	this.register(bloc2);
+//    	this.register(bouleDeFeu1);
+//    	this.register(joueur1);
     	
 	}
 	
@@ -89,17 +94,7 @@ public class Simulator implements World {
 	View view = new View(input, output);
 	view.setTarget(currentCenter, currentRadius);
 	
-	/**
-	 * Affichage du coeur et déplacement de la vue
-	 Sprite sprite = loader.getSprite("heart.full");
-	Box zone = new Box(new Vector(0.0, 0.0), 2, 2);
 	
-	view.drawSprite(sprite, zone);
-	
-	if (view.getMouseButton(1).isPressed()){
-		setView(view.getMouseLocation(), 10.0);
-	}
-	*/
 
 	//apply update before physics
 	for (Actor a : actors){
@@ -150,8 +145,25 @@ public class Simulator implements World {
 	}
 	
 	unregistered.clear();
-
+	
+	//si un acteur a mis transition a true pour demander de changer de niveau
+	if (transition){
+		if(next == null){
+			next = Level.createDefaultLevel();
+		}
+		
+		//si un acteur a appelé setNextLevel, next ne sera pas null
+		Level level = next;
+		transition = false;
+		next = null;
+		actors.clear();
+		registered.clear();
+		//tout est désenregistrer meme le level precedent
+		unregistered.clear();
+		register(level);
 	}
+
+}
 
 	@Override
     public Loader getLoader() {
@@ -164,8 +176,17 @@ public class Simulator implements World {
     }
     
     @Override
-    public void unregistered(Actor actor){
+    public void unregister(Actor actor){
     	unregistered.add(actor);
+    }
+    
+    @Override
+    public void setNextLevel(Level lvl){
+    	next = lvl;
+    }
+    @Override
+    public void nextLevel(){
+    	transition = true;
     }
     
 }
