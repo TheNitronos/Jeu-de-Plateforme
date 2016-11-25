@@ -28,5 +28,15 @@ public class Block extends Actor {
 	   
    }
    
+   @Override
+   public boolean isSolid(){
+	   return true;
+   }
+   
+   @Override
+   public Box getBox(){
+	   return box;
+   }
+   
   
 }

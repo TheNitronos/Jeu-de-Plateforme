@@ -47,9 +47,7 @@ public class Fireball extends Actor{
 		Vector acceleration = this.getWorld().getGravity();
 		velocity = velocity.add(acceleration.mul(delta));
 		
-		System.out.println("vitesse " + velocity);
-		System.out.println("position " + position);
-		System.out.println("position + vitesse " + position.add(velocity.mul(delta)));
+		
 		
 		position = position.add(velocity.mul(delta));
 		
@@ -66,5 +64,17 @@ public class Fireball extends Actor{
 	public void register(World world){
 		super.register(world);
 		sprite = super.getSprite("fireball");
+	}
+	
+	@Override
+	public void interact(Actor other){
+		super.interact(other);
+		if (other.isSolid()){
+			Vector delta = other.getBox().getCollision(position);
+			if (delta != null){
+				position = position.add(delta);
+				velocity = velocity.mirrored(delta);
+			}
+		}
 	}
 }
