@@ -47,8 +47,6 @@ public class Simulator implements World {
         registered = new ArrayList<Actor>();
         unregistered = new ArrayList<Actor>();
 
-        
-      
 	}
 	@Override
 	public void setView(Vector center, double radius){
@@ -80,7 +78,7 @@ public class Simulator implements World {
 	View view = new View(input, output);
 	view.setTarget(currentCenter, currentRadius);
 	
-	/*
+	/**
 	 * Affichage du coeur et déplacement de la vue
 	 Sprite sprite = loader.getSprite("heart.full");
 	Box zone = new Box(new Vector(0.0, 0.0), 2, 2);
@@ -99,8 +97,7 @@ public class Simulator implements World {
 	
 	for (Actor a : actors){
 		a.register(this);
-		
-		}
+	}
 
 	//apply update before physics
 	for (Actor a : actors){
@@ -115,9 +112,7 @@ public class Simulator implements World {
 			}
 		}
 	}
-	
-	
-	
+
 	//apply update
 	for (Actor a : actors){
 		a.update(view);
@@ -139,6 +134,7 @@ public class Simulator implements World {
 		actor.register(this);
 		actors.add(actor);
 	}
+	
 	registered.clear();
 	
 	//remove unregistered actors
@@ -147,14 +143,12 @@ public class Simulator implements World {
 		actor.unregister();
 		actors.remove(actor);
 	}
+	
 	unregistered.clear();
-	
-	
-	}
-	
-	
 
-    @Override
+	}
+
+	@Override
     public Loader getLoader() {
         return loader;
     }

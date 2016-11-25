@@ -3,7 +3,6 @@
  *	Date:        24 nov. 2016
  */
 
-
 package platform.game;
 
 import platform.util.Vector;
@@ -23,6 +22,7 @@ public class Fireball extends Actor{
 	
 	public Fireball(Vector vel, Vector pos){
 		super(666);
+		
 		if(vel == null || pos == null){
 			throw new NullPointerException();
 		}
@@ -32,13 +32,11 @@ public class Fireball extends Actor{
 		
 	}
 	
-		
-	
 	@Override
 	public Box getBox(){
 		return new Box(position, SIZE, SIZE);
-		
 	}
+	
 	public Vector getVelocity(){
 		return velocity;
 	}
@@ -57,12 +55,11 @@ public class Fireball extends Actor{
 		if (sprite != null){			;
 			out.drawSprite(sprite, getBox(), in.getTime());
 		}
-	
 	}
+	
 	public void register(World world){
 		super.register(world);
 		sprite = super.getSprite("fireball");
-		
 	}
 	
 }

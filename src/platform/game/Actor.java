@@ -9,6 +9,7 @@ import platform.util.Sprite;
 /**
  * Base class of all simulated actors, attached to a world.
  */
+
 public abstract class Actor implements Comparable<Actor> {
 	
 	private int priority;
@@ -75,6 +76,7 @@ public abstract class Actor implements Comparable<Actor> {
 	protected World getWorld(){
 		return world;
 	}
+	
 	public Sprite getSprite(String name){
 		return world.getLoader().getSprite(name);
 	}
