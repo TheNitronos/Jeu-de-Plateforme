@@ -50,10 +50,12 @@ public class Simulator implements World {
         Block bloc1 = new Block(new Box(new Vector(-4.0, -1.0), new Vector(4.0 , 0.0)), loader.getSprite("box.empty"));
     	Block bloc2 = new Block(new Box(new Vector(-2.0, 0.0), new Vector(-1.0 , 1.0)), loader.getSprite("box.empty"));
     	Fireball bouleDeFeu1 = new Fireball(new Vector(-3.0, 5.0), new Vector(3.0, 2.0));
-    	
+    	Player joueur1 = new Player(new Vector(0, -1), new Vector(2,3));
+    			
     	this.register(bloc1);
     	this.register(bloc2);
     	this.register(bouleDeFeu1);
+    	this.register(joueur1);
     	
 	}
 	

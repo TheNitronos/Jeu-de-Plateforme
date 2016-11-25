@@ -8,11 +8,10 @@ package platform.game;
 import platform.util.Vector;
 import platform.util.Box;
 import platform.util.Input;
-
 import platform.util.Sprite;
 import platform.util.Output;
 
-public class Fireball extends Actor{
+public class Fireball extends Actor {
 	
 	private final double SIZE = 0.4;
 	private Vector velocity;
@@ -46,13 +45,10 @@ public class Fireball extends Actor{
 		double delta = input.getDeltaTime();
 		Vector acceleration = this.getWorld().getGravity();
 		velocity = velocity.add(acceleration.mul(delta));
-		
-		
-		
 		position = position.add(velocity.mul(delta));
-		
 	}
 	
+	@Override
 	public void draw(Input in, Output out){
 		super.draw(in, out);
 		
@@ -61,6 +57,7 @@ public class Fireball extends Actor{
 		}
 	}
 	
+	@Override
 	public void register(World world){
 		super.register(world);
 		sprite = super.getSprite("fireball");
