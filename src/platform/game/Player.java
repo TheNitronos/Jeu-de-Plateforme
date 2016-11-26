@@ -4,6 +4,7 @@ import platform.util.Vector;
 
 import com.sun.glass.events.KeyEvent;
 
+import platform.game.level.Level;
 import platform.util.Box;
 import platform.util.Input;
 import platform.util.Sprite;
@@ -14,6 +15,9 @@ public class Player extends Actor {
 	private Vector velocity;
 	private Vector position;
 	private boolean colliding;
+	private double health;
+	private double maxHealth;
+	
 	
 	public Player(Vector vel, Vector pos) {
 		
@@ -23,6 +27,9 @@ public class Player extends Actor {
 		
 		velocity = vel;
 		position = pos;
+		
+		maxHealth = 5.0;
+		health = 5.0;
 	}
 	
 	@Override
@@ -101,6 +108,11 @@ public class Player extends Actor {
 		Vector acceleration = this.getWorld().getGravity();
 		velocity = velocity.add(acceleration.mul(delta));
 		position = position.add(velocity.mul(delta));
+		
+		//si le joueur n'a plus de vie, il meurt
+		if(health <= 0){
+			this.death();
+		}
 	}
 
 	@Override
@@ -139,6 +151,9 @@ public class Player extends Actor {
 			case AIR:
 				velocity = getPosition().sub(location).resized(amount);
 				return true;
+			case VOID:
+				health -= amount;
+				return true;
 			default:
 				return super.hurt(instigator, type, amount, location);
 				
@@ -147,5 +162,10 @@ public class Player extends Actor {
 		
 		
 				
+	}
+	
+	public void death(){
+		getWorld().setNextLevel(Level.createDefaultLevel());
+		getWorld().nextLevel();
 	}
 }

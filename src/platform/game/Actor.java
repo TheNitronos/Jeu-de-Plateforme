@@ -84,5 +84,4 @@ public abstract class Actor implements Comparable<Actor> {
 		return world.getLoader().getSprite(name);
 	}
 	
-	//public abstract void initSprite();
 }
