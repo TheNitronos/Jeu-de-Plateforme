@@ -5,7 +5,7 @@ import platform.game.Block;
 import platform.util.Box;
 import platform.util.Vector;
 import platform.game.Player;
-//import platform.game.Jumper;
+import platform.game.Jumper;
 
 public class BasicLevel extends Level {
 
@@ -20,7 +20,7 @@ public class BasicLevel extends Level {
         world.register(new Block(new Box(new Vector(0, 0), 4, 2), world.getLoader().getSprite("stone.broken.2")));
         world.register(new Block(new Box(new Vector(-1.5, 1.5), 1, 1), world.getLoader().getSprite("stone.broken.1")));
         world.register(new Player(new Vector(-1, -1), new Vector(2,3)));
-        //world.register(new Jumper(new Vector(0.0, 0.0)));
+        world.register(new Jumper(new Vector(1.5, 1.5)));
         
     }
     
