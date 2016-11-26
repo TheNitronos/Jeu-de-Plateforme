@@ -35,6 +35,8 @@ public interface World {
     //permet de passer au niveau level
     public void setNextLevel(Level level);
     
+    public abstract int interact(Box area, Actor instigator, Damage type, double amount, Vector location);
+    
     
   
 }

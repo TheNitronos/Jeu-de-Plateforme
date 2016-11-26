@@ -189,4 +189,17 @@ public class Simulator implements World {
     	transition = true;
     }
     
+    public int interact(Box area, Actor instigator, Damage type, double amount, Vector location){
+    	int victims = 0;
+    	for (Actor actor : actors){
+    		if(area.isColliding(actor.getBox())){
+    			if (actor.hurt(instigator, type, amount, location)){
+    				++victims;
+    			}
+    		}	
+    	}
+    	return victims;
+    	
+    }
+    
 }

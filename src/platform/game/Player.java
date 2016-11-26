@@ -13,7 +13,6 @@ public class Player extends Actor {
 	private final double SIZE = 0.5;
 	private Vector velocity;
 	private Vector position;
-	private Sprite sprite;
 	private boolean colliding;
 	
 	public Player(Vector vel, Vector pos) {
@@ -44,16 +43,13 @@ public class Player extends Actor {
 	@Override
 	public void draw(Input in, Output out){
 		super.draw(in, out);
-		
-		if (sprite != null) {			;
-			out.drawSprite(sprite, getBox());
-		}
+		out.drawSprite(super.getSprite("blocker.happy"), getBox());
 	}
 	
 	@Override
 	public void register(World world){
 		super.register(world);
-		sprite = super.getSprite("blocker.happy");
+		
 	}
 	
 	@Override
@@ -68,7 +64,7 @@ public class Player extends Actor {
 		double maxSpeed = 4.0;
 		if (input.getKeyboardButton(KeyEvent.VK_RIGHT).isDown()){
 			if (velocity.getX() < maxSpeed){
-				double increase = 4000.0 * input.getDeltaTime();
+				double increase = 3000.0 * input.getDeltaTime();
 				double speed = velocity.getX() + increase;
 				if (speed > maxSpeed){
 					speed = maxSpeed;
@@ -79,7 +75,7 @@ public class Player extends Actor {
 		
 		if (input.getKeyboardButton(KeyEvent.VK_LEFT).isDown()){
 			if (velocity.getX() > -maxSpeed){
-				double increase = 4000.0 * input.getDeltaTime();
+				double increase = 3000.0 * input.getDeltaTime();
 				double speed = velocity.getX() - increase;
 				if (speed < -maxSpeed){
 					speed = -maxSpeed;
