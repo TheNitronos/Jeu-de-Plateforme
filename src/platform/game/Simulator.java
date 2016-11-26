@@ -2,7 +2,6 @@ package platform.game;
 
 import platform.game.level.Level;
 import java.util.ArrayList;
-import java.util.List;
 import platform.util.Box;
 
 import platform.util.Input;
@@ -105,7 +104,7 @@ public class Simulator implements World {
 	for (Actor actor : actors){
 		for (Actor other : actors){
 			if (actor.getPriority() > other.getPriority()){
-				System.out.println(actor.getPriority() + " " + other.getPriority());
+				
 				actor.interact(other);
 			}
 		}
