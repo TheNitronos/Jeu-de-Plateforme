@@ -70,23 +70,27 @@ public class Player extends Actor {
 		
 		double maxSpeed = 4.0;
 		if (input.getKeyboardButton(KeyEvent.VK_RIGHT).isDown()){
-			if (velocity.getX() < maxSpeed){
+			if (velocity.getX() < maxSpeed) {
 				double increase = 60.0 * input.getDeltaTime();
 				double speed = velocity.getX() + increase;
+				
 				if (speed > maxSpeed) {
 					speed = maxSpeed;
 				}
+				
 				velocity = new Vector(speed, velocity.getY());
 			}
 		}
 		
 		if (input.getKeyboardButton(KeyEvent.VK_LEFT).isDown()){
-			if (velocity.getX() > -maxSpeed){
+			if (velocity.getX() > -maxSpeed ){
 				double increase = 60.0 * input.getDeltaTime();
 				double speed = velocity.getX() - increase;
+				
 				if (speed < -maxSpeed) {
 					speed = -maxSpeed;
 				}
+				
 				velocity = new Vector(speed, velocity.getY());
 			}
 		}
@@ -110,7 +114,7 @@ public class Player extends Actor {
 		position = position.add(velocity.mul(delta));
 		
 		//si le joueur n'a plus de vie, il meurt
-		if(health <= 0){
+		if(health <= 0) {
 			this.death();
 		}
 	}
