@@ -19,6 +19,7 @@ public class BasicLevel extends Level {
         
         // Create blocks
         world.register(new Block(new Box(new Vector(0, 0), 4, 2), world.getLoader().getSprite("stone.broken.2")));
+        world.register(new Block(new Box(new Vector(0, 2), 1, 2), world.getLoader().getSprite("stone.broken.2")));
         world.register(new Block(new Box(new Vector(-1.5, 1.5), 1, 1), world.getLoader().getSprite("stone.broken.1")));
         world.register(new Player(new Vector(-1, -1), new Vector(2,3)));
         world.register(new Jumper(new Vector(1.5, 1.5)));

@@ -159,17 +159,21 @@ public class Player extends Actor {
 				health -= amount;
 				return true;
 			default:
-				return super.hurt(instigator, type, amount, location);
-				
-				
+				return super.hurt(instigator, type, amount, location);		
 		}
-		
-		
 				
 	}
 	
 	public void death(){
 		getWorld().setNextLevel(Level.createDefaultLevel());
 		getWorld().nextLevel();
+	}
+	
+	public double getHealth(){
+		return health;
+	}
+	
+	public double getHealthMax(){
+		return maxHealth;
 	}
 }
