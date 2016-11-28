@@ -12,7 +12,6 @@ import platform.util.Sprite;
 
 public abstract class Actor implements Comparable<Actor> {
 	
-	private int priority;
 	private World world;
 	
 	
@@ -29,9 +28,8 @@ public abstract class Actor implements Comparable<Actor> {
 	//pour etre dessiné	
 	public void draw(Input input, Output output) {}
 	
-	public int getPriority(){
-		return priority;
-	}
+	public abstract int getPriority();
+	
 	
 	public boolean hurt(Actor instigator, Damage type, double amount, Vector location){
 		return false;
@@ -57,10 +55,10 @@ public abstract class Actor implements Comparable<Actor> {
 	
 	@Override
 	public int compareTo(Actor other){
-		if(priority < other.getPriority()){
+		if(getPriority() < other.getPriority()){
 			return 1;
 		}
-		if(priority > other.getPriority()){
+		if(getPriority() > other.getPriority()){
 			return -1;
 		}
 		else{
@@ -83,5 +81,7 @@ public abstract class Actor implements Comparable<Actor> {
 	public Sprite getSprite(String name){
 		return world.getLoader().getSprite(name);
 	}
+
+
 	
 }

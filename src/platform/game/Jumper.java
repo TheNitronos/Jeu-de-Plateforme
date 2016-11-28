@@ -19,9 +19,10 @@ public class Jumper extends Actor{
 	private Sprite sprite;
 	private double coolDown;
 	
+	
 	public Jumper(Vector pos){
 		position = pos;
-		coolDown = 2;
+		coolDown = 0.0;
 	}
 	
 	@Override
