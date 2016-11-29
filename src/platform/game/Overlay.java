@@ -15,7 +15,7 @@ import platform.util.Sprite;
 
 public class Overlay extends Actor {
 	private Player player;
-	private final double SIZE = 0.25;
+	private final double SIZE = 0.2;
 	
 	public Overlay(Player player){
 		this.player = player;
