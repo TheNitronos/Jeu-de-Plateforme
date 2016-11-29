@@ -81,6 +81,10 @@ public abstract class Actor implements Comparable<Actor> {
 	public Sprite getSprite(String name){
 		return world.getLoader().getSprite(name);
 	}
+	
+	public double getVelocityY(){
+		return 0.0;
+	}
 
 
 	

@@ -29,7 +29,7 @@ public class Player extends Actor {
 		position = pos;
 		
 		maxHealth = 10.0;
-		health = 2.0;
+		health = maxHealth;
 	}
 	
 	@Override
@@ -164,6 +164,8 @@ public class Player extends Actor {
 					health = maxHealth;
 				}
 				return true;
+			case PHYSICAL:
+				health -= amount;
 			default:
 				return super.hurt(instigator, type, amount, location);		
 		}
@@ -181,5 +183,10 @@ public class Player extends Actor {
 	
 	public double getHealthMax(){
 		return maxHealth;
+	}
+	
+	@Override
+	public double getVelocityY(){
+		return velocity.getY();
 	}
 }

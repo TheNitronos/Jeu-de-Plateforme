@@ -36,7 +36,7 @@ public class Overlay extends Actor {
 				name = "heart.empty";
 			}
 			
-			Vector center = player.getBox().add(new Vector((-2 + i)*SIZE , 0.5)).getCenter();
+			Vector center = player.getBox().add(new Vector((-3 + i)*SIZE , 0.5)).getCenter();
 			Box box = new Box(center, SIZE, SIZE);
 			output.drawSprite(getSprite(name), box);
 		}
