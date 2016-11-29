@@ -11,6 +11,7 @@ import platform.util.Sprite;
 import platform.util.Vector;
 import platform.util.View;
 import platform.util.SortedCollection;
+import platform.game.level.BasicInteract;
 
 /**
  * Basic implementation of world, managing a complete collection of actors.
@@ -49,6 +50,7 @@ public class Simulator implements World {
         unregistered = new ArrayList<Actor>();
         
         next = Level.createDefaultLevel();
+        //next = new BasicInteract();
         transition = true;
 
 //        Block bloc1 = new Block(new Box(new Vector(-4.0, -1.0), new Vector(4.0 , 0.0)), loader.getSprite("box.empty"));
@@ -189,10 +191,11 @@ public class Simulator implements World {
     	transition = true;
     }
     
-    public int interact(Box area, Actor instigator, Damage type, double amount, Vector location){
+    @Override
+    public int hurt(Box area, Actor instigator, Damage type, double amount, Vector location){
     	int victims = 0;
     	for (Actor actor : actors){
-    		if(area.isColliding(actor.getBox())){
+    		if(area.isColliding(actor.getBox()) && instigator != actor){
     			if (actor.hurt(instigator, type, amount, location)){
     				++victims;
     			}

@@ -108,6 +108,10 @@ public class Player extends Actor {
 					
 		}
 		
+		if (input.getKeyboardButton(KeyEvent.VK_B).isPressed()){
+			getWorld().hurt(getBox(), this, Damage.AIR, 1.0, getPosition());
+		}
+		
 		double delta = input.getDeltaTime();
 		Vector acceleration = this.getWorld().getGravity();
 		velocity = velocity.add(acceleration.mul(delta));

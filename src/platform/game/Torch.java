@@ -35,12 +35,17 @@ public class Torch extends Actor{
 	@Override
 	public void draw(Input input, Output output){
 		super.draw(input, output);
+		String name;
 		if (lit){
-			Sprite sprite = this.getSprite("torch.lit.1");
+			name = "torch.lit.1";
+			if (variation < 0.3){
+				name = "torch.lit.2";
+			}
 		}
 		else{
-			Sprite sprite = this.getSprite("torch");
+			name = "torch";
 		}
+		output.drawSprite(this.getSprite(name), getBox());
 	}
 	
 	@Override
@@ -61,6 +66,15 @@ public class Torch extends Actor{
 				return true;
 			default:
 				return super.hurt(instigator, type, amount, location);
+		}
+	}
+	
+	@Override
+	public void update(Input input){
+		super.update(input);
+		variation -= input.getDeltaTime();
+		if(variation <0.0){
+			variation = 0.6;
 		}
 	}
 }

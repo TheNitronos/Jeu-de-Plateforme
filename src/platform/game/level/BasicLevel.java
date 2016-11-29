@@ -31,7 +31,7 @@ public class BasicLevel extends Level {
         world.register(new Limits(new Box(Vector.ZERO, 40,30)));
         world.register(new Overlay(player));
         world.register(new Heart(new Vector(-2.0, 3.0)));
-        world.register(new Torch(new Vector(-3.0, 6.0) , true));
+        world.register(new Torch(new Vector(-3.0, 4.0) , true));
         
         
     }

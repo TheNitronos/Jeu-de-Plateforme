@@ -43,7 +43,7 @@ public class Spike extends Actor{
 	@Override
 	public void interact(Actor other){
 		if(other.getVelocityY() < -1 && getBox().isColliding(other.getBox())){
-			other.hurt(this, Damage.PHYSICAL, 0.25 , position);
+			other.hurt(this, Damage.PHYSICAL, 5.0 , position);
 		}
 		
 	}
