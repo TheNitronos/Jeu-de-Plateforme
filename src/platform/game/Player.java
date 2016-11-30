@@ -11,7 +11,7 @@ import platform.util.Sprite;
 import platform.util.Output;
 
 public class Player extends Actor {
-	private final double SIZE = 0.5;
+	private final double SIZE = 1.0;
 	private Vector velocity;
 	private Vector position;
 	private boolean colliding;
@@ -68,7 +68,7 @@ public class Player extends Actor {
 			velocity = velocity.mul(scale);
 		}
 		
-		double maxSpeed = 4.0;
+		double maxSpeed = 6.0;
 		if (input.getKeyboardButton(KeyEvent.VK_RIGHT).isDown()){
 			if (velocity.getX() < maxSpeed) {
 				double increase = 60.0 * input.getDeltaTime();
@@ -97,7 +97,7 @@ public class Player extends Actor {
 		
 		if (input.getKeyboardButton(KeyEvent.VK_UP).isPressed()){
 			if (colliding){
-				velocity = new Vector(velocity.getX(), 7.0);
+				velocity = new Vector(velocity.getX(), 9.0);
 			}
 		}
 		
@@ -150,7 +150,7 @@ public class Player extends Actor {
 	@Override
 	public void postUpdate(Input input){
 		super.postUpdate(input);
-		getWorld().setView(position, 7.0);
+		getWorld().setView(position, 10.0);
 	}
 	
 	@Override

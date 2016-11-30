@@ -15,7 +15,7 @@ import platform.util.Sprite;
 
 public class Overlay extends Actor {
 	private Player player;
-	private final double SIZE = 0.2;
+	private final double SIZE = 0.25;
 	
 	public Overlay(Player player){
 		this.player = player;
@@ -36,7 +36,7 @@ public class Overlay extends Actor {
 				name = "heart.empty";
 			}
 			
-			Vector center = player.getBox().add(new Vector((-3 + i)*SIZE , 0.5)).getCenter();
+			Vector center = player.getBox().add(new Vector((-3 + i)*SIZE , 1.0)).getCenter();
 			Box box = new Box(center, SIZE, SIZE);
 			output.drawSprite(getSprite(name), box);
 		}
