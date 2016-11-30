@@ -11,9 +11,10 @@ import platform.util.Input;
 import platform.util.Sprite;
 import platform.util.Output;
 import platform.util.Vector;
+import platform.game.Signal;
 
 
-public class Torch extends Actor{
+public class Torch extends Actor implements Signal{
 	private final double SIZE = 0.8;
 	private Vector position;
 	private boolean lit;
@@ -76,5 +77,10 @@ public class Torch extends Actor{
 		if(variation <0.0){
 			variation = 0.6;
 		}
+	}
+	
+	@Override
+	public boolean isActive(){
+		return lit;
 	}
 }
