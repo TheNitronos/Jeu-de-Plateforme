@@ -97,7 +97,7 @@ public class Player extends Actor {
 		
 		if (input.getKeyboardButton(KeyEvent.VK_UP).isPressed()){
 			if (colliding){
-				velocity = new Vector(velocity.getX(), 9.0);
+				velocity = new Vector(velocity.getX(), 7.0);
 			}
 		}
 		

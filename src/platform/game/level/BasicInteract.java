@@ -17,7 +17,8 @@ import platform.game.Overlay;
 import platform.game.Heart;
 import platform.game.Spike;
 import platform.game.Torch;
-
+import platform.game.Color;
+import platform.game.Key;
 public class BasicInteract extends Level {
 	
 	@Override
@@ -37,5 +38,6 @@ public class BasicInteract extends Level {
         world.register(new Jumper(new Vector(-1.5, 1.5)));
         world.register(new Heart(new Vector(-2.5, 3.5)));
         world.register(new Limits(new Box(new Vector(0.0,0.0), 40, 40)));
+        world.register(new Key(new Vector(-3, 4), Color.RED));
 	}
 }
