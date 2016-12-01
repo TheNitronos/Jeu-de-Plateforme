@@ -20,6 +20,8 @@ import platform.game.Torch;
 import platform.game.Color;
 import platform.game.Key;
 import platform.game.Door;
+import platform.game.Lever;
+
 public class BasicInteract extends Level {
 	
 	@Override
@@ -43,5 +45,6 @@ public class BasicInteract extends Level {
         world.register(blue);
         
         world.register(new Door(new Box(new Vector(4.0, 1.5) , 1.0, 1.0), blue, world.getLoader().getSprite("lock.blue")));
+        world.register(new Lever(new Vector (5.0, 1.5), 2.0));
 	}
 }

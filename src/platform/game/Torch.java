@@ -60,8 +60,14 @@ public class Torch extends Actor implements Signal{
 		
 		switch (type){
 			case FIRE:
-				lit = true;
-				return true;
+				if (lit){
+					return false;
+				}
+				else{
+					lit = true;
+					return true;
+				}
+				
 			case AIR:
 				lit = false;
 				return true;

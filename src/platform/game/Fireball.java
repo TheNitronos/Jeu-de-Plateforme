@@ -14,6 +14,7 @@ import platform.util.Output;
 public class Fireball extends Actor {
 	
 	private final double SIZE = 0.4;
+	private double cooldown;
 	private Vector velocity;
 	private Vector position;
 	private Sprite sprite;
@@ -28,6 +29,7 @@ public class Fireball extends Actor {
 		
 		velocity = vel;
 		position = pos;
+		cooldown = 4.0;
 	}
 	
 	@Override
@@ -51,6 +53,12 @@ public class Fireball extends Actor {
 		Vector acceleration = this.getWorld().getGravity();
 		velocity = velocity.add(acceleration.mul(delta));
 		position = position.add(velocity.mul(delta));
+		
+		cooldown -= input.getDeltaTime();
+		if(cooldown < 0.0){
+			getWorld().register(new Smoke(position, SIZE));
+			getWorld().unregister(this);
+		}
 	}
 	
 	@Override
