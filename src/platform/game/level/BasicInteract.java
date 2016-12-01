@@ -21,6 +21,7 @@ import platform.game.Color;
 import platform.game.Key;
 import platform.game.Door;
 import platform.game.Lever;
+import platform.game.Mover;
 
 public class BasicInteract extends Level {
 	
@@ -45,6 +46,8 @@ public class BasicInteract extends Level {
         world.register(blue);
         
         world.register(new Door(new Box(new Vector(4.0, 1.5) , 1.0, 1.0), blue, world.getLoader().getSprite("lock.blue")));
-        world.register(new Lever(new Vector (5.0, 1.5), 2.0));
+        Lever lever1 = new Lever(new Vector (5.0, 1.5), 2.0);
+        world.register(lever1);
+        world.register(new Mover(new Box(new Vector(8.0, 1.0), 2, 0.5), world.getLoader().getSprite("stone.2"), new Vector(8.0, 5.0), lever1));
 	}
 }

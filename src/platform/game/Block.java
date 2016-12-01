@@ -23,10 +23,10 @@ public class Block extends Actor {
 		return 0;
    }
    
-   public void draw(Input in, Output out){
+   public void draw(Input input, Output output){
 	   if (sprite != null){
-		   super.draw(in, out);
-		   out.drawSprite(sprite, box);
+		   super.draw(input, output);
+		   output.drawSprite(sprite, box);
 	   }
 	   
 	   
