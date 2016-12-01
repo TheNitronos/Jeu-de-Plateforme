@@ -19,6 +19,7 @@ import platform.game.Spike;
 import platform.game.Torch;
 import platform.game.Color;
 import platform.game.Key;
+import platform.game.Door;
 public class BasicInteract extends Level {
 	
 	@Override
@@ -28,7 +29,7 @@ public class BasicInteract extends Level {
         // Register a new instance, to restart level automatically
         world.setNextLevel(new BasicLevel());
         
-        world.register(new Block(new Box(new Vector(0.0, 0.0), 4, 2), world.getLoader().getSprite("stone.broken.2")));
+        world.register(new Block(new Box(new Vector(2.0, 0.0), 8, 2), world.getLoader().getSprite("stone.broken.2")));
         world.register(new Block(new Box(new Vector(-3.0, 1.0), 2, 4), world.getLoader().getSprite("stone.broken.8")));
         Player player = new Player(new Vector(0, 1), new Vector(0.75, 1.5));
         world.register(player);
@@ -38,6 +39,9 @@ public class BasicInteract extends Level {
         world.register(new Jumper(new Vector(-1.5, 1.5)));
         world.register(new Heart(new Vector(-2.5, 3.5)));
         world.register(new Limits(new Box(new Vector(0.0,0.0), 40, 40)));
-        world.register(new Key(new Vector(-3, 4), Color.RED));
+        Key blue = new Key(new Vector(-3, 4), Color.BLUE);
+        world.register(blue);
+        
+        world.register(new Door(new Box(new Vector(4.0, 1.5) , 1.0, 1.0), blue, world.getLoader().getSprite("lock.blue")));
 	}
 }

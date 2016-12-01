@@ -6,8 +6,7 @@
 
 package platform.game;
 
-import platform.game.Signal;
-import platform.game.Actor;
+
 import platform.util.Vector;
 import platform.util.Box;
 import platform.game.Color;
@@ -16,7 +15,8 @@ import platform.util.Output;
 import platform.game.Player;
 
 
-public class Key extends Actor{
+
+public class Key extends Actor implements Signal{
 	
 	private final double SIZE = 1.0;
 	private Vector position;
@@ -76,6 +76,18 @@ public class Key extends Actor{
 		super.interact(other);
 		if (other.getClass().getName() == "platform.game.Player" && other.getBox().isColliding(getBox())){
 			taken = true;
+			getWorld().unregister(this);
+		}
+	}
+	
+	@Override 
+	public boolean isActive(){
+		return taken;
+	}
+	
+	@Override
+	public void update(Input input){
+		if (taken){
 			getWorld().unregister(this);
 		}
 	}
