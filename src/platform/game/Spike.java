@@ -14,9 +14,9 @@ import platform.util.Vector;
 
 
 public class Spike extends Actor{
+	
 	private final double SIZE = 1.0;
 	private Vector position;
-	
 	
 	public Spike(Vector pos){
 		position = pos;

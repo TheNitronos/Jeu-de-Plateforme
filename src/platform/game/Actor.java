@@ -13,10 +13,7 @@ import platform.util.Sprite;
 public abstract class Actor implements Comparable<Actor> {
 	
 	private World world;
-	
-	
-	
-	
+
 	//pour evoluer au cours du temps	
 	public void update(Input input) {}
 	
