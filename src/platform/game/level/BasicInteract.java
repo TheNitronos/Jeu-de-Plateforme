@@ -47,9 +47,9 @@ public class BasicInteract extends Level {
         world.register(blue);
         
         world.register(new Door(new Box(new Vector(4.0, 1.5) , 1.0, 1.0), blue, world.getLoader().getSprite("lock.blue")));
-        Lever lever1 = new Lever(new Vector (5.0, 1.5), 4.0);
+        Lever lever1 = new Lever(new Vector (8.0, 1.5), 4.0);
         world.register(lever1);
-        world.register(new Mover(new Box(new Vector(8.0, 1.0), 2, 0.5), world.getLoader().getSprite("stone.2"), new Vector(8.0, 5.0), lever1));
+        world.register(new Mover(new Box(new Vector(8.0, 0.75), 4, 0.5), world.getLoader().getSprite("stone.2"), new Vector(8.0, 20.0), lever1));
         world.register(new Exit(new Vector(4.0, 1.5), lever1, new BasicLevel()));
 	}
 }
