@@ -22,6 +22,7 @@ import platform.game.Key;
 import platform.game.Door;
 import platform.game.Lever;
 import platform.game.Mover;
+import platform.game.Exit;
 
 public class BasicInteract extends Level {
 	
@@ -32,7 +33,7 @@ public class BasicInteract extends Level {
         // Register a new instance, to restart level automatically
         world.setNextLevel(new BasicLevel());
         
-        world.register(new Block(new Box(new Vector(2.0, 0.0), 8, 2), world.getLoader().getSprite("stone.broken.2")));
+        world.register(new Block(new Box(new Vector(6.0, 0.0), 16, 2), world.getLoader().getSprite("stone.broken.2")));
         world.register(new Block(new Box(new Vector(-3.0, 1.0), 2, 4), world.getLoader().getSprite("stone.broken.8")));
         Player player = new Player(new Vector(0, 1), new Vector(0.75, 1.5));
         world.register(player);
@@ -46,8 +47,9 @@ public class BasicInteract extends Level {
         world.register(blue);
         
         world.register(new Door(new Box(new Vector(4.0, 1.5) , 1.0, 1.0), blue, world.getLoader().getSprite("lock.blue")));
-        Lever lever1 = new Lever(new Vector (5.0, 1.5), 2.0);
+        Lever lever1 = new Lever(new Vector (5.0, 1.5), 4.0);
         world.register(lever1);
         world.register(new Mover(new Box(new Vector(8.0, 1.0), 2, 0.5), world.getLoader().getSprite("stone.2"), new Vector(8.0, 5.0), lever1));
+        world.register(new Exit(new Vector(4.0, 1.5), lever1, new BasicLevel()));
 	}
 }

@@ -36,14 +36,34 @@ public class Exit extends Actor {
 	
 	@Override
 	public int getPriority(){
-		return 10;
+		if (signal.isActive()){
+			return 60;
+		}
+		else{
+			return -3;
+		}
+		
 	}
 	
 	public void interact(Actor other){
 		super.interact(other);
-		if(getBox().isColliding(other.getBox()) && other.getClass().getName() == "platform.game.Player"){
+		if(getBox().isColliding(other.getBox()) && other.getClass().getName() == "platform.game.Player" && signal.isActive()){
 			getWorld().setNextLevel(level);
 			getWorld().nextLevel();
 		}
+	}
+	
+	@Override
+	public void draw(Input input, Output output){
+		super.draw(input, output);
+		String name = "door.";
+		if (signal.isActive()){
+			name += "open";
+		}
+		else{
+			name += "closed";
+		}
+		
+		output.drawSprite(getSprite(name), getBox());
 	}
 }
