@@ -49,7 +49,7 @@ public class Smoke extends Actor {
 		if (cooldown >= COOLDOWN * 2/3){
 			name = "smoke.gray.1";
 		}
-		if(cooldown >= COOLDOWN/3 && cooldown < COOLDOWN *2/3){
+		else if(cooldown >= COOLDOWN/3){
 			name = "smoke.gray.2";
 		}
 		else{

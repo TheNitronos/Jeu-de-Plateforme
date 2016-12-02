@@ -175,6 +175,7 @@ public class Player extends Actor {
 				return true;
 			case PHYSICAL:
 				health -= amount;
+				velocity = new Vector(velocity.getX(), 7.0);
 			default:
 				return super.hurt(instigator, type, amount, location);		
 		}

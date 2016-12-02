@@ -29,7 +29,7 @@ public class Fireball extends Actor {
 		
 		velocity = vel;
 		position = pos;
-		cooldown = 4.0;
+		cooldown = 3.0;
 	}
 	
 	@Override
