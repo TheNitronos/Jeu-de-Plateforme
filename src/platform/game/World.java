@@ -20,7 +20,6 @@ public interface World {
      */
     public void setView(Vector center, double radius);
     
-    
     public void register(Actor actor);
     
     public void unregister(Actor actor);

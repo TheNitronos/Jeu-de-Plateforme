@@ -51,7 +51,6 @@ public class Simulator implements World {
         
         next = Level.createDefaultLevel();
         transition = true;
-    	
 	}
 	
 	@Override

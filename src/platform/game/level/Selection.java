@@ -1,6 +1,7 @@
 package platform.game.level;
 
 import platform.game.Block;
+import platform.game.LevelBlock;
 import platform.game.Breakable;
 import platform.game.Color;
 import platform.game.Door;
@@ -25,9 +26,12 @@ public class Selection extends Level {
 	@Override
 	public void register(World world) {
 	    super.register(world);
-	    	
-	    world.register(new Block(new Box(new Vector(0.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty")));
-        
 	    
+	    world.register(new LevelBlock(1, new Box(new Vector(-6.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty")));
+	    world.register(new LevelBlock(2, new Box(new Vector(-3.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty")));
+	    world.register(new LevelBlock(3, new Box(new Vector(0.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty")));
+	    world.register(new LevelBlock(4, new Box(new Vector(3.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty")));
+	    world.register(new LevelBlock(10, new Box(new Vector(6.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty")));
+        
 	}
 }

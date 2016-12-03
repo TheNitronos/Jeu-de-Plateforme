@@ -9,7 +9,6 @@ import platform.util.Sprite;
 /**
  * Base class of all simulated actors, attached to a world.
  */
-
 public abstract class Actor implements Comparable<Actor> {
 	
 	private World world;
@@ -42,9 +41,11 @@ public abstract class Actor implements Comparable<Actor> {
 	
 	public Vector getPosition(){
 		Box box = getBox();
+		
 		if (box == null) {
 			return null;
 		}
+		
 		return box.getCenter();
 	}
 	
@@ -82,7 +83,4 @@ public abstract class Actor implements Comparable<Actor> {
 	public double getVelocityY(){
 		return 0.0;
 	}
-
-
-	
 }
