@@ -28,7 +28,7 @@ public class Smoke extends Actor {
 	
 	@Override
 	public int getPriority(){
-		return 0;
+		return 1;
 	}
 	
 	@Override

@@ -17,6 +17,8 @@ public class Player extends Actor {
 	private boolean colliding;
 	private double health;
 	private double maxHealth;
+	double maxSpeed;
+	
 	
 	
 	public Player(Vector vel, Vector pos) {
@@ -30,6 +32,7 @@ public class Player extends Actor {
 		
 		maxHealth = 10.0;
 		health = maxHealth;
+		maxSpeed = 6.0;
 	}
 	
 	@Override
@@ -68,7 +71,6 @@ public class Player extends Actor {
 			velocity = velocity.mul(scale);
 		}
 		
-		double maxSpeed = 6.0;
 		if (input.getKeyboardButton(KeyEvent.VK_RIGHT).isDown()){
 			if (velocity.getX() < maxSpeed) {
 				double increase = 60.0 * input.getDeltaTime();

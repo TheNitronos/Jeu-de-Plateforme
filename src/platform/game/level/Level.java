@@ -37,6 +37,6 @@ public abstract class Level extends Actor {
     
     /** @return a new instance of default level */
     public static Level createDefaultLevel() {
-        return new BasicInteract();
+        return new Selection();
     }
 }
