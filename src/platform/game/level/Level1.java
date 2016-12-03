@@ -19,7 +19,7 @@ import platform.game.Mover;
 import platform.game.Exit;
 import platform.game.Breakable;
 
-public class FirstLevel extends Level {
+public class Level1 extends Level {
 	@Override
     public void register(World world) {
         super.register(world);
@@ -54,7 +54,7 @@ public class FirstLevel extends Level {
         
         Lever lever2 = new Lever(new Vector (-9.0, 3.0), 5.0);
         world.register(lever2);
-        world.register(new Exit(new Vector(-10.0, 3.0), lever2, new BasicLevel()));
+        world.register(new Exit(new Vector(-10.0, 3.0), lever2, new Selection()));
         
         Player player = new Player(new Vector(0, 5), new Vector(0.0, 1.0));
         world.register(player);

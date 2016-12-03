@@ -134,6 +134,12 @@ public class Simulator implements World {
 	
 	//si un acteur a mis transition a true pour demander de changer de niveau
 	if (transition) {
+		currentCenter = Vector.ZERO;
+        currentRadius = 10.0;
+        
+        expectedCenter = Vector.ZERO;
+        expectedRadius = 10.0;
+        
 		if(next == null) {
 			next = Level.createDefaultLevel();
 		}

@@ -27,11 +27,11 @@ public class Selection extends Level {
 	public void register(World world) {
 	    super.register(world);
 	    
-	    world.register(new LevelBlock(1, new Box(new Vector(-6.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty")));
-	    world.register(new LevelBlock(2, new Box(new Vector(-3.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty")));
-	    world.register(new LevelBlock(3, new Box(new Vector(0.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty")));
-	    world.register(new LevelBlock(4, new Box(new Vector(3.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty")));
-	    world.register(new LevelBlock(10, new Box(new Vector(6.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty")));
+	    world.register(new LevelBlock(1, new Box(new Vector(-6.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty"), new Level1()));
+	    world.register(new LevelBlock(2, new Box(new Vector(-3.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty"), new BasicInteract()));
+	    world.register(new LevelBlock(3, new Box(new Vector(0.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty"), new BasicLevel()));
+	    world.register(new LevelBlock(4, new Box(new Vector(3.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty"), new Level1()));
+	    world.register(new LevelBlock(10, new Box(new Vector(6.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty"), new Level1()));
         
 	}
 }
