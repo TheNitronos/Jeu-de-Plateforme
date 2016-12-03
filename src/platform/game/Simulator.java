@@ -50,18 +50,7 @@ public class Simulator implements World {
         unregistered = new ArrayList<Actor>();
         
         next = Level.createDefaultLevel();
-        //next = new BasicInteract();
         transition = true;
-
-//        Block bloc1 = new Block(new Box(new Vector(-4.0, -1.0), new Vector(4.0 , 0.0)), loader.getSprite("box.empty"));
-//    	Block bloc2 = new Block(new Box(new Vector(-2.0, 0.0), new Vector(-1.0 , 1.0)), loader.getSprite("box.empty"));
-//    	Fireball bouleDeFeu1 = new Fireball(new Vector(-3.0, 5.0), new Vector(3.0, 2.0));
-//    	Player joueur1 = new Player(new Vector(0, -1), new Vector(2,3));
-//    			
-//    	this.register(bloc1);
-//    	this.register(bloc2);
-//    	this.register(bouleDeFeu1);
-//    	this.register(joueur1);
     	
 	}
 	
@@ -70,12 +59,13 @@ public class Simulator implements World {
 		if (center == null){
 			throw new NullPointerException();
 		}
+		
 		if (radius <= 0.0){
 			throw new IllegalArgumentException("radius must be positive");
 		}
+		
 		expectedCenter = center;
 		expectedRadius = radius;
-	
 	}
 	
     /**
@@ -87,60 +77,55 @@ public class Simulator implements World {
 		
 	double factor = 0.1;
 	
-	
 	currentCenter = currentCenter.mul(1.0 - factor).add(expectedCenter.mul(factor));
 	currentRadius = currentRadius * (1.0 - factor) + expectedRadius*factor;
-	
-        
+	    
 	View view = new View(input, output);
 	view.setTarget(currentCenter, currentRadius);
 	
-	
-
 	//apply update before physics
 	for (Actor a : actors){
 		a.preUpdate(view);
 	}
 	
 	//interact each actor who need with others
-	for (Actor actor : actors){
-		for (Actor other : actors){
-			if (actor.getPriority() > other.getPriority()){
-				
+	for (Actor actor : actors) {
+		for (Actor other : actors) {
+			if (actor.getPriority() > other.getPriority()) {
 				actor.interact(other);
 			}
 		}
 	}
 
 	//apply update
-	for (Actor a : actors){
+	for (Actor a : actors) {
 		a.update(view);
 	}
 	
 	//Draw everything
-	for (Actor a : actors.descending()){
+	for (Actor a : actors.descending()) {
 		a.draw(view, view);
 	}
 	
 	//apply update after drawing
-	for (Actor a : actors){
+	for (Actor a : actors) {
 		a.postUpdate(view);
 	}
 	
 	//add registered actors
-	for (int i = 0 ; i < registered.size() ; ++i){
+	for (int i = 0 ; i < registered.size() ; ++i) {
 		Actor actor = registered.get(i);
-		if (!actors.contains(actor)){
+		
+		if (!actors.contains(actor)) {
 			actor.register(this);
 			actors.add(actor);
 		}
-		
 	}
 	
 	registered.clear();
 	
 	//remove unregistered actors
-	for (int i = 0 ; i < unregistered.size() ; ++i){
+	for (int i = 0 ; i < unregistered.size() ; ++i) {
 		Actor actor = unregistered.get(i);
 		actor.unregister();
 		actors.remove(actor);
@@ -149,8 +134,8 @@ public class Simulator implements World {
 	unregistered.clear();
 	
 	//si un acteur a mis transition a true pour demander de changer de niveau
-	if (transition){
-		if(next == null){
+	if (transition) {
+		if(next == null) {
 			next = Level.createDefaultLevel();
 		}
 		
@@ -160,11 +145,11 @@ public class Simulator implements World {
 		next = null;
 		actors.clear();
 		registered.clear();
+		
 		//tout est désenregistrer meme le level precedent
 		unregistered.clear();
 		register(level);
 	}
-
 }
 
 	@Override
@@ -173,27 +158,29 @@ public class Simulator implements World {
     }
     
     @Override
-    public void register(Actor actor){
+    public void register(Actor actor) {
     	registered.add(actor);
     }
     
     @Override
-    public void unregister(Actor actor){
+    public void unregister(Actor actor) {
     	unregistered.add(actor);
     }
     
     @Override
-    public void setNextLevel(Level lvl){
+    public void setNextLevel(Level lvl) {
     	next = lvl;
     }
+    
     @Override
-    public void nextLevel(){
+    public void nextLevel() {
     	transition = true;
     }
     
     @Override
-    public int hurt(Box area, Actor instigator, Damage type, double amount, Vector location){
+    public int hurt(Box area, Actor instigator, Damage type, double amount, Vector location) {
     	int victims = 0;
+    	
     	for (Actor actor : actors){
     		if(area.isColliding(actor.getBox()) && instigator != actor){
     			if (actor.hurt(instigator, type, amount, location)){
@@ -201,8 +188,8 @@ public class Simulator implements World {
     			}
     		}	
     	}
-    	return victims;
     	
+    	return victims;
     }
     
 }
