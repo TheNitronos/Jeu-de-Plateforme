@@ -27,7 +27,6 @@ public class Level1 extends Level {
         // Register a new instance, to restart level automatically
         world.setNextLevel(new BasicLevel());
         
-        
         world.register(new Block(new Box(new Vector(-9.0, 0.0), 3, 1), world.getLoader().getSprite("stone.3")));
         world.register(new Block(new Box(new Vector(-6.0, 0.0), 3, 1), world.getLoader().getSprite("stone.3")));
         world.register(new Block(new Box(new Vector(-3.0, 0.0), 3, 1), world.getLoader().getSprite("stone.3")));

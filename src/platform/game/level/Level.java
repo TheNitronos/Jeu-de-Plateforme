@@ -1,6 +1,7 @@
 package platform.game.level;
 
 import platform.game.Actor;
+import platform.game.Player;
 import platform.game.LevelBlock;
 import platform.game.World;
 import platform.util.Box;

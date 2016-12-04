@@ -65,7 +65,7 @@ public class Fireball extends Actor {
 	public void draw(Input in, Output out){
 		super.draw(in, out);
 		
-		if (sprite != null) {			;
+		if (sprite != null) {			
 			out.drawSprite(sprite, getBox(), in.getTime()*30);
 		}
 	}

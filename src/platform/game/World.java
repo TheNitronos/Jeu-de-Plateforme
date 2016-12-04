@@ -24,7 +24,7 @@ public interface World {
     
     public void unregister(Actor actor);
     
-    public default Vector getGravity(){
+    public default Vector getGravity() {
     	return new Vector(0.0, -9.81);
     }
     
@@ -34,9 +34,5 @@ public interface World {
     //permet de passer au niveau level
     public void setNextLevel(Level level);
     
-    public abstract int hurt(Box area, Actor instigator, Damage type, double amount, Vector location);
-    
-    
-  
+    public abstract int hurt(Box area, Actor instigator, Damage type, double amount, Vector location);  
 }
-

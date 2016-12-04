@@ -1,9 +1,3 @@
-/*
- *	Author:      Samuel Chassot
- *	Date:        1 déc. 2016
- */
-
-
 package platform.game;
 
 import platform.util.Box;
@@ -20,31 +14,33 @@ public class Smoke extends Actor {
 	private  double cooldown;
 	private double size;
 	
-	public Smoke(Vector pos, double size){
+	public Smoke(Vector pos, double size) {
 		this.size = size;
 		position = pos;
 		cooldown = COOLDOWN;
 	}
 	
 	@Override
-	public int getPriority(){
+	public int getPriority() {
 		return 1;
 	}
 	
 	@Override
-	public void update(Input input){
+	public void update(Input input) {
 		cooldown -= input.getDeltaTime();
+		
 		if(cooldown < 0.0){
 			getWorld().unregister(this);
 		}
 	}
+	
 	@Override
-	public Box getBox(){
+	public Box getBox() {
 		return new Box(position, size, size);
 	}
 	
 	@Override
-	public void draw(Input input, Output output){
+	public void draw(Input input, Output output) {
 		String name;
 		if (cooldown >= COOLDOWN * 2/3){
 			name = "smoke.gray.1";

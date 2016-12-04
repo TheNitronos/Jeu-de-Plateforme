@@ -8,7 +8,6 @@ import platform.game.Door;
 import platform.game.Exit;
 import platform.game.Heart;
 import platform.game.Jumper;
-import platform.game.LevelBox;
 import platform.game.Key;
 import platform.game.Lever;
 import platform.game.Limits;

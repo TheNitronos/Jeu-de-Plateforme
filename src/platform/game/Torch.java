@@ -1,9 +1,3 @@
-/*
- *	Author:      Samuel Chassot
- *	Date:        28 nov. 2016
- */
-
-
 package platform.game;
 
 import platform.util.Box;
@@ -12,7 +6,6 @@ import platform.util.Sprite;
 import platform.util.Output;
 import platform.util.Vector;
 import platform.game.Signal;
-
 
 public class Torch extends Actor implements Signal{
 	private final double SIZE = 0.8;
@@ -54,10 +47,8 @@ public class Torch extends Actor implements Signal{
 		return new Box(position, SIZE, SIZE);
 	}
 
-	
 	@Override
 	public boolean hurt(Actor instigator, Damage type, double amount, Vector location){
-		
 		switch (type){
 			case FIRE:
 				if (lit){
