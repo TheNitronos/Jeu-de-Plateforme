@@ -14,6 +14,7 @@ import platform.game.Torch;
 import platform.game.Color;
 import platform.game.Key;
 import platform.game.Door;
+import platform.game.Unicorn;
 import platform.game.Lever;
 import platform.game.Mover;
 import platform.game.Exit;
@@ -63,8 +64,5 @@ public class Level1 extends Level {
         world.register(new Overlay(player));
         
         world.register(new Limits(new Box(new Vector(0.0,0.0), 40, 40)));
-        
-        
-        
 	}
 }

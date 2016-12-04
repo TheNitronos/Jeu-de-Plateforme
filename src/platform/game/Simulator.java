@@ -128,7 +128,6 @@ public class Simulator implements World {
 		Actor actor = unregistered.get(i);
 		actor.unregister();
 		actors.remove(actor);
-		System.out.println("oilllle");
 	}
 	
 	unregistered.clear();

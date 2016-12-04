@@ -60,12 +60,15 @@ public class SimpleSprite extends Actor{
 	
 	@Override
 	public void update(Input input) {
-		cooldown -= input.getDeltaTime();
-				
-		if(cooldown < 0.0){
-			getWorld().unregister(this);
-			getWorld().register(new Smoke(POSITION, SIZE));
+		if (cooldownBool) {
+			cooldown -= input.getDeltaTime();
+			
+			if(cooldown < 0.0){
+				getWorld().unregister(this);
+				getWorld().register(new Smoke(POSITION, SIZE));
+			}	
 		}
+		
 	}
 	
 	public double getCooldown() {

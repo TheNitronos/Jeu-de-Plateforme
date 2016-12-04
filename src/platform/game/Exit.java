@@ -1,9 +1,3 @@
-/*
- *	Author:      Samuel Chassot
- *	Date:        1 déc. 2016
- */
-
-
 package platform.game;
 
 import platform.game.Block;
@@ -23,20 +17,21 @@ public class Exit extends Actor {
 	private Vector position;
 	private final double SIZE = 1.0;
 	
-	public Exit(Vector pos, Signal signal, Level lvl){
+	public Exit(Vector pos, Signal signal, Level lvl) {
 		this.signal = signal;
+		
 		position = pos;
 		level = lvl;
 	}
 	
 	@Override
-	public Box getBox(){
+	public Box getBox() {
 		return new Box(position, SIZE, SIZE);
 	}
 	
 	@Override
-	public int getPriority(){
-		if (signal.isActive()){
+	public int getPriority() {
+		if (signal.isActive()) {
 			return 60;
 		}
 		else{
@@ -45,22 +40,24 @@ public class Exit extends Actor {
 		
 	}
 	
-	public void interact(Actor other){
+	public void interact(Actor other) {
 		super.interact(other);
-		if(getBox().isColliding(other.getBox()) && other.getClass().getName() == "platform.game.Player" && signal.isActive()){
+		
+		if (getBox().isColliding(other.getBox()) && other.getClass().getName() == "platform.game.Player" && signal.isActive()) {
 			getWorld().setNextLevel(level);
 			getWorld().nextLevel();
 		}
 	}
 	
 	@Override
-	public void draw(Input input, Output output){
+	public void draw(Input input, Output output) {
 		super.draw(input, output);
+		
 		String name = "door.";
-		if (signal.isActive()){
+		
+		if (signal.isActive()) {
 			name += "open";
-		}
-		else{
+		} else {
 			name += "closed";
 		}
 		

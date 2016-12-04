@@ -11,6 +11,7 @@ import platform.game.Overlay;
 import platform.game.Heart;
 import platform.game.Spike;
 import platform.game.Torch;
+import platform.game.Unicorn;
 
 public class BasicLevel extends Level {
 
@@ -26,6 +27,7 @@ public class BasicLevel extends Level {
         world.register(new Spike(new Vector(0,1.25)));
         world.register(new Block(new Box(new Vector(-1.5, 1.5), 1, 1), world.getLoader().getSprite("stone.broken.1")));
         Player player = new Player(new Vector(0, 1), new Vector(1.5,4));
+        
         world.register(player);
         world.register(new Jumper(new Vector(1.5, 1.5)));
         world.register(new Limits(new Box(Vector.ZERO, 40,30)));

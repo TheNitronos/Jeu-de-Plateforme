@@ -18,6 +18,7 @@ public class Player extends Actor {
 	private double health;
 	private double maxHealth;
 	double maxSpeed;
+	private boolean canMount;
 
 	public Player(Vector vel, Vector pos) {
 		if(vel == null || pos == null) {
@@ -29,7 +30,10 @@ public class Player extends Actor {
 		
 		maxHealth = 10.0;
 		health = maxHealth;
+		
 		maxSpeed = 12.0;
+		
+		canMount = false;
 	}
 	
 	@Override
@@ -64,7 +68,7 @@ public class Player extends Actor {
 		super.update(input);
 		
 		if (colliding) {
-			double scale = Math.pow(0.01, input.getDeltaTime());
+			double scale = Math.pow(0.001, input.getDeltaTime());
 			velocity = velocity.mul(scale);
 		}
 		
@@ -98,6 +102,10 @@ public class Player extends Actor {
 			activateSomethng();
 		}
 		
+		if (input.getKeyboardButton(KeyEvent.VK_M).isPressed()) {
+			mountUnicorn();
+		}
+		
 		
 		double delta = input.getDeltaTime();
 		Vector acceleration = this.getWorld().getGravity();
@@ -115,7 +123,6 @@ public class Player extends Actor {
 		super.interact(other);
 		
 		if (other.isSolid()) {
-			
 			Vector delta = other.getBox().getCollision(getBox());
 			
 			if (delta != null) {
@@ -229,5 +236,11 @@ public class Player extends Actor {
 		}
 		
 		velocity = new Vector(speed, velocity.getY());
+	}
+	
+	private void mountUnicorn() {
+		if (canMount) {
+			System.out.println("montons la licorne !");
+		}
 	}
 }

@@ -17,6 +17,7 @@ import platform.game.Overlay;
 import platform.game.Heart;
 import platform.game.Spike;
 import platform.game.Torch;
+import platform.game.Unicorn;
 import platform.game.Color;
 import platform.game.Key;
 import platform.game.Door;
@@ -36,6 +37,10 @@ public class BasicInteract extends Level {
         
         world.register(new Block(new Box(new Vector(6.0, 0.0), 16, 2), world.getLoader().getSprite("stone.broken.2")));
         world.register(new Block(new Box(new Vector(-3.0, 1.0), 2, 4), world.getLoader().getSprite("stone.broken.8")));
+
+        world.register(new Unicorn("duck", new Vector(9.0, 1.75)));
+        
+        
         Player player = new Player(new Vector(0, 1), new Vector(0.75, 1.5));
         world.register(player);
         world.register(new Overlay(player));
