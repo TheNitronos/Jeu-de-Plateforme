@@ -47,9 +47,12 @@ public class Level1 extends Level {
         world.register(new Spike(new Vector(10.0, -4.25)));
         
         world.register(new Breakable(new Box(new Vector(7.0, 1.0), 1, 1), world.getLoader().getSprite("box.double")));
+        world.register(new Breakable(new Box(new Vector(6.0, 1.0), 1, 1), world.getLoader().getSprite("box.double")));
+        world.register(new Breakable(new Box(new Vector(5.0, 1.0), 1, 1), world.getLoader().getSprite("box.double")));
+      
         Lever lever1 = new Lever(new Vector (-5.0, 1.0), 15.0);
         world.register(lever1);
-        world.register(new Mover(new Box(new Vector(-10.0, 1), 1, 1), world.getLoader().getSprite("stone.broken.1"), new Vector(5.0, 1.0), lever1));
+        world.register(new Mover(new Box(new Vector(-10.0, 1), 1, 1), world.getLoader().getSprite("stone.broken.1"), new Vector(3.0, 1.0), lever1));
         
         Lever lever2 = new Lever(new Vector (-9.0, 3.0), 5.0);
         world.register(lever2);

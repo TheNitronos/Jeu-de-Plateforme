@@ -1,8 +1,6 @@
 package platform.game;
 
 import platform.game.Block;
-import platform.game.Fireball;
-import platform.game.Signal;
 import platform.util.Vector;
 import platform.util.Box;
 import platform.util.Sprite;
@@ -10,18 +8,18 @@ import platform.util.Input;
 import platform.util.Output;
 
 public class Breakable extends Block{
-	
-	private int damage;
+	private double life;
 	private Fire fire;
 	
 	public Breakable(Box box, Sprite sprite) {
 		super(box, sprite);
-		damage = 10;
-		fire = new Fire(this.getPosition(), 0.5);
+		
+		life = 100.0;
+		fire = new Fire(this.getPosition(), 0.0, 0.5);
 	}
 	
-	public int getDamage() {
-		return damage;
+	public double getLife() {
+		return life;
 	}
 	
 	@Override
@@ -29,13 +27,13 @@ public class Breakable extends Block{
 		
 		switch (type) {
 			case FIRE:
-				if (damage == 1){
-					getWorld().register(new Smoke(this.getPosition(), 2));
-					getWorld().unregister(this);
-					getWorld().unregister(fire);
-				} else {
-					--damage;
-				}
+				super.getWorld().unregister(fire);
+				
+				fire = new Fire(this.getPosition(), 2.0, 0.5);
+				super.getWorld().register(fire);
+				
+				--life;
+				
 				return true;
 				
 			default:
@@ -47,16 +45,32 @@ public class Breakable extends Block{
 	public void draw(Input input, Output output){
 		super.draw(input, output);
 		
-		if (damage <= 6) {
+		if (life <= 50) {
 			output.drawSprite(this.getSprite("box.empty"), getBox());
-			super.getWorld().register(fire);
+			
 		} else {
 			output.drawSprite(this.getSprite("box.double"), getBox());
-			if (damage <= 9) {
-				super.getWorld().register(fire);
-			}
 		}
 		
 	}
+	
+	@Override
+	public void update(Input input) {
+		if (fire.getCooldown() > 0) {
+			life -= input.getDeltaTime()*10;
+		}
+		
+		if (life <= 0.0) {
+			endLife();
+		}
+	}
+	
+	private void endLife() {
+		getWorld().register(new Smoke(this.getPosition(), 2));
+		getWorld().unregister(fire);
+		getWorld().unregister(this);
+	}
+	
+	
 
 }
