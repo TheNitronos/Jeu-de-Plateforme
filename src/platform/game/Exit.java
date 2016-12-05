@@ -1,33 +1,36 @@
 package platform.game;
 
-import platform.game.Signal;
+//importations de util
 import platform.util.Vector;
 import platform.util.Box;
 import platform.util.Input;
 import platform.util.Output;
-import platform.game.level.*;
+//importation de game
+import platform.game.Signal;
+import platform.game.level.Level;
+import platform.game.Player;
+
 
 public class Exit extends Actor {
-	private Level level;
-	private Signal signal;
-	private Vector position;
+	private final Level LEVEL;
+	private final Signal SIGNAL;
+	private final Vector POSITION;
 	private final double SIZE = 1.0;
 	
-	public Exit(Vector pos, Signal signal, Level lvl) {
-		this.signal = signal;
-		
-		position = pos;
-		level = lvl;
+	public Exit(Vector nPosition, Signal nSignal, Level nLevel) {
+		SIGNAL = nSignal;
+		POSITION = nPosition;
+		LEVEL = nLevel;
 	}
 	
 	@Override
 	public Box getBox() {
-		return new Box(position, SIZE, SIZE);
+		return new Box(POSITION, SIZE, SIZE);
 	}
 	
 	@Override
 	public int getPriority() {
-		if (signal.isActive()) {
+		if (SIGNAL.isActive()) {
 			return 60;
 		}
 		else{
@@ -41,9 +44,9 @@ public class Exit extends Actor {
 		super.interact(other);
 		
 		if (getBox().isColliding(other.getBox()) 
-				&& other.getClass() instanceof Player 
-				&& signal.isActive()) {
-			getWorld().setNextLevel(level);
+				&& (other instanceof Player) && SIGNAL.isActive()) {
+			
+			getWorld().setNextLevel(LEVEL);
 			getWorld().nextLevel();
 		}
 	}
@@ -54,7 +57,7 @@ public class Exit extends Actor {
 		
 		String name = "door.";
 		
-		if (signal.isActive()) {
+		if (SIGNAL.isActive()) {
 			name += "open";
 		} else {
 			name += "closed";
