@@ -109,12 +109,6 @@ public class Player extends Actor {
 			activateSomethng();
 		}
 		
-		if (input.getKeyboardButton(KeyEvent.VK_Q).isPressed()) {
-			Level level = new Selection();
-			this.getWorld().setNextLevel(level);
-			this.getWorld().nextLevel();
-		}
-		
 		double delta = input.getDeltaTime();
 		Vector acceleration = this.getWorld().getGravity();
 		velocity = velocity.add(acceleration.mul(delta));

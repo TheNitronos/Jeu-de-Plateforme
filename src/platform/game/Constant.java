@@ -3,14 +3,14 @@ package platform.game;
 import platform.game.Signal;
 
 public class Constant implements Signal {
-	private final boolean value;
+	private final boolean VALUE;
 	
-	public Constant(boolean val){
-		value = val;
+	public Constant(boolean nValue){
+		VALUE = nValue;
 	}
 	
 	@Override
 	public boolean isActive(){
-		return value;
+		return VALUE;
 	}
 }

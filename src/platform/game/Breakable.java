@@ -24,7 +24,6 @@ public class Breakable extends Block{
 	
 	@Override
 	public boolean hurt(Actor instigator, Damage type, double amount, Vector location){
-		
 		switch (type) {
 			case FIRE:
 				super.getWorld().unregister(fire);

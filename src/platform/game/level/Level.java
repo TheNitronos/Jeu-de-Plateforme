@@ -1,5 +1,7 @@
 package platform.game.level;
 
+import com.sun.glass.events.KeyEvent;
+
 import platform.game.Actor;
 import platform.util.Input;
 import platform.util.Output;
@@ -14,7 +16,7 @@ public abstract class Level extends Actor {
     private double fadein;
 
     public Level() {
-        fadein = 1.0;
+        fadein = 1.1;
     }
     
     @Override
@@ -27,6 +29,14 @@ public abstract class Level extends Actor {
         fadein -= input.getDeltaTime();
         if (fadein <= 0.0)
             getWorld().unregister(this);
+        
+        if (input.getKeyboardButton(KeyEvent.VK_Q).isPressed()) {
+        	if (!(this instanceof Selection)) {
+            	Level level = new Selection();
+    			this.getWorld().setNextLevel(level);
+    			this.getWorld().nextLevel();
+        	}
+		}
     }
 
     @Override
@@ -39,4 +49,6 @@ public abstract class Level extends Actor {
     public static Level createDefaultLevel() {
         return new Selection();
     }
+    
+    
 }

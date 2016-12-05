@@ -40,7 +40,9 @@ public class Exit extends Actor {
 	public void interact(Actor other) {
 		super.interact(other);
 		
-		if (getBox().isColliding(other.getBox()) && other.getClass().getName() == "platform.game.Player" && signal.isActive()) {
+		if (getBox().isColliding(other.getBox()) 
+				&& other.getClass() instanceof Player 
+				&& signal.isActive()) {
 			getWorld().setNextLevel(level);
 			getWorld().nextLevel();
 		}
