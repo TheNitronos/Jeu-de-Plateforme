@@ -34,7 +34,7 @@ public class Player extends Actor {
 		maxSpeed = 12.0;
 		
 		priority = 42;
-		cooldown = 5;
+		cooldown = 2;
 	}
 	
 	@Override

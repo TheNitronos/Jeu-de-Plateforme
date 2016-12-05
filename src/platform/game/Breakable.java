@@ -57,7 +57,7 @@ public class Breakable extends Block{
 	@Override
 	public void update(Input input) {
 		if (fire.getCooldown() > 0) {
-			life -= input.getDeltaTime()*15;
+			life -= input.getDeltaTime()*30;
 		}
 		
 		if (life <= 0.0) {
