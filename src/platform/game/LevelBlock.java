@@ -5,12 +5,13 @@ import platform.util.Vector;
 import platform.util.Input;
 import platform.util.Output;
 import platform.util.Sprite;
-import platform.util.View;
+import platform.game.Player;
 import platform.game.level.*;
 
 public class LevelBlock extends Block {
 	int level;
 	Level levelName;
+	Player player;
 	
 	public LevelBlock(int nLevel, Box b, Sprite s, Level nLevelName) {
 		super(b, s);
@@ -37,7 +38,6 @@ public class LevelBlock extends Block {
 	public void update(Input input) {
 		if (input.getMouseButton(1).isPressed()) {
 			if (isInBox(input.getMouseLocation(), super.getBox())) {
-				getWorld().register(new Smoke(super.getBox().getCenter(), super.getBox().getHeight()*2));
 				getWorld().setNextLevel(levelName);
 				getWorld().nextLevel();
 			}

@@ -1,14 +1,13 @@
 package platform.game;
 
-import platform.util.Vector;
-
 import com.sun.glass.events.KeyEvent;
 
 import platform.game.level.Level;
+import platform.game.level.Selection;
 import platform.util.Box;
 import platform.util.Input;
-import platform.util.Sprite;
 import platform.util.Output;
+import platform.util.Vector;
 
 public class Player extends Actor {
 	private final double SIZE = 1.0;
@@ -18,7 +17,6 @@ public class Player extends Actor {
 	private double health;
 	private double maxHealth;
 	double maxSpeed;
-	private boolean canMount;
 	private int priority;
 	private double cooldown;
 
@@ -35,10 +33,8 @@ public class Player extends Actor {
 		
 		maxSpeed = 12.0;
 		
-		canMount = false;
-		
 		priority = 42;
-		cooldown = 8;
+		cooldown = 5;
 	}
 	
 	@Override
@@ -113,10 +109,11 @@ public class Player extends Actor {
 			activateSomethng();
 		}
 		
-		if (input.getKeyboardButton(KeyEvent.VK_M).isPressed()) {
-			mountUnicorn();
+		if (input.getKeyboardButton(KeyEvent.VK_Q).isPressed()) {
+			Level level = new Selection();
+			this.getWorld().setNextLevel(level);
+			this.getWorld().nextLevel();
 		}
-		
 		
 		double delta = input.getDeltaTime();
 		Vector acceleration = this.getWorld().getGravity();
@@ -128,6 +125,7 @@ public class Player extends Actor {
 			jump();
 			priority = -10;
 			cooldown -= input.getDeltaTime();
+			
 			if (cooldown < 0) {
 				this.death();
 			}
@@ -254,11 +252,4 @@ public class Player extends Actor {
 		
 		velocity = new Vector(speed, velocity.getY());
 	}
-	
-	private void mountUnicorn() {
-		if (canMount) {
-			System.out.println("montons la licorne !");
-		}
-	}
-	
 }

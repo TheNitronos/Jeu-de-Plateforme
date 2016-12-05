@@ -1,20 +1,11 @@
-/*
- *	Author:      Samuel Chassot
- *	Date:        1 déc. 2016
- */
-
-
 package platform.game;
 
 import platform.util.Vector;
 import platform.util.Box;
 import platform.util.Input;
-import platform.util.Sprite;
 import platform.util.Output;
 
-
 public class Lever extends Actor implements Signal {
-	
 	private Vector position;
 	private final double SIZE = 1.0;
 	private boolean value;
@@ -37,10 +28,12 @@ public class Lever extends Actor implements Signal {
 	public int getPriority(){
 		return 20;
 	}
+	
 	@Override
 	public boolean isActive(){
 		return value;
 	}
+	
 	@Override
 	public void draw(Input input, Output output){
 		super.draw(input, output);
@@ -54,6 +47,7 @@ public class Lever extends Actor implements Signal {
 		}
 		output.drawSprite(getSprite(name), getBox());
 	}
+	
 	@Override
 	public void update(Input input){
 		

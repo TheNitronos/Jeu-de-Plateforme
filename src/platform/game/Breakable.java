@@ -70,7 +70,4 @@ public class Breakable extends Block{
 		getWorld().unregister(fire);
 		getWorld().unregister(this);
 	}
-	
-	
-
 }

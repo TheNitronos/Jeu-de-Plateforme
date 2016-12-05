@@ -7,18 +7,15 @@ import platform.util.Box;
 import platform.util.Input;
 import platform.util.Loader;
 import platform.util.Output;
-import platform.util.Sprite;
 import platform.util.Vector;
 import platform.util.View;
 import platform.util.SortedCollection;
-import platform.game.level.BasicInteract;
 
 /**
  * Basic implementation of world, managing a complete collection of actors.
  */
 public class Simulator implements World {
-
-    private Loader loader;
+	private Loader loader;
     private Vector currentCenter;
     private double currentRadius;
     private Vector expectedCenter;
@@ -192,9 +189,7 @@ public class Simulator implements World {
     				++victims;
     			}
     		}	
-    	}
-    	
+    	} 	
     	return victims;
-    }
-    
+    }  
 }

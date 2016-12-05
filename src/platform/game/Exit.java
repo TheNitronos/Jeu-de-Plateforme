@@ -1,15 +1,11 @@
 package platform.game;
 
-import platform.game.Block;
 import platform.game.Signal;
 import platform.util.Vector;
 import platform.util.Box;
-import platform.util.Sprite;
 import platform.util.Input;
 import platform.util.Output;
 import platform.game.level.*;
-
-
 
 public class Exit extends Actor {
 	private Level level;
@@ -40,6 +36,7 @@ public class Exit extends Actor {
 		
 	}
 	
+	@Override
 	public void interact(Actor other) {
 		super.interact(other);
 		

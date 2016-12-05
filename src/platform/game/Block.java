@@ -39,8 +39,4 @@ public class Block extends Actor {
    public Box getBox(){
 	   return box;
    }
-   
-   
-   
-  
 }

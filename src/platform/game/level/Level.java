@@ -1,7 +1,6 @@
 package platform.game.level;
 
 import platform.game.Actor;
-import platform.game.Player;
 import platform.game.LevelBlock;
 import platform.game.World;
 import platform.util.Box;
@@ -43,11 +42,5 @@ public abstract class Level extends Actor {
     /** @return a new instance of default level */
     public static Level createDefaultLevel() {
         return new Selection();
-    }
-    
-    @Override
-    public void register(World world) {
-    	super.register(world);
-    	world.register(new LevelBlock(0, new Box(new Vector(-10.0, 8.0), 2, 2), world.getLoader().getSprite("box.empty"), new Selection()));
     }
 }

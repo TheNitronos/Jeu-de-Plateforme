@@ -1,8 +1,3 @@
-/*
- *	Author:      Samuel Chassot
- *	Date:        24 nov. 2016
- */
-
 package platform.game;
 
 import platform.util.Vector;
@@ -12,7 +7,6 @@ import platform.util.Sprite;
 import platform.util.Output;
 
 public class Fireball extends Actor {
-	
 	private final double SIZE = 0.4;
 	private double cooldown;
 	private Vector velocity;
@@ -20,9 +14,7 @@ public class Fireball extends Actor {
 	private Sprite sprite;
 	private Actor owner;
 
-	
 	public Fireball(Vector vel, Vector pos, Actor owner){
-		
 		if(vel == null || pos == null){
 			throw new NullPointerException();
 		}
@@ -55,6 +47,7 @@ public class Fireball extends Actor {
 		position = position.add(velocity.mul(delta));
 		
 		cooldown -= input.getDeltaTime();
+		
 		if(cooldown < 0.0){
 			getWorld().register(new Smoke(position, SIZE));
 			getWorld().unregister(this);
@@ -79,17 +72,19 @@ public class Fireball extends Actor {
 	@Override
 	public void interact(Actor other){
 		super.interact(other);
+		
 		if (other.isSolid()){
 			Vector delta = other.getBox().getCollision(position);
+			
 			if (delta != null){
 				position = position.add(delta);
 				velocity = velocity.mirrored(delta);
 			}
 		}
+		
 		if (other.getBox().isColliding(getBox())){
 			if(other != owner && other.hurt(this, Damage.FIRE, 1.0, getPosition())){
 				//la boule disparait si elle a brule qqn ou qqch
-				
 				getWorld().unregister(this);
 			}
 		}

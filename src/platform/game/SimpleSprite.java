@@ -4,7 +4,6 @@ import platform.util.Vector;
 import platform.util.Box;
 import platform.util.Input;
 import platform.util.Output;
-import platform.util.Sprite;
 import platform.game.Actor;
 
 public class SimpleSprite extends Actor{
@@ -50,7 +49,6 @@ public class SimpleSprite extends Actor{
 				out.drawSprite(super.getSprite(sprite), getBox());
 			}
 		}
-		
 	}
 	
 	@Override
@@ -68,7 +66,6 @@ public class SimpleSprite extends Actor{
 				getWorld().register(new Smoke(POSITION, SIZE));
 			}	
 		}
-		
 	}
 	
 	public double getCooldown() {

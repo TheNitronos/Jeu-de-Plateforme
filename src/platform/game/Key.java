@@ -1,23 +1,12 @@
-/*
- *	Author:      Samuel Chassot
- *	Date:        30 nov. 2016
- */
-
-
 package platform.game;
-
 
 import platform.util.Vector;
 import platform.util.Box;
 import platform.game.Color;
 import platform.util.Input;
 import platform.util.Output;
-import platform.game.Player;
-
-
 
 public class Key extends Actor implements Signal{
-	
 	private final double SIZE = 1.0;
 	private Vector position;
 	private boolean taken;
@@ -34,8 +23,8 @@ public class Key extends Actor implements Signal{
 		if (!taken){
 			super.draw(input, output);
 			String name;
-			switch(color){
 			
+			switch(color){
 				case GREEN:
 					name = "key.green";
 					break;
@@ -56,6 +45,7 @@ public class Key extends Actor implements Signal{
 		}
 	
 	}
+	
 	@Override
 	public Box getBox(){
 		if (!taken){
@@ -74,6 +64,7 @@ public class Key extends Actor implements Signal{
 	@Override
 	public void interact(Actor other){
 		super.interact(other);
+		
 		if (other.getClass().getName() == "platform.game.Player" && other.getBox().isColliding(getBox())){
 			taken = true;
 			getWorld().unregister(this);

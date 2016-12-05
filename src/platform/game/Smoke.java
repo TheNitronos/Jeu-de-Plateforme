@@ -1,12 +1,9 @@
 package platform.game;
 
 import platform.util.Box;
-import platform.game.Color;
 import platform.util.Input;
 import platform.util.Output;
-import platform.game.Player;
 import platform.util.Vector;
-import platform.util.Box;
 
 public class Smoke extends Actor {
 	private Vector position;

@@ -1,9 +1,3 @@
-/*
- *	Author:      Samuel Chassot
- *	Date:        30 nov. 2016
- */
-
-
 package platform.game;
 
 import platform.game.Block;
@@ -15,7 +9,6 @@ import platform.util.Output;
 
 
 public class Door extends Block implements Signal {
-	
 	private final Signal signal;
 
 
@@ -26,8 +19,6 @@ public class Door extends Block implements Signal {
 		super(box, sprite);
 		this.signal = signal;
 		active = false;
-
-		
 	}
 	
 	@Override
@@ -41,7 +32,6 @@ public class Door extends Block implements Signal {
 	}
 	@Override
 	public void draw(Input input, Output output){
-		
 		if (!signal.isActive()){
 			super.draw(input, output);			
 		}
@@ -56,6 +46,4 @@ public class Door extends Block implements Signal {
 			return super.isSolid();
 		}
 	}
-		
-	
 }

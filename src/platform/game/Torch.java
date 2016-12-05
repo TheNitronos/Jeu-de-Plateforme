@@ -17,9 +17,10 @@ public class Torch extends Actor implements Signal{
 		if (pos == null){
 			throw new NullPointerException();
 		}
+		
 		position = pos;
 		this.lit = lit;
-		}
+	}
 	
 	@Override
 	public int getPriority(){

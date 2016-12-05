@@ -1,15 +1,8 @@
-/*
- *	Author:      Samuel Chassot
- *	Date:        30 nov. 2016
- */
-
-
 package platform.game;
 
 import platform.game.Signal;
 
 public class Or implements Signal{
-	
 	private final Signal signal1;
 	private final Signal signal2;
 	
