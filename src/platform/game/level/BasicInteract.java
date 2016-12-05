@@ -40,18 +40,17 @@ public class BasicInteract extends Level {
 
         world.register(new Unicorn("duck", new Vector(9.0, 1.75)));
         
-        
         Player player = new Player(new Vector(0, 1), new Vector(0.75, 1.5));
         world.register(player);
         world.register(new Overlay(player));
         world.register(new Torch(new Vector(2.0, 2.0), true));
         world.register(new Spike(new Vector(-0.5, 1.25)));
+        world.register(new Block(new Box(new Vector(-0.5, 10.0), 1, 1), world.getLoader().getSprite("stone.broken.1")));
         world.register(new Jumper(new Vector(-1.5, 1.5)));
         world.register(new Heart(new Vector(-2.5, 3.5)));
         world.register(new Limits(new Box(new Vector(0.0,0.0), 40, 40)));
         Key blue = new Key(new Vector(-3, 4), Color.BLUE);
         world.register(blue);
-        
         
         world.register(new Breakable(new Box(new Vector(3.0, 2.0), 1, 1), world.getLoader().getSprite("box.double")));
         world.register(new Door(new Box(new Vector(4.0, 1.5) , 1.0, 1.0), blue, world.getLoader().getSprite("lock.blue")));

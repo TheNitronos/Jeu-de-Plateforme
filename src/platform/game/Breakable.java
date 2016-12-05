@@ -29,7 +29,7 @@ public class Breakable extends Block{
 			case FIRE:
 				super.getWorld().unregister(fire);
 				
-				fire = new Fire(this.getPosition(), 2.0, 0.5);
+				fire = new Fire(this.getPosition(), 3.0, 0.5);
 				super.getWorld().register(fire);
 				
 				--life;
@@ -57,7 +57,7 @@ public class Breakable extends Block{
 	@Override
 	public void update(Input input) {
 		if (fire.getCooldown() > 0) {
-			life -= input.getDeltaTime()*10;
+			life -= input.getDeltaTime()*15;
 		}
 		
 		if (life <= 0.0) {

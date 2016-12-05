@@ -19,6 +19,8 @@ public class Player extends Actor {
 	private double maxHealth;
 	double maxSpeed;
 	private boolean canMount;
+	private int priority;
+	private double cooldown;
 
 	public Player(Vector vel, Vector pos) {
 		if(vel == null || pos == null) {
@@ -34,11 +36,14 @@ public class Player extends Actor {
 		maxSpeed = 12.0;
 		
 		canMount = false;
+		
+		priority = 42;
+		cooldown = 8;
 	}
 	
 	@Override
 	public int getPriority() {
-		return 42;
+		return priority;
 	}
 	
 	@Override
@@ -55,7 +60,13 @@ public class Player extends Actor {
 	public void draw(Input in, Output out) {
 		super.draw(in, out);
 		
-		out.drawSprite(super.getSprite("blocker.happy"), getBox());
+		if (health > 5) {
+			out.drawSprite(super.getSprite("blocker.happy"), getBox());
+		} else if (health <= 5 && health > 1) {
+			out.drawSprite(super.getSprite("blocker.sad"), getBox());
+		} else {
+			out.drawSprite(super.getSprite("blocker.dead"), getBox());
+		}
 	}
 	
 	@Override
@@ -114,7 +125,12 @@ public class Player extends Actor {
 		
 		//si le joueur n'a plus de vie, il meurt
 		if(health <= 0) {
-			this.death();
+			jump();
+			priority = -10;
+			cooldown -= input.getDeltaTime();
+			if (cooldown < 0) {
+				this.death();
+			}
 		}
 	}
 
@@ -208,6 +224,7 @@ public class Player extends Actor {
 		Fireball fireball = new Fireball(v, position, this);
 		super.getWorld().register(fireball); 
 	}
+	
 	private void blow() {
 		getWorld().hurt(getBox(), this, Damage.AIR, 1.0, getPosition());
 	}
@@ -243,4 +260,5 @@ public class Player extends Actor {
 			System.out.println("montons la licorne !");
 		}
 	}
+	
 }
