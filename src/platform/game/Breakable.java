@@ -15,7 +15,7 @@ public class Breakable extends Block{
 		super(box, sprite);
 		
 		life = 100.0;
-		fire = new Fire(this.getPosition(), 0.0, 0.5);
+		fire = new Fire(this.getPosition(), 0.0);
 	}
 	
 	public double getLife() {
@@ -29,7 +29,7 @@ public class Breakable extends Block{
 			case FIRE:
 				super.getWorld().unregister(fire);
 				
-				fire = new Fire(this.getPosition(), 3.0, 0.5);
+				fire = new Fire(this.getPosition(), 3.0);
 				super.getWorld().register(fire);
 				
 				--life;

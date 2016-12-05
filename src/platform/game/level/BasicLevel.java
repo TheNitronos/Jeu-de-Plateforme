@@ -11,7 +11,6 @@ import platform.game.Overlay;
 import platform.game.Heart;
 import platform.game.Spike;
 import platform.game.Torch;
-import platform.game.Unicorn;
 
 public class BasicLevel extends Level {
 

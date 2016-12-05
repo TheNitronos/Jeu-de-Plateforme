@@ -8,16 +8,11 @@ import platform.game.Player;
 import platform.game.Jumper;
 import platform.game.Limits;
 import platform.game.Overlay;
-import platform.game.Heart;
 import platform.game.Spike;
-import platform.game.Torch;
-import platform.game.Color;
-import platform.game.Key;
-import platform.game.Door;
-import platform.game.Unicorn;
 import platform.game.Lever;
 import platform.game.Mover;
 import platform.game.Exit;
+import platform.game.ExitIndic;
 import platform.game.Breakable;
 
 public class Level1 extends Level {
@@ -41,6 +36,8 @@ public class Level1 extends Level {
         world.register(new Block(new Box(new Vector(0.0, 2.0), 3, 1), world.getLoader().getSprite("stone.3")));
         world.register(new Block(new Box(new Vector(3.0, 2.0), 3, 1), world.getLoader().getSprite("stone.3")));
         world.register(new Block(new Box(new Vector(6.0, 2.0), 3, 1), world.getLoader().getSprite("stone.3")));
+        
+        //world.register(new ExitIndic(new Vector(6.0, 2.0), 3));
         
         world.register(new Block(new Box(new Vector(9.0, -5.0), 3, 1), world.getLoader().getSprite("stone.3")));
         world.register(new Jumper(new Vector(9.0, -4.0)));

@@ -1,13 +1,9 @@
 package platform.game.level;
 
 import platform.game.Actor;
-import platform.game.LevelBlock;
-import platform.game.World;
-import platform.util.Box;
 import platform.util.Input;
 import platform.util.Output;
 import platform.util.Sprite;
-import platform.util.Vector;
 
 /**
  * Base class for level factories, which provides fade in transition. Subclasses
