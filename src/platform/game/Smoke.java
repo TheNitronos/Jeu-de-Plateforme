@@ -7,19 +7,20 @@ import platform.util.Vector;
 
 public class Smoke extends Actor {
 	private Vector position;
-	private final double COOLDOWN = 0.5;
+	private final double COOLDOWN;
 	private  double cooldown;
 	private double size;
 	
 	public Smoke(Vector pos, double size) {
 		this.size = size;
 		position = pos;
+		COOLDOWN = 0.3;
 		cooldown = COOLDOWN;
 	}
 	
 	@Override
 	public int getPriority() {
-		return 1;
+		return 10000;
 	}
 	
 	@Override

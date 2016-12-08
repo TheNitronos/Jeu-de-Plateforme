@@ -57,16 +57,12 @@ public class Fireball extends Actor {
 	@Override
 	public void draw(Input in, Output out){
 		super.draw(in, out);
-		
-		if (sprite != null) {			
-			out.drawSprite(sprite, getBox(), in.getTime()*30);
-		}
+		out.drawSprite(getSprite("fireball"), getBox(), in.getTime()*30);
 	}
 	
 	@Override
 	public void register(World world){
 		super.register(world);
-		sprite = super.getSprite("fireball");
 	}
 	
 	@Override
@@ -83,7 +79,7 @@ public class Fireball extends Actor {
 		}
 		
 		if (other.getBox().isColliding(getBox())){
-			if(other != owner && other.hurt(this, Damage.FIRE, 1.0, getPosition())){
+			if(other != owner && other.hurt(this, Damage.FIRE, 3.5 , getPosition())){
 				//la boule disparait si elle a brule qqn ou qqch
 				getWorld().unregister(this);
 			}

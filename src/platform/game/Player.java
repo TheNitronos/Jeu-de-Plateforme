@@ -98,7 +98,7 @@ public class Player extends Actor {
 		}
 		
 		if (input.getKeyboardButton(KeyEvent.VK_SPACE).isPressed()) {
-			throwSomethng();
+			throwSomething();
 		}
 		
 		if (input.getKeyboardButton(KeyEvent.VK_B).isPressed()) {
@@ -182,6 +182,11 @@ public class Player extends Actor {
 			case PHYSICAL:
 				health -= amount;
 				velocity = new Vector(velocity.getX(), 7.0);
+				
+			case MONSTER:
+				health -= amount;
+				getWorld().register(new Smoke(position, 0.8));
+				return true;
 			
 			default:
 				return super.hurt(instigator, type, amount, location);		
@@ -211,7 +216,7 @@ public class Player extends Actor {
 		velocity = new Vector(velocity.getX(), 7.0);
 	}
 	
-	private void throwSomethng() {
+	private void throwSomething() {
 		Vector v = velocity.add(velocity.resized(4.0));
 		Fireball fireball = new Fireball(v, position, this);
 		super.getWorld().register(fireball); 
@@ -219,6 +224,7 @@ public class Player extends Actor {
 	
 	private void blow() {
 		getWorld().hurt(getBox(), this, Damage.AIR, 1.0, getPosition());
+		getWorld().register(new Smoke(position, 0.5));
 	}
 	
 	private void activateSomethng() {
