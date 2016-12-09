@@ -35,7 +35,7 @@ public class SimpleSprite extends Actor{
 	
 	@Override
 	public int getPriority() {
-		return 1;
+		return Integer.MIN_VALUE;
 	}
 	
 	@Override

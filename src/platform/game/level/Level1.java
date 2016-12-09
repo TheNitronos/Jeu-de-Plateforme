@@ -5,6 +5,7 @@ import platform.game.Block;
 import platform.util.Box;
 import platform.util.Vector;
 import platform.game.Player;
+import platform.game.SimpleSprite;
 import platform.game.Jumper;
 import platform.game.Limits;
 import platform.game.Overlay;
@@ -28,6 +29,7 @@ public class Level1 extends Level {
         // Register a new instance, to restart level automatically
         world.setNextLevel(new Level1());
         world.register(new Command(world));
+        world.register(new SimpleSprite("background2", new Vector(0.0, 0.0), 100, false));
         
         world.register(new Block(new Box(new Vector(-9.0, 0.0), 3, 1), world.getLoader().getSprite("stone.3")));
         world.register(new Block(new Box(new Vector(-6.0, 0.0), 3, 1), world.getLoader().getSprite("stone.3")));
@@ -62,10 +64,10 @@ public class Level1 extends Level {
         world.register(lever2);
         world.register(new Exit(new Vector(-10.0, 3.0), lever2, new Selection()));
         
-        Key key1 = new Key(new Vector(-9.0, 1), Color.BLUE);
+        Key key1 = new Key(new Vector(-9.0, 1), Color.GREEN);
         world.register(key1);
         
-        world.register(new Door(new Box(new Vector(-1.0, 3.0), 1.0, 1.0), key1, world.getLoader().getSprite("lock.blue")));
+        world.register(new Door(new Box(new Vector(-1.0, 3.0), 1.0, 1.0), key1, world.getLoader().getSprite("lock.green")));
         
         Player player = new Player(new Vector(0, 5), new Vector(0.0, 1.0));
         world.register(player);
