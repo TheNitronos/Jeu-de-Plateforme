@@ -31,7 +31,7 @@ public class Player extends Actor {
 		maxHealth = 10.0;
 		health = maxHealth;
 		
-		maxSpeed = 12.0;
+		maxSpeed = 8.0;
 		
 		priority = 42;
 		cooldown = 1.0;
