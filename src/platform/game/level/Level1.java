@@ -19,6 +19,7 @@ import platform.game.Color;
 import platform.game.Command;
 import platform.game.Key;
 import platform.game.Door;
+import platform.game.Snail;
 
 
 public class Level1 extends Level {
@@ -46,6 +47,7 @@ public class Level1 extends Level {
         world.register(new Block(new Box(new Vector(6.0, 2.0), 3, 1), world.getLoader().getSprite("stone.3")));
         
         world.register(new ExitIndic(new Vector(-8.0, 3.0)));
+        world.register(new Snail(new Vector(0.0, 3.0), new Vector(1.0,0.0)));
         
         world.register(new Block(new Box(new Vector(9.0, -5.0), 3, 1), world.getLoader().getSprite("stone.3")));
         world.register(new Jumper(new Vector(9.0, -4.0)));
