@@ -124,6 +124,7 @@ public class Slime extends Actor implements Signal{
 		switch (type){
 			case FIRE:
 				health -= amount;
+				getWorld().register(new Smoke(position, 1.5));
 				
 				return true;
 			default:
