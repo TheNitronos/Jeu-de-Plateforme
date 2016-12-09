@@ -25,7 +25,7 @@ public class Slime extends Actor implements Signal{
 		position = pos;
 		velocity = new Vector(2, 0);
 		health = 10.0;
-		countdown = 1.0;
+		countdown = 0.75;
 		maj = countdown;
 		SIZE = 2.0;
 		cooldownDamage = 0.0;
@@ -124,6 +124,7 @@ public class Slime extends Actor implements Signal{
 		switch (type){
 			case FIRE:
 				health -= amount;
+				
 				return true;
 			default:
 				return super.hurt(instigator, type, amount, location);

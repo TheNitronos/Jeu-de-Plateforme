@@ -22,6 +22,7 @@ import platform.game.Mover;
 import platform.game.Exit;
 import platform.game.ExitIndic;
 import platform.game.Background;
+import platform.game.Command;
 
 public class Level2 extends Level{
 	@Override
@@ -30,9 +31,10 @@ public class Level2 extends Level{
         
         // Register a new instance, to restart level automatically
         world.setNextLevel(new Level2());
+        world.register(new Command(world));
         
         world.register(new Limits(new Box(new Vector(0.0 , 0.0), 50,50)));
-        world.register(new Background(new Vector(0.0, 0.0), world.getLoader().getSprite("background2"), 70));
+        world.register(new Background(new Vector(0.0, 0.0), world.getLoader().getSprite("background2"), 50));
         
         for (int i = -6 ; i <= 8 ; i += 2){
         	world.register(new Block (new Box(new Vector(i, 0), 2, 1), world.getLoader().getSprite("stone.2")));
