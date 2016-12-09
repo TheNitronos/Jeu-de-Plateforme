@@ -21,7 +21,6 @@ import platform.game.Door;
 import platform.game.Mover;
 import platform.game.Exit;
 import platform.game.ExitIndic;
-import platform.game.Background;
 import platform.game.Command;
 import platform.game.SimpleSprite;
 
@@ -35,7 +34,6 @@ public class Level2 extends Level{
         world.register(new Command(world));
         
         world.register(new Limits(new Box(new Vector(0.0 , 0.0), 50,50)));
-        //world.register(new Background(new Vector(0.0, 0.0), world.getLoader().getSprite("background2"), 50));
         world.register(new SimpleSprite("background2", new Vector(0.0, 0.0), 100, false));
         
         for (int i = -6 ; i <= 8 ; i += 2){
@@ -56,8 +54,8 @@ public class Level2 extends Level{
         Slime slime = new Slime(new Vector(0, 1));
         world.register(slime);
         
-        Torch torch1 = new Torch(new Vector(-3.5, 3), false);
-        Torch torch2 = new Torch(new Vector(3.5, 3), false);
+        Torch torch1 = new Torch(new Vector(-3.5, 4), false);
+        Torch torch2 = new Torch(new Vector(3.5, 4), false);
         world.register(torch1);
         world.register(torch2);
         

@@ -101,15 +101,15 @@ public class Slime extends Actor implements Signal{
 //			high = SIZE/3 ;
 //			newCenter = position.sub(new Vector(0.0, SIZE/12));
 //		}
-//		else if (maj > countdown/4){
+//		else {
 //			high = SIZE/6;
 //			newCenter = position.sub(new Vector(0.0, SIZE/3));
 //		}
-//		else {
-//			high = SIZE/3;
-//			
-//			newCenter = position.sub(new Vector(0.0, SIZE/12));
-//		}
+////		else {
+////			high = SIZE/3;
+////			
+////			newCenter = position.sub(new Vector(0.0, SIZE/12));
+////		}
 //		return new Box(newCenter, SIZE, high);
 	}
 	
