@@ -47,7 +47,10 @@ public class Overlay extends Actor {
 	@Override
 	public void update(Input input){
 		if(player.getWorld() == null){
-			this.getWorld().unregister(this);
+			getWorld().unregister(this);
+		}
+		if (player.getHealth() <= 0.0){
+			getWorld().unregister(this);
 		}
 	}		
 }

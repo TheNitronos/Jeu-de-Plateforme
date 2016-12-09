@@ -26,7 +26,7 @@ public class Lever extends Actor implements Signal {
 	
 	@Override
 	public int getPriority(){
-		return 20;
+		return -1;
 	}
 	
 	@Override

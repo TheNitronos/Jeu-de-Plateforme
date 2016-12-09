@@ -11,7 +11,7 @@ import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
-public class Slime extends Actor{
+public class Slime extends Actor implements Signal{
 	
 	private Vector position;
 	private Vector velocity;
@@ -85,27 +85,32 @@ public class Slime extends Actor{
 
 	}
 	
-//	public Box getDrawBox(){
-//		return new Box(position, SIZE, SIZE);
-//	}
+	public Box getDrawBox(){
+		return new Box(position, SIZE, SIZE/2);
+	}
 	
 	public Box getBox(){
 		return new Box(position, SIZE, SIZE/2);
 //		double high;
 //		Vector newCenter;
-//		if (maj > 2*countdown /3){
-//			high = SIZE;
-//			newCenter = position;
+//		if (maj > 3*countdown /4){
+//			high = SIZE/2;
+//			newCenter = position.sub(new Vector(0.0, 0.0));
 //		}
-//		else if (maj > countdown/3){
-//			high = SIZE*2/3;
-//			newCenter = position.sub(new Vector(0.0, (1/2)*SIZE));
+//		else if (maj > countdown/2){
+//			high = SIZE/3 ;
+//			newCenter = position.sub(new Vector(0.0, SIZE/12));
 //		}
-//		else{
-//			high = SIZE*1/2;
-//			newCenter = position.sub(new Vector(0.0, (1/2)*SIZE ));
+//		else if (maj > countdown/4){
+//			high = SIZE/6;
+//			newCenter = position.sub(new Vector(0.0, SIZE/3));
 //		}
-		
+//		else {
+//			high = SIZE/3;
+//			
+//			newCenter = position.sub(new Vector(0.0, SIZE/12));
+//		}
+//		return new Box(newCenter, SIZE, high);
 	}
 	
 	@Override
@@ -123,6 +128,14 @@ public class Slime extends Actor{
 			default:
 				return super.hurt(instigator, type, amount, location);
 		}
+	}
+	
+	@Override
+	public boolean isActive(){
+		if (health <= 0.0){
+			return true;
+		}
+		return false;
 	}
 	
 	@Override
@@ -152,24 +165,5 @@ public class Slime extends Actor{
 				}
 			}
 		
-//		if (other.isSolid()){
-//			Vector delta = other.getBox().getCollision(position);
-//			
-//			if (delta != null) {
-//
-//				position = position.add(delta);
-//				
-//				if (delta.getX() != 0.0) {
-//					velocity = new Vector(0.0, velocity.getY());
-//				}
-//				
-//				if (delta.getY() != 0.0) {
-//					velocity = new Vector(velocity.getX(), 0.0);
-//				}
-//			}
-//		}
-//		
-//		
-//	}
-//	
+
 }

@@ -34,7 +34,7 @@ public class Player extends Actor {
 		maxSpeed = 12.0;
 		
 		priority = 42;
-		cooldown = 2;
+		cooldown = 1.0;
 	}
 	
 	@Override
@@ -61,7 +61,7 @@ public class Player extends Actor {
 		} else if (health <= 5 && health > 1) {
 			out.drawSprite(super.getSprite("blocker.sad"), getBox());
 		} else {
-			out.drawSprite(super.getSprite("blocker.dead"), getBox());
+			out.drawSprite(super.getSprite("blocker.dead"), getBox(), 0.0, cooldown);
 		}
 	}
 	
@@ -116,13 +116,7 @@ public class Player extends Actor {
 		
 		//si le joueur n'a plus de vie, il meurt
 		if(health <= 0) {
-			jump();
-			priority = -10;
-			cooldown -= input.getDeltaTime();
-			
-			if (cooldown < 0) {
-				this.death();
-			}
+			death(input.getDeltaTime());
 		}
 	}
 
@@ -148,6 +142,12 @@ public class Player extends Actor {
 		}
 	}
 	
+	public boolean isDead(){
+		if (health <= 0.0){
+			return true;
+		}
+		return false;
+	}
 	@Override
 	public void preUpdate(Input input) {
 		colliding = false;
@@ -194,9 +194,14 @@ public class Player extends Actor {
 				
 	}
 	
-	public void death() {
-		getWorld().setNextLevel(Level.createDefaultLevel());
-		getWorld().nextLevel();
+	public void death(double delta) {
+		jump();
+		priority = -10;
+		cooldown -= delta;
+		
+		if (cooldown < 0) {	
+			getWorld().nextLevel();
+		}
 	}
 	
 	public double getHealth() {

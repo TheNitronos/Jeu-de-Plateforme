@@ -31,7 +31,7 @@ public class Breakable extends Block{
 				fire = new Fire(this.getPosition(), 3.0);
 				super.getWorld().register(fire);
 				
-				--life;
+				life -= 90;
 				
 				return true;
 				

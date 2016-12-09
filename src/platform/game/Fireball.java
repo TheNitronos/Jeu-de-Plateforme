@@ -81,6 +81,7 @@ public class Fireball extends Actor {
 		if (other.getBox().isColliding(getBox())){
 			if(other != owner && other.hurt(this, Damage.FIRE, 3.5 , getPosition())){
 				//la boule disparait si elle a brule qqn ou qqch
+				getWorld().register(new Smoke(position, SIZE));
 				getWorld().unregister(this);
 			}
 		}
