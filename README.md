@@ -30,9 +30,14 @@ Quelques règles
 ---------------
 - Le but du jeu est d'atteindre la porte de sortie en vie
 - Le joueur dispose de 5 vies
-  - Il perd de la vie s'il croise un personnage dangereux ou s'il se pique sur des pointes
+  - Il peut, par exemple, perdre de la vie s'il croise un personnage dangereux ou s'il se pique sur des pointes
   - Il peut regagner de la vie en ramassant des coeurs
-
+- Le joueur est contraint à se déplacer sur les blocs de pierre. En cas de chute, la partie recommence...
+- Les blocs de bois, les torches, certains personnages sont sensibles au feu... Testez l'effet de outil ! :)
+- Pour atteindre la porte de sortie, il est parfois nécessaire de récolter des indices, actionner des levier, etc...
 
 Astuces
 -------
+- Les trampolines permettent de sauter à des hauteurs vertigineuses !
+- Le personnage peut jouir de frottement contre les murs s'il est sur le point de tomber et ainsi remonter sur sa plateforme
+- Le chemin le plus évident n'est pas forcément le plus rapide ! :-)
