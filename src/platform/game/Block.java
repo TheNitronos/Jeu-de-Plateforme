@@ -6,25 +6,31 @@ import platform.util.Sprite;
 import platform.util.Output;
 
 /**
- * Simple solid actor that does nothing.
+ * Actor solide qui ne fait pas grand chose
  */
 public class Block extends Actor {
-   private Box box;
-   private Sprite sprite;
+	
+	//box dans laquelle il est inscrit
+	private Box box;
+	//sprite à dessiner
+	private Sprite sprite;
    
-   public Block(Box b, Sprite s){
-	   box = b;
-	   sprite = s;
+   public Block(Box nBox, Sprite nSprite){
+	   box = nBox;
+	   sprite = nSprite;
    }
    
    @Override
 	public int getPriority(){
+	   	//priorité très basse
 		return 0;
    }
    
    @Override
    public void draw(Input input, Output output){
-	   if (sprite != null){
+	   if (sprite == null) {
+		   throw new NullPointerException();
+	   }else {
 		   super.draw(input, output);
 		   output.drawSprite(sprite, box);
 		}  
@@ -32,6 +38,7 @@ public class Block extends Actor {
    
    @Override
    public boolean isSolid(){
+	   //la plupart des blocs sont solides
 	   return true;
    }
    
