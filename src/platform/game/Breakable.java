@@ -10,8 +10,8 @@ import platform.util.Output;
 
 /**
  * extension de la classe Block
- *ces blocs ont la particularités de prendre feu
- *et d'exploser à terme
+ * ces blocs ont la particularités de prendre feu
+ * et d'exploser à terme
  */
 public class Breakable extends Block {
 	//durée de vie du bloc

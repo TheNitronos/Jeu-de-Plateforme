@@ -1,9 +1,3 @@
-/*
- *	Author:      Samuel Chassot
- *	Date:        9 déc. 2016
- */
-
-
 package platform.game;
 
 import com.sun.glass.events.KeyEvent;
