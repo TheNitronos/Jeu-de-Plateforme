@@ -3,9 +3,15 @@ package platform.game.level;
 import com.sun.glass.events.KeyEvent;
 
 import platform.game.Actor;
+import platform.game.World;
+import platform.util.Box;
 import platform.util.Input;
 import platform.util.Output;
 import platform.util.Sprite;
+import platform.util.Vector;
+import platform.game.Command;
+import platform.game.Limits;
+import platform.game.SimpleSprite;
 
 /**
  * Base class for level factories, which provides fade in transition. Subclasses
@@ -29,14 +35,6 @@ public abstract class Level extends Actor {
         fadein -= input.getDeltaTime();
         if (fadein <= 0.0)
             getWorld().unregister(this);
-        
-        if (input.getKeyboardButton(KeyEvent.VK_Q).isPressed()) {
-        	if (!(this instanceof Selection)) {
-            	Level level = new Selection();
-    			this.getWorld().setNextLevel(level);
-    			this.getWorld().nextLevel();
-        	}
-		}
     }
 
     @Override
@@ -50,5 +48,9 @@ public abstract class Level extends Actor {
         return new Selection();
     }
     
-    
+    public void niveauDeJeu(World nWorld) {
+    	nWorld.register(new Command(nWorld));
+        nWorld.register(new SimpleSprite("background2", new Vector(0.0, 0.0), 100, false));	
+        nWorld.register(new Limits(new Box(new Vector(0.0,0.0), 50, 50)));
+    }
 }
