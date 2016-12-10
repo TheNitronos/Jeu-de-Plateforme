@@ -17,8 +17,8 @@ public class Limits extends Actor {
 	
 	@Override
 	public void interact(Actor other){
+		//si les boites des limites et du joueur ne sont plus en contact, le joueur subit des dégâts
 		if (!getBox().isColliding(other.getBox())) {
-			super.hurt(this, Damage.VOID, Double.POSITIVE_INFINITY, Vector.ZERO);
 			other.hurt(this, Damage.VOID, Double.POSITIVE_INFINITY, Vector.ZERO);
 		}
 	}

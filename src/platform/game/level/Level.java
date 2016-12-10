@@ -50,7 +50,7 @@ public abstract class Level extends Actor {
     
     public void niveauDeJeu(World nWorld) {
     	nWorld.register(new Command(nWorld));
-        nWorld.register(new SimpleSprite("background2", new Vector(0.0, 0.0), 80, false, Integer.MIN_VALUE));	
+        nWorld.register(new SimpleSprite("background2", new Vector(0.0, 0.0), 150, false, Integer.MIN_VALUE));	
         nWorld.register(new Limits(new Box(new Vector(0.0,0.0), 50, 50)));
     }
 }
