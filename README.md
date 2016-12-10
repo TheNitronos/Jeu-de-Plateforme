@@ -1,7 +1,26 @@
+Projet de programmation 2 : Jeu de plateforme
+=============================================
+Samuel (IN-BA1) et Daniel (SC-BA1)
 
-miniProjet2
-===========
+Lancer le jeu
+-------------
+1. Télécharger l'archive zip du jeu
+2. Créer un _Java Project_ dans votre environnement de développement préféré
+3. Importer l'archive dans le _Java Project_ 
+4. Exécuter en tant que _Java application_ (la classe main se situe dans _src/platform/Program.java_)
 
-Projet de programmation par Samuel et Daniel
+Contrôles
+---------
+### Menus
+- Sélection du niveau : souris
+- Recommencer un niveau : touche _R_
+- Revenir au menu principal : touche _Q_
+### Jeu
+- Sauter :
+- Se déplacer à gauche :
 
-Jeu de plate-forme
+Quelques règles
+---------------
+
+Astuces
+-------
