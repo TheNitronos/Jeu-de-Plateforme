@@ -12,16 +12,27 @@ Lancer le jeu
 
 Contrôles
 ---------
+
 ### Menus
 - Sélection du niveau : souris
 - Recommencer un niveau : touche _R_
 - Revenir au menu principal : touche _Q_
+
 ### Jeu
-- Sauter :
-- Se déplacer à gauche :
+- Sauter : Flèche haut
+- Se déplacer à gauche : Flèche gauche
+- Se déplacer à droite : Flèche droite
+- Lancer une boule de feu : espace
+- Interagir avec un levier : touche _E_
+- Souffler : touche _B_
 
 Quelques règles
 ---------------
+- Le but du jeu est d'atteindre la porte de sortie en vie
+- Le joueur dispose de 5 vies
+..* Il perd une vie s'il croise la route d'un personnage dangereux ou s'il se pique sur des pointes
+..* Il peut regagner de la vie en ramassant des coeurs
+
 
 Astuces
 -------
