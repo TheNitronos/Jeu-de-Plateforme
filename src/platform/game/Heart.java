@@ -6,6 +6,9 @@ import platform.util.Sprite;
 import platform.util.Output;
 import platform.util.Vector;
 
+/**
+ * coeurs de vie à ramasser
+ */
 public class Heart extends Actor {
 	private final double SIZE = 0.5;
 	private Vector position;

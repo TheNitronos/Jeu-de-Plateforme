@@ -6,23 +6,28 @@ import platform.util.Sprite;
 import platform.util.Output;
 import platform.util.Vector;
 
+/**
+ * trampoline pour sauter plus haut
+ */
 public class Jumper extends Actor{
 	private final double SIZE = 1.0;
 	private Vector position;
 	private Sprite sprite;
-	private double coolDown;
+	private double cooldown;
 
 	public Jumper(Vector pos){
 		position = pos;
-		coolDown = 0.0;
+		cooldown = 0.0;
 	}
 	
 	@Override
 	public void update(Input input){
 		super.update(input);
-		coolDown -= input.getDeltaTime();
 		
-		if(coolDown >= 0){
+		cooldown -= input.getDeltaTime();
+		
+		//affichage du trampoline compressé ou étendu selon le compteur
+		if(cooldown >= 0){
 			sprite = super.getSprite("jumper.extended");
 		}
 		else{
@@ -32,6 +37,7 @@ public class Jumper extends Actor{
 	
 	@Override
 	public int getPriority(){
+		//priorité supérieure à Player pour l'interaction
 		return 50;
 	}
 	
@@ -44,12 +50,12 @@ public class Jumper extends Actor{
 	public void interact(Actor other){
 		super.interact(other);
 		
-		if (coolDown <= 0 && getBox().isColliding(other.getBox())){
+		//
+		if (cooldown <= 0 && getBox().isColliding(other.getBox())){
 			Vector below = new Vector(position.getX(), position.getY() - 1.0);
 			if (other.hurt(this, Damage.AIR, 10.0, below)){
-				coolDown = 0.5;
+				cooldown = 0.5;
 			}
-			
 		}
 	}
 	
@@ -58,6 +64,6 @@ public class Jumper extends Actor{
 		if (sprite != null){
 			super.draw(in, out);
 			out.drawSprite(sprite, getBox());
-		   }
+		}
 	}
 }
