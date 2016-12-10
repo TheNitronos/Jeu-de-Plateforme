@@ -14,13 +14,13 @@ import platform.util.Output;
  */
 public class Door extends Block implements Signal {
 	//signal auquel réagit le bloc
-	private final Signal signal;
+	private final Signal SIGNAL;
 	//état d'activité du bloc : existant ou disparu
 	private boolean active;
 	
 	public Door(Box nBox, Signal nSignal, Sprite nSprite){
 		super(nBox, nSprite);
-		signal = nSignal;
+		SIGNAL = nSignal;
 		active = false;
 	}
 	
@@ -32,7 +32,7 @@ public class Door extends Block implements Signal {
 	@Override
 	public void draw(Input input, Output output){
 		//si le signal n'est pas true, on affiche le bloc
-		if (!signal.isActive()){
+		if (!SIGNAL.isActive()){
 			super.draw(input, output);	
 			
 		}
@@ -41,7 +41,7 @@ public class Door extends Block implements Signal {
 	@Override
 	public boolean isSolid(){
 		//si le bloc a disparu, il n'est plus solide sinon il l'est
-		if (signal.isActive()) {
+		if (SIGNAL.isActive()) {
 			return false;
 		}
 		else {
