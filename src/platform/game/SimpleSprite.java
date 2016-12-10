@@ -13,29 +13,32 @@ public class SimpleSprite extends Actor{
 	private final double SIZE;
 	private final boolean SPINING;
 	private String sprite;
+	private final int PRIORITY;
 	
-	public SimpleSprite(String nSprite, Vector nPos, Double nCoold, double nSize, boolean nSpin) {
+	public SimpleSprite(String nSprite, Vector nPos, Double nCoold, double nSize, boolean nSpin, int nPriority) {
 		POSITION = nPos;
 		cooldown = nCoold;
 		SIZE = nSize;
 		SPINING = nSpin;
 		sprite = nSprite;
+		PRIORITY = nPriority;
 		
 		cooldownBool = true;
 	}
 	
-	public SimpleSprite(String nSprite, Vector nPos, double nSize, boolean nSpin) {
+	public SimpleSprite(String nSprite, Vector nPos, double nSize, boolean nSpin, int nPriority) {
 		POSITION = nPos;
 		SIZE = nSize;
 		SPINING = nSpin;
 		sprite = nSprite;
+		PRIORITY = nPriority;
 		
 		cooldownBool = false;
 	}
 	
 	@Override
 	public int getPriority() {
-		return Integer.MIN_VALUE;
+		return PRIORITY;
 	}
 	
 	@Override
