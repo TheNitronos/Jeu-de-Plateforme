@@ -36,6 +36,7 @@ public class Heart extends Actor{
 	public int getPriority(){
 		return 62;
 	}
+	
 	@Override
 	public void interact(Actor other){
 		super.interact(other);
