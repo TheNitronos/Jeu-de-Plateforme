@@ -33,7 +33,7 @@ Quelques règles
   - Il peut, par exemple, perdre de la vie s'il croise un personnage dangereux ou s'il se pique sur des pointes
   - Il peut regagner de la vie en ramassant des coeurs
 - Le joueur est contraint à se déplacer sur les blocs de pierre. En cas de chute, la partie recommence...
-- Les blocs de bois, les torches, certains personnages sont sensibles au feu... Testez l'effet de outil ! :)
+- Les blocs de bois, les torches, certains personnages sont sensibles au feu... Testez l'effet de cet outil ! :-)
 - Pour atteindre la porte de sortie, il est parfois nécessaire de récolter des indices, actionner des levier, etc...
 
 Astuces
