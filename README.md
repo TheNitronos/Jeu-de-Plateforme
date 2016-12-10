@@ -1,6 +1,6 @@
 Projet de programmation 2 : jeu de plateforme
 =============================================
-EPFL : introduction à la programmation
+EPFL : introduction à la programmation \n
 Samuel (IN-BA1) et Daniel (SC-BA1)
 
 Lancer le jeu
