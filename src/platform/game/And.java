@@ -3,8 +3,8 @@ package platform.game;
 import platform.game.Signal;
 
 /**
- *Classe qui sert à combiner deux classes qui implémentent Signal
- *en une seule qui nous informe sur l'état des deux signaux simultanément
+ * Classe qui sert à combiner deux classes qui implémentent Signal
+ * en une seule qui nous informe sur l'état des deux signaux simultanément
  */
 public class And implements Signal{
 	//deux signaux concernés
@@ -24,7 +24,7 @@ public class And implements Signal{
 	
 	/**
 	 * le signal est actif si les deux signaux sont actifs
-	 * @return boolean, true le signal est actif, false sinon
+	 * @return boolean, true si le signal est actif, false sinon
 	 */
 	@Override
 	public boolean isActive(){
