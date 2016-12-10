@@ -4,17 +4,20 @@ import platform.util.Box;
 import platform.game.Actor;
 import platform.util.Vector;
 
+
+/**
+ * Limites du jeu, en dehors desquelles le joueur meurt
+ */
 public class Limits extends Actor {
 	private Box box;
 	
-	public Limits(Box box){
-		this.box = box;
+	public Limits(Box nBox){
+		box = nBox;
 	}
 	
 	@Override
 	public void interact(Actor other){
-		if (!getBox().isColliding(other.getBox())){
-			
+		if (!getBox().isColliding(other.getBox())) {
 			super.hurt(this, Damage.VOID, Double.POSITIVE_INFINITY, Vector.ZERO);
 			other.hurt(this, Damage.VOID, Double.POSITIVE_INFINITY, Vector.ZERO);
 		}
@@ -27,6 +30,7 @@ public class Limits extends Actor {
 	
 	@Override
 	public int getPriority(){
+		//priorité très grande pour interagir avec le joueur
 		return 66666;
 	}
 }
