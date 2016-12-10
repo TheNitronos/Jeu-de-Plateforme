@@ -27,10 +27,10 @@ public class Level1 extends Level {
     public void register(World world) {
         super.register(world);
         
+        super.niveauDeJeu(world);
+        
         // Register a new instance, to restart level automatically
         world.setNextLevel(new Level1());
-        world.register(new Command(world));
-        world.register(new SimpleSprite("background2", new Vector(0.0, 0.0), 100, false));
         
         world.register(new Block(new Box(new Vector(-9.0, 0.0), 3, 1), world.getLoader().getSprite("stone.3")));
         world.register(new Block(new Box(new Vector(-6.0, 0.0), 3, 1), world.getLoader().getSprite("stone.3")));
@@ -75,6 +75,6 @@ public class Level1 extends Level {
         world.register(player);
         world.register(new Overlay(player));
         
-        world.register(new Limits(new Box(new Vector(0.0,0.0), 40, 40)));
+        
 	}
 }

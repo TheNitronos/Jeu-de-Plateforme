@@ -11,12 +11,13 @@ public class Level2 extends Level{
     public void register(World world) {
         super.register(world);
         
+        super.niveauDeJeu(world);
+        
+        
         // Register a new instance, to restart level automatically
         world.setNextLevel(new Level2());
-        world.register(new Command(world));
         
         world.register(new Limits(new Box(new Vector(0.0 , 0.0), 50,50)));
-        world.register(new SimpleSprite("background2", new Vector(0.0, 0.0), 100, false));
         
         for (int i = -6 ; i <= 8 ; i += 2){
         	world.register(new Block (new Box(new Vector(i, 0), 2, 1), world.getLoader().getSprite("stone.2")));
@@ -74,8 +75,5 @@ public class Level2 extends Level{
         world.register(new Block(new Box(new Vector(-5.5 , -3.5), 1, 6), world.getLoader().getSprite("stone.7")));
         world.register(new Heart(new Vector(6.5, 2)));
         world.register(new Heart(new Vector(7.5, -5)));
-
-        
-        
 	}
 }
