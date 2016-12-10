@@ -72,31 +72,26 @@ public class Snail extends Actor{
 		Vector acceleration = this.getWorld().getGravity();
 		velocity = velocity.add(acceleration.mul(delta));
 		position = position.add(velocity.mul(delta));
-		
-		
 	}
+	
 	@Override
-	public void interact(Actor other){
+	public void interact(Actor other) {
 		super.interact(other);
 				
-				if (other.isSolid()) {
-					Vector delta = other.getBox().getCollision(getBox());
-					
-					if (delta != null) {
-						position = position.add(delta);
-						
-						if (delta.getX() != 0.0) {
-							velocity = new Vector(-1.0 * velocity.getX(), velocity.getY());
-						}
-						
-						if (delta.getY() != 0.0) {
-							velocity = new Vector(velocity.getX(), 0.0);
-						}
-					}
+		if (other.isSolid()) {
+			Vector delta = other.getBox().getCollision(getBox());
+			
+			if (delta != null) {
+				position = position.add(delta);
+				
+				if (delta.getX() != 0.0) {
+					velocity = new Vector(-1.0 * velocity.getX(), velocity.getY());
 				}
 				
+				if (delta.getY() != 0.0) {
+					velocity = new Vector(velocity.getX(), 0.0);
+				}
 			}
-		
-
-	
+		}			
+	}
 }
