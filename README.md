@@ -29,9 +29,9 @@ Contrôles
 Quelques règles
 ---------------
 - Le but du jeu est d'atteindre la porte de sortie en vie
-- Le joueur dispose de 5 vies  
-.- Il perd de la vie s'il croise un personnage dangereux ou s'il se pique sur des pointes
-.- Il peut regagner de la vie en ramassant des coeurs
+- Le joueur dispose de 5 vies
+⋅⋅* Il perd de la vie s'il croise un personnage dangereux ou s'il se pique sur des pointes
+⋅⋅* Il peut regagner de la vie en ramassant des coeurs
 
 
 Astuces
