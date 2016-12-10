@@ -28,6 +28,8 @@ public interface World {
     	return new Vector(0.0, -9.81);
     }
     
+    public Level getNextLevel();
+    
     //indique que la transition vers un autre niveau doit se faire
     public void nextLevel();
     

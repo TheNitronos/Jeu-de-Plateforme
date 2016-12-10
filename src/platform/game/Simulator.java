@@ -180,6 +180,11 @@ public class Simulator implements World {
     }
     
     @Override
+    public Level getNextLevel() {
+    	return next;
+    }
+    
+    @Override
     public int hurt(Box area, Actor instigator, Damage type, double amount, Vector location) {
     	int victims = 0;
     	
