@@ -31,3 +31,15 @@ Samuel (IN-BA1) et Daniel (SC-BA1)
 4. Descendre rapidement par le chemin ouvert
 5. Attraper la clef rouge
 6. Rejoindre la porte de sortie
+
+###Niveau 3
+
+1. Attraper les deux clefs accessibles à gauches
+2. Observer les escargots faire la course
+3. Attraper les deux clefs à droite
+4. Eteindre les torches
+5. Rejoindre la porte de sortie
+
+####Astuce
+- Il est plus facile de tuer les slimes et de se laisser tomber de l'étage supérieur tout en soufflant sur les torches plutôt que d'essayer de les atteindre en sautant
+- La clef bleu à gauche n'est pas nécessaire mais tu peux toujours essayer :-)
