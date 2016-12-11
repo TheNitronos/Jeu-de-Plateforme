@@ -9,7 +9,7 @@ Lancer le jeu
 -------------
 1. Télécharger l'archive zip du jeu
 2. Créer un _Java Project_ dans votre environnement de développement préféré
-3. Importer l'archive dans le _Java Project_ 
+3. Importer l'archive dans le _Java Project_
 4. Exécuter en tant que _Java application_ (la classe main se situe dans _src/platform/Program.java_)
 
 Contrôles

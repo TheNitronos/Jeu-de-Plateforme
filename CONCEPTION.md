@@ -37,22 +37,26 @@ Les _Breakable_ sont des blocs sensibles aux dégâts de type _fire_. Ils prenne
 Une instance _Command_ est mise dans chaque niveau. Elle permet de gérer les touches pour recommencer le niveau et revenir au menu principal.
 
 ###Selection
-
+Ce niveau est lancé par défaut et permet de sélectionner le niveau en cliquant sur un _LevelBlock_.
 
 Code particulier et expérience vidéoludique
 -------------------------------------------
-###Méthodes de _level_ 
+
+###Méthodes de _level_
 
 ####_protected void niveauDeJeu(World nWorld)_
-Au lieu de créer des classes intermédiaire.
+Cette méthode permet de mettre en place le fond d'écran, les commandes et les limites. Elle est utile dans les niveaux de jeu.
 
 ####_protected void miseEnPlaceJoueur(World nWorld, Vector nPosition)_
+Avec la position en paramètre, cette méthode instancie le _Player_ et son _Overlay_.
 
-###Bêbêtes monstrueuse :-)
+###Bêbêtes monstrueuses :-)
 
 ####Snail
+Le _Snail_ est un petit escargot décoratif qui se déplace lentement et qui se cache s'il est attaqué.
 
 ####Slime
+Le _Slime_ est un monstre plutôt moche et dangereux pour le joueur.
 
 A améliorer
 -----------
