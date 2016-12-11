@@ -73,6 +73,9 @@ A améliorer
 ###Modularisation
 Idéalement, il serait intéressant de partager les classe de _platform.game_ en différents paquetages.
 
+###Dessin des niveaux
+La création des niveaux est rudimentaire. On pourrait créer un système qui gèrerait la création de niveaux plus proprement. Un premier pas serait de remplacer certaines suites d'acteurs répétées par des boucles.
+
 ###Bêbêtes sauvages !
 Améliorer leurs intelligences pour leur faire changer de direction spontanément, par exemple.
 
