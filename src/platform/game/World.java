@@ -24,10 +24,12 @@ public interface World {
     
     public void unregister(Actor actor);
     
+    //vecteur gravité du monde
     public default Vector getGravity() {
     	return new Vector(0.0, -9.81);
     }
     
+    //savoir quel est le prochain niveau prévu
     public Level getNextLevel();
     
     //indique que la transition vers un autre niveau doit se faire
@@ -36,5 +38,6 @@ public interface World {
     //permet de passer au niveau level
     public void setNextLevel(Level level);
     
+    //méthode qui gère les interactions régies par les dégâts
     public abstract int hurt(Box area, Actor instigator, Damage type, double amount, Vector location);  
 }
