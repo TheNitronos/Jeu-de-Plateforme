@@ -91,26 +91,6 @@ public class Slime extends Actor implements Signal{
 	
 	public Box getBox(){
 		return new Box(position, SIZE, SIZE/2);
-//		double high;
-//		Vector newCenter;
-//		if (maj > 3*countdown /4){
-//			high = SIZE/2;
-//			newCenter = position.sub(new Vector(0.0, 0.0));
-//		}
-//		else if (maj > countdown/2){
-//			high = SIZE/3 ;
-//			newCenter = position.sub(new Vector(0.0, SIZE/12));
-//		}
-//		else {
-//			high = SIZE/6;
-//			newCenter = position.sub(new Vector(0.0, SIZE/3));
-//		}
-////		else {
-////			high = SIZE/3;
-////			
-////			newCenter = position.sub(new Vector(0.0, SIZE/12));
-////		}
-//		return new Box(newCenter, SIZE, high);
 	}
 	
 	@Override

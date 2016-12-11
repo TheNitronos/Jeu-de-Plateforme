@@ -16,10 +16,11 @@ public class Player extends Actor {
 	
 	private Vector velocity;
 	private Vector position;
-	
+	//booléen de choc avec un autre acteur
 	private boolean colliding;
 	private double health;
 	private int priority;
+	//compteur de temps après la mort
 	private double cooldown;
 
 	public Player(Vector nVelocity, Vector nPosition) {
