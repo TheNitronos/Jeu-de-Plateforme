@@ -39,7 +39,7 @@ public class Level2 extends Level{
         world.register(new Block(new Box(new Vector(-5.5 , -3.5), 1, 6), world.getLoader().getSprite("stone.7")));
         
         world.register(new Block (new Box(new Vector(-3.5 , -6), 3, 1), world.getLoader().getSprite("stone.3")));
-        
+     
         //lignée de piques
         for(int i = 0; i <= 5 ; ++i){
         	world.register(new Spike(new Vector(11.5 + i, -0.25)));
@@ -54,6 +54,7 @@ public class Level2 extends Level{
         world.register(torch1);
         world.register(torch2);
         
+        //slime
         Slime slime = new Slime(new Vector(0, 1));
         world.register(slime);
         
