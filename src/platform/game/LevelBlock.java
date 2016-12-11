@@ -47,20 +47,16 @@ public class LevelBlock extends Block {
 	 * @param frame, Box dans laquelle le clic doit avoir lieu
 	 * @return true si le clic a lieu dans la Box, false sinon
 	 */
-	private boolean isInBox(Vector Position, Box frame) {
-		if (Position.getX() > frame.getMax().getX()) {
+	private boolean isInBox(Vector position, Box frame) {
+		//si le clic est dans la frame, on retourn true
+		if (position.getX() < frame.getMax().getX() &&
+			position.getX() > frame.getMin().getX() &&
+			position.getY() > frame.getMin().getY() &&
+			position.getY() < frame.getMax().getY()) {
+			
+			return true;
+		} else {
 			return false;
 		}
-		if (Position.getY() > frame.getMax().getY()) {
-			return false;
-		}
-		if (Position.getX() < frame.getMin().getX()) {
-			return false;
-		}
-		if (Position.getY() < frame.getMin().getY()) {
-			return false;
-		}
-		
-		return true;
 	}
 }
