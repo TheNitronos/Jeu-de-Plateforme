@@ -18,12 +18,15 @@ public class Snail extends Actor{
 	private Vector velocity;
 	private final double SIZE;
 	private double maj;
+	private double majCos;
+	
 	public Snail(Vector pos, Vector velo){
 		position = pos;
 		velocity = velo;
 		cooldown = 3.0;
 		SIZE = 0.5;
 		maj = cooldown/4;
+		majCos = 2* Math.PI;
 		
 		
 	}
@@ -42,15 +45,19 @@ public class Snail extends Actor{
 		else{
 			name += "left.";
 		}
-		if (cooldown > 0.0){
-			name += "shell.";
-		}
-		if (maj > cooldown/8){
-			name += "2";
+		if (countdown > 0.0){
+			name += "shell";
 		}
 		else{
-			name += "1";
+			if (maj > cooldown/8){
+				name += "2";
+			}
+			else{
+				name += "1";
+			}
 		}
+		
+		System.out.println(name);
 		
 		
 		output.drawSprite(getSprite(name), getBox());
@@ -58,7 +65,7 @@ public class Snail extends Actor{
 	
 	@Override
 	public Box getBox(){
-		return new Box(position, SIZE, SIZE);
+		return new Box(position.add(new Vector(0.0, 0.1)), SIZE, SIZE);
 	}
 	
 	@Override
@@ -67,11 +74,24 @@ public class Snail extends Actor{
 		if (maj < 0.0){
 			maj = cooldown/4;
 		}
+		countdown -= input.getDeltaTime();
+		if (countdown < -1){
+			countdown = -1;
+		}
+		
+		majCos -= input.getDeltaTime();
+		if(majCos < 0.0){
+			majCos = 2 * Math.PI;
+		}
 		
 		double delta = input.getDeltaTime();
 		Vector acceleration = this.getWorld().getGravity();
-		velocity = velocity.add(acceleration.mul(delta));
-		position = position.add(velocity.mul(delta));
+		
+		if (countdown <= 0.0){
+			velocity = velocity.add(acceleration.mul(delta));
+			position = position.add(velocity.mul(delta));
+		}
+		
 	}
 	
 	@Override
@@ -93,5 +113,17 @@ public class Snail extends Actor{
 				}
 			}
 		}			
+	}
+	
+	@Override
+	public boolean hurt(Actor instigator, Damage type, double amount, Vector location){
+		switch (type){
+		 case FIRE:
+			 countdown = cooldown;
+			 return true;
+		default:
+			return super.hurt(instigator, type, amount, location);
+			 
+		}
 	}
 }
