@@ -64,7 +64,7 @@ public class Level1 extends Level {
         
         Lever lever2 = new Lever(new Vector (-1.0, 3.0), 5.0);
         world.register(lever2);
-        world.register(new Exit(new Vector(-10.0, 3.0), lever2, new Selection()));
+        world.register(new Exit(new Vector(-10.0, 3.0), lever2, new Level2()));
         
         Key key1 = new Key(new Vector(-9.0, 1), Color.GREEN);
         world.register(key1);
