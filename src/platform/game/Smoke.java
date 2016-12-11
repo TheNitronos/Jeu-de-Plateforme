@@ -5,48 +5,53 @@ import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
+/**
+ * fumée, utile lors de souffle ou de destructions, etc...
+ */
 public class Smoke extends Actor {
-	private Vector position;
+	//durée de vie
 	private final double COOLDOWN;
-	private  double cooldown;
+	//compteur de durée de vie
+	private  double countdown;
 	private double size;
+	private final Vector POSITION;
 	
-	public Smoke(Vector pos, double size) {
-		this.size = size;
-		position = pos;
+	public Smoke(Vector nPosition, double nSize) {
+		size = nSize;
+		POSITION = nPosition;
 		COOLDOWN = 0.3;
-		cooldown = COOLDOWN;
+		countdown = COOLDOWN;
 	}
 	
 	@Override
 	public int getPriority() {
+		//très grande priorité pour s'afficher devant
 		return 10000;
 	}
 	
 	@Override
 	public void update(Input input) {
-		cooldown -= input.getDeltaTime();
-		
-		if(cooldown < 0.0){
+		countdown -= input.getDeltaTime();
+		//si le compteur devient négatif, la fumée s'estompe
+		if(countdown < 0.0){
 			getWorld().unregister(this);
 		}
 	}
 	
 	@Override
 	public Box getBox() {
-		return new Box(position, size, size);
+		return new Box(POSITION, size, size);
 	}
 	
 	@Override
 	public void draw(Input input, Output output) {
 		String name;
-		if (cooldown >= COOLDOWN * 2/3){
+		//selon la durée de vie restante, on affiche différentes images
+		if (countdown >= COOLDOWN * 2/3) {
 			name = "smoke.gray.1";
-		}
-		else if(cooldown >= COOLDOWN/3){
+		} else if (countdown >= COOLDOWN/3) {
 			name = "smoke.gray.2";
-		}
-		else{
+		} else {
 			name = "smoke.gray.3";
 		}
 		

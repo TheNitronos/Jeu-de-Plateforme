@@ -1,9 +1,3 @@
-/*
- *	Author:      Samuel Chassot
- *	Date:        8 déc. 2016
- */
-
-
 package platform.game;
 
 import platform.util.Box;
