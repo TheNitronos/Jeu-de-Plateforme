@@ -2,18 +2,24 @@ package platform.game;
 
 import platform.game.Signal;
 
-public class Not implements Signal{
-	private final Signal signal;
+/**
+ * Class qui représente l'inverse d'un signal
+ */
+public class Not implements Signal {
+	//signal correspondant
+	private final Signal SIGNAL;
 	
-	public Not(Signal signal){
-		if (signal == null){
+	public Not(Signal nSignal) {
+		if (nSignal == null) {
 			throw new NullPointerException();
 		}
-		this.signal = signal;
+		
+		SIGNAL = nSignal;
 	}
 	
 	@Override
-	public boolean isActive(){
-		return !signal.isActive();
+	public boolean isActive() {
+		//retour de l'inverse du signal
+		return !SIGNAL.isActive();
 	}	
 }
