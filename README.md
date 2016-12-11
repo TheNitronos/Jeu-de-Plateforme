@@ -40,4 +40,5 @@ Astuces
 -------
 - Les trampolines permettent de sauter à des hauteurs vertigineuses !
 - Le personnage peut jouir de frottement contre les murs s'il est sur le point de tomber et ainsi remonter sur sa plateforme
+- Certains animaux ne mordent pas !
 - Le chemin le plus évident n'est pas forcément le plus rapide ! :-)
