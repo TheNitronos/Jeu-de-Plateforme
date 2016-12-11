@@ -1,9 +1,3 @@
-/*
- *	Author:      Samuel Chassot
- *	Date:        9 déc. 2016
- */
-
-
 package platform.game;
 
 import platform.util.Vector;
@@ -11,24 +5,28 @@ import platform.util.Box;
 import platform.util.Output;
 import platform.util.Input;
 
-public class Snail extends Actor{
+/**
+ * petit escargot méga chou
+ * qui décore en se déplacant super lentement
+ * qui se cache en cas de boule de feu
+ */
+public class Snail extends Actor {
 	private Vector position;
-	private final double cooldown;
+	//valeur initiale du compteur
+	private final double COOLDOWN = 3.0;
+	//compteur
 	private double countdown;
 	private Vector velocity;
-	private final double SIZE;
+	private final double SIZE = 0.5;
+	
 	private double maj;
 	private double majCos;
 	
-	public Snail(Vector pos, Vector velo){
-		position = pos;
-		velocity = velo;
-		cooldown = 3.0;
-		SIZE = 0.5;
-		maj = cooldown/4;
-		majCos = 2* Math.PI;
-		
-		
+	public Snail(Vector nPosition, Vector nVelocity) {
+		position = nPosition;
+		velocity = nVelocity;
+		maj = COOLDOWN/4;
+		majCos = 2* Math.PI;	
 	}
 	
 	@Override
@@ -38,21 +36,24 @@ public class Snail extends Actor{
 	
 	@Override
 	public void draw(Input input, Output output){
+		/*
+		 * Dessin de la coquille de l'escargot selon
+		 * le compteur et sa direction 
+		 */
 		String name = "snail.";
+		
 		if (velocity.getX() >= 0.0){
 			name += "right.";
-		}
-		else{
+		} else {
 			name += "left.";
 		}
+		
 		if (countdown > 0.0){
 			name += "shell";
-		}
-		else{
-			if (maj > cooldown/8){
+		} else {
+			if (maj > COOLDOWN/8){
 				name += "2";
-			}
-			else{
+			} else {
 				name += "1";
 			}
 		}
@@ -68,15 +69,19 @@ public class Snail extends Actor{
 	@Override
 	public void update(Input input){
 		maj -= input.getDeltaTime();
+		
 		if (maj < 0.0){
-			maj = cooldown/4;
+			maj = COOLDOWN/4;
 		}
+		
 		countdown -= input.getDeltaTime();
+		
 		if (countdown < -1){
 			countdown = -1;
 		}
 		
 		majCos -= input.getDeltaTime();
+		
 		if(majCos < 0.0){
 			majCos = 2 * Math.PI;
 		}
@@ -84,7 +89,7 @@ public class Snail extends Actor{
 		double delta = input.getDeltaTime();
 		Vector acceleration = this.getWorld().getGravity();
 		
-		if (countdown <= 0.0){
+		if (countdown <= 0.0) {
 			velocity = velocity.add(acceleration.mul(delta));
 			position = position.add(velocity.mul(delta));
 		}
@@ -94,17 +99,19 @@ public class Snail extends Actor{
 	@Override
 	public void interact(Actor other) {
 		super.interact(other);
-				
+		//si l'escargot choque contre qqch de solide		
 		if (other.isSolid()) {
+			//on récupère l'endroit du choc
 			Vector delta = other.getBox().getCollision(getBox());
 			
 			if (delta != null) {
-				position = position.add(delta);
+				//position = position.add(delta);
 				
+				//on inverse la vitesse horizontal s'il va contre qqch
 				if (delta.getX() != 0.0) {
 					velocity = new Vector(-1.0 * velocity.getX(), velocity.getY());
 				}
-				
+				//on le laisse continuer s'il tombe sur qqch
 				if (delta.getY() != 0.0) {
 					velocity = new Vector(velocity.getX(), 0.0);
 				}
@@ -113,13 +120,16 @@ public class Snail extends Actor{
 	}
 	
 	@Override
-	public boolean hurt(Actor instigator, Damage type, double amount, Vector location){
-		switch (type){
+	public boolean hurt(Actor instigator, Damage type, double amount, Vector location) {
+		switch (type) {
 		 case FIRE:
-			 countdown = cooldown;
+			 //remise à son état maximal si l'escargot interagit avec du feu
+			 countdown = COOLDOWN;
+			 
 			 return true;
+			 
 		default:
-			return super.hurt(instigator, type, amount, location);
+			return false;
 			 
 		}
 	}
