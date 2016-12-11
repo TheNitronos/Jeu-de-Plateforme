@@ -3,6 +3,7 @@ package platform.game.level;
 import com.sun.glass.events.KeyEvent;
 
 import platform.game.Actor;
+import platform.game.Background;
 import platform.game.World;
 import platform.util.Box;
 import platform.util.Input;
@@ -60,7 +61,7 @@ public abstract class Level extends Actor {
 	 */
     protected void niveauDeJeu(World nWorld) {
     	nWorld.register(new Command(nWorld));
-        nWorld.register(new SimpleSprite("background2", new Vector(0.0, 0.0), 150, false, Integer.MIN_VALUE));	
+    	nWorld.register(new Background());	
         nWorld.register(new Limits(new Box(new Vector(0.0,0.0), 50, 50)));
     }
     /*

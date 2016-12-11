@@ -6,14 +6,18 @@ import platform.util.Input;
 import platform.util.Output;
 import platform.game.Actor;
 
-public class SimpleSprite extends Actor{
+/**
+ *
+ */
+public abstract class SimpleSprite extends Actor{
 	private final Vector POSITION;
-	private boolean cooldownBool;
-	private double cooldown;
+	private final int PRIORITY;
 	private final double SIZE;
 	private final boolean SPINING;
+	
+	private boolean cooldownBool;
+	private double cooldown;
 	private String sprite;
-	private final int PRIORITY;
 	
 	public SimpleSprite(String nSprite, Vector nPos, Double nCoold, double nSize, boolean nSpin, int nPriority) {
 		POSITION = nPos;
