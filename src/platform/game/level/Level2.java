@@ -75,7 +75,7 @@ public class Level2 extends Level{
         world.register(key1);
         
         //mise en place du joueur et de son overlay avec la méthode de Level
-        miseEnPlaceJoueur(world, new Vector(-6.5, 2.0));
+        miseEnPlaceJoueur(world, new Vector(-6.5, 3.0));
         //sortie vers niveau 3 et indicateur
         world.register(new Exit(new Vector(-4.5, -5), key1, new Level3()));
         world.register(new ExitIndic(new Vector(-3.5, -5)));  

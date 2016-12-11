@@ -43,7 +43,7 @@ public class Level1 extends Level {
         world.register(new Block(new Box(new Vector(11.0, 2.5), 1, 2), world.getLoader().getSprite("stone.8")));
         world.register(new Block(new Box(new Vector(11.0, 0.5), 1, 2), world.getLoader().getSprite("stone.8")));
         //bloc coooool
-        world.register(new Block(new Box(new Vector(-7.0, 3.5), 1, 2), world.getLoader().getSprite("stone.8")));
+        world.register(new Block(new Box(new Vector(-6.0, 3.5), 1, 2), world.getLoader().getSprite("stone.8")));
         //trois boites inflammables
         world.register(new Breakable(new Box(new Vector(7.0, 1.0), 1, 1), world.getLoader().getSprite("box.double")));
         world.register(new Breakable(new Box(new Vector(6.0, 1.0), 1, 1), world.getLoader().getSprite("box.double")));
