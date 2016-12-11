@@ -99,12 +99,45 @@ public class Level3  extends Level{
         world.register(new Breakable(new Box(new Vector(10.0, -3.0), 1, 1), world.getLoader().getSprite("box.double")));
         world.register(new Breakable(new Box(new Vector(10.0, -2.0), 1, 1), world.getLoader().getSprite("box.double")));
         
-        //levier pour ouvrir la porte
-        Lever lever2 = new Lever(new Vector (-3.0, -8.0), 5.0);
-        world.register(lever2);
+        //clefs
+        Key key1 = new Key(new Vector(-16.0, 3.0), Color.RED);
+        world.register(key1);
+        
+        Key key2 = new Key(new Vector(-15, 4.0), Color.GREEN);
+        world.register(key2);
+        
+        world.register(new Key(new Vector(-14.0, 5.0), Color.BLUE));
+        
+        Key key3 = new Key(new Vector(11.0, -2), Color.YELLOW);
+        world.register(key3);
+        
+        Key key4 = new Key(new Vector(11.0, -3), Color.BLUE);
+        world.register(key4);
+        
+        //Torches
+        Torch torch1 = new Torch(new Vector(-1.0, -4.0), true);
+        world.register(torch1);
+        
+        Torch torch2 = new Torch(new Vector(0.0, -4.0), true);
+        world.register(torch2);
+        
+        Torch torch3 = new Torch(new Vector(1.0, -4.0), true);
+        world.register(torch3);
+        
+        /*
+         * regroupement de signaux
+         * il faut attrapper les clefs sauf la bleue (trop difficile à attraper
+         * et éteindre les torches
+         */
+        And signal = new And(key1, key2);
+        signal = new And(signal, key3);
+        signal = new And(signal, key4);
+        signal = new And(signal, new Not(torch1));
+        signal = new And(signal, new Not(torch2));
+        signal = new And(signal, new Not(torch3));
         
         //sortie vers niveau 3 et indicateur
-        world.register(new Exit(new Vector(-4.0, -8.0), lever2, new Selection()));
+        world.register(new Exit(new Vector(-4.0, -8.0), signal, new Selection()));
         world.register(new ExitIndic(new Vector(-2.0, -8.0))); 
         
         //mise en place du joueur et de son overlay avec la méthode de Level
