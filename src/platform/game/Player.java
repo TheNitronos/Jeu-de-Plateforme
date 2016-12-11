@@ -248,38 +248,52 @@ public class Player extends Actor {
 	}
 	
 	/*
-	 * 
+	 * le saut consiste en une augmentation de vitesse selon y
 	 */
 	private void jump() {
 		velocity = new Vector(velocity.getX(), 7.0);
 	}
-	
+	/*
+	 * jeter une boule de feu dans la direction de déplacement
+	 */
 	private void throwSomething() {
+		//vitesse de la boule selon celle du joueur
 		Vector v = velocity.add(velocity.resized(4.0));
+		//instanciation de la boule
 		Fireball fireball = new Fireball(v, position, this);
 		super.getWorld().register(fireball); 
 	}
 	
 	private void blow() {
+		//dommage de type air en soufflant pour éteindre une flamme par exemple
 		getWorld().hurt(getBox(), this, Damage.AIR, 1.0, getPosition());
+		//formation de fumée pour plus de réalisme !!!
 		getWorld().register(new Smoke(position, 0.5));
 	}
 	
 	private void activateSomethng() {
+		//dégât de type activation pour les leviers par exemple
 		getWorld().hurt(getBox(), this, Damage.ACTIVATION, 1.0, getPosition());
 	}
 	
+	/*
+	 * méthodes de déplacement
+	 */
 	private void moveRight(Input input) {
+		//accélération du player
 		double increase = 60.0 * input.getDeltaTime();
+		//incrémentation de la vitesse selon l'accélération
 		double speed = velocity.getX() + increase;
-		
+		//vérifier à ne pas dépasse la vitesse max du player
 		if (speed > MAXSPEED) {
 			speed = MAXSPEED;
 		}
-		
+		//redéfinition de la vitesse
 		velocity = new Vector(speed, velocity.getY());
 	}
-	
+	/*
+	 * analogue à moveRight()
+	 */
 	private void moveLeft(Input input) {
 		double increase = 60.0 * input.getDeltaTime();
 		double speed = velocity.getX() - increase;
