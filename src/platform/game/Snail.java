@@ -67,22 +67,22 @@ public class Snail extends Actor {
 	}
 	
 	@Override
-	public void update(Input input){
+	public void update(Input input) {
 		maj -= input.getDeltaTime();
 		
-		if (maj < 0.0){
+		if (maj < 0.0) {
 			maj = COOLDOWN/4;
 		}
 		
 		countdown -= input.getDeltaTime();
 		
-		if (countdown < -1){
+		if (countdown < -1) {
 			countdown = -1;
 		}
 		
 		majCos -= input.getDeltaTime();
 		
-		if(majCos < 0.0){
+		if(majCos < 0.0) {
 			majCos = 2 * Math.PI;
 		}
 		
@@ -93,7 +93,6 @@ public class Snail extends Actor {
 			velocity = velocity.add(acceleration.mul(delta));
 			position = position.add(velocity.mul(delta));
 		}
-		
 	}
 	
 	@Override
@@ -105,7 +104,7 @@ public class Snail extends Actor {
 			Vector delta = other.getBox().getCollision(getBox());
 			
 			if (delta != null) {
-				//position = position.add(delta);
+				position = position.add(delta);
 				
 				//on inverse la vitesse horizontal s'il va contre qqch
 				if (delta.getX() != 0.0) {

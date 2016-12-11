@@ -11,30 +11,28 @@ import platform.util.Vector;
 
 public class Player extends Actor {
 	private final double SIZE = 1.0;
+	private final double MAXHEALTH = 10.0;
+	private final double MAXSPEED = 8.0;
+	
 	private Vector velocity;
 	private Vector position;
+	
 	private boolean colliding;
 	private double health;
-	private double maxHealth;
-	double maxSpeed;
 	private int priority;
 	private double cooldown;
 
-	public Player(Vector vel, Vector pos) {
-		if(vel == null || pos == null) {
+	public Player(Vector nVelocity, Vector nPosition) {
+		if(nVelocity == null || nPosition == null) {
 			throw new NullPointerException();
 		}
 		
-		velocity = vel;
-		position = pos;
-		
-		maxHealth = 10.0;
-		health = maxHealth;
-		
-		maxSpeed = 8.0;
-		
+		velocity = nVelocity;
+		position = nPosition;
 		priority = 42;
 		cooldown = 1.0;
+		health = MAXHEALTH;
+		
 	}
 	
 	@Override
@@ -56,6 +54,7 @@ public class Player extends Actor {
 	public void draw(Input in, Output out) {
 		super.draw(in, out);
 		
+		//selon la vie, on affiche différents personnages, triste, heureux.... MORT !
 		if (health > 5) {
 			out.drawSprite(super.getSprite("blocker.happy"), getBox());
 		} else if (health <= 5 && health > 1) {
@@ -75,40 +74,47 @@ public class Player extends Actor {
 		super.update(input);
 		
 		if (colliding) {
+			//s'il touche qqch, on simule un frottement
 			double scale = Math.pow(0.001, input.getDeltaTime());
 			velocity = velocity.mul(scale);
 		}
-		
+		/*
+		 * la gestion des touches a été modularisée, les méthodes
+		 * associées à chaque touche se trouve plus bas
+		 */
 		if (input.getKeyboardButton(KeyEvent.VK_RIGHT).isDown()) {
-			if (velocity.getX() < maxSpeed) {
-				moveRight(input);
-			}
+			//aller à droite
+			moveRight(input);	
 		}
 		
 		if (input.getKeyboardButton(KeyEvent.VK_LEFT).isDown()) {
-			if (velocity.getX() > -maxSpeed ) {
-				moveLeft(input);
-			}
+			//aller à gauche
+			moveLeft(input);
 		}
 		
 		if (input.getKeyboardButton(KeyEvent.VK_UP).isPressed()) {
+			//il ne saute que s'il touche qqch
 			if (colliding) {
 				jump();
 			}
 		}
 		
 		if (input.getKeyboardButton(KeyEvent.VK_SPACE).isPressed()) {
+			//lancer qqch
 			throwSomething();
 		}
 		
 		if (input.getKeyboardButton(KeyEvent.VK_B).isPressed()) {
+			//souffler
 			blow();
 		}
 		
 		if (input.getKeyboardButton(KeyEvent.VK_E).isPressed()) {
+			//interagir 
 			activateSomethng();
 		}
 		
+		//calculs de la chute en fonction de la gravité
 		double delta = input.getDeltaTime();
 		Vector acceleration = this.getWorld().getGravity();
 		velocity = velocity.add(acceleration.mul(delta));
@@ -173,8 +179,8 @@ public class Player extends Actor {
 			case HEAL:
 				health += amount;
 				
-				if (health >= maxHealth) {
-					health = maxHealth;
+				if (health >= MAXHEALTH) {
+					health = MAXHEALTH;
 				}
 				
 				return true;
@@ -209,7 +215,7 @@ public class Player extends Actor {
 	}
 	
 	public double getHealthMax() {
-		return maxHealth;
+		return MAXHEALTH;
 	}
 	
 	@Override
@@ -240,8 +246,8 @@ public class Player extends Actor {
 		double increase = 60.0 * input.getDeltaTime();
 		double speed = velocity.getX() + increase;
 		
-		if (speed > maxSpeed) {
-			speed = maxSpeed;
+		if (speed > MAXSPEED) {
+			speed = MAXSPEED;
 		}
 		
 		velocity = new Vector(speed, velocity.getY());
@@ -251,8 +257,8 @@ public class Player extends Actor {
 		double increase = 60.0 * input.getDeltaTime();
 		double speed = velocity.getX() - increase;
 		
-		if (speed < -maxSpeed) {
-			speed = -maxSpeed;
+		if (speed < -MAXSPEED) {
+			speed = -MAXSPEED;
 		}
 		
 		velocity = new Vector(speed, velocity.getY());
