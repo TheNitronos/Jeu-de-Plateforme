@@ -40,6 +40,6 @@ Samuel (IN-BA1) et Daniel (SC-BA1)
 4. Eteindre les torches
 5. Rejoindre la porte de sortie
 
-####Astuce
+####Astuces
 - Il est plus facile de tuer les slimes et de se laisser tomber de l'étage supérieur tout en soufflant sur les torches plutôt que d'essayer de les atteindre en sautant
-- La clef bleu à gauche n'est pas nécessaire mais tu peux toujours essayer :-)
+- La clef bleue à gauche n'est pas nécessaire mais tu peux toujours essayer :-)
