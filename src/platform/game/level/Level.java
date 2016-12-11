@@ -59,7 +59,7 @@ public abstract class Level extends Actor {
     protected void niveauDeJeu(World nWorld) {
     	nWorld.register(new Command(nWorld));
     	nWorld.register(new Background());	
-        nWorld.register(new Limits(new Box(new Vector(0.0,0.0), 50, 50)));
+        nWorld.register(new Limits(new Box(new Vector(0.0,0.0), 60, 60)));
     }
     /*
      * création du player dans le niveau et de son overlay

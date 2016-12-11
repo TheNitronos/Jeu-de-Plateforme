@@ -73,6 +73,9 @@ A améliorer
 ###Modularisation
 Idéalement, il serait intéressant de partager les classe de _platform.game_ en différents paquetages.
 
+###Bêbêtes sauvages !
+Améliorer leurs intelligences pour leur faire changer de direction spontanément, par exemple.
+
 ###Système de points
 Evaluer le score des parties permettrait aux joueurs de comparer leurs performances.
 
