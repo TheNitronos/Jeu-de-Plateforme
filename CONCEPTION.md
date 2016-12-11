@@ -58,5 +58,23 @@ Le _Snail_ est un petit escargot décoratif qui se déplace lentement et qui se 
 ####Slime
 Le _Slime_ est un monstre plutôt moche et dangereux pour le joueur.
 
+###Mort du joueur
+Lorsque le joueur meurt, son expression devient morbide et il s'envole vers les Cieux.
+
+###Spikes
+Lorsque le joueur se pique, ses réflexes psycho-moteurs le poussent à sauter de douleur.
+
 A améliorer
 -----------
+
+###Modularisation
+Idéalement, il serait intéressant de partager les classe de _platform.game_ en différents paquetages.
+
+###Système de points
+Evaluer le score des parties permettrait aux joueurs de comparer leurs performances.
+
+###Nouvelles plateformes et personnages
+Pour diversifier le jeu, on pourrait considérer l'ajout de nouveaux acteurs. Voici quelques idées.
+- Un tapis roulant qui augmente la vitesse maximale du joueur
+- Un coeur doré qui rend le joueur immortel et hyper-actif pendant un laps de temps
+- Une licorne sur laquelle le joueur pourrait monter pour jouir d'une nouvelle expérience vidéoludique
