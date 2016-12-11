@@ -1,7 +1,5 @@
 package platform.game.level;
 
-import com.sun.glass.events.KeyEvent;
-
 import platform.game.Actor;
 import platform.game.Background;
 import platform.game.World;
@@ -14,7 +12,6 @@ import platform.game.Command;
 import platform.game.Limits;
 import platform.game.Overlay;
 import platform.game.Player;
-import platform.game.SimpleSprite;
 
 /**
  * Base class for level factories, which provides fade in transition. Subclasses
