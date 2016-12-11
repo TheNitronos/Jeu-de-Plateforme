@@ -28,6 +28,8 @@ Les _Breakable_ sont des blocs sensibles aux dégâts de type _fire_. Ils prenne
 
 Code particulier et expérience vidéoludique
 -------------------------------------------
-
+###Méthodes de _level_ 
+####_protected void niveauDeJeu(World nWorld)_
+####_protected void miseEnPlaceJoueur(World nWorld, Vector nPosition)_
 A améliorer
 -----------
