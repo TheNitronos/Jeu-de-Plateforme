@@ -57,9 +57,6 @@ public class Snail extends Actor{
 			}
 		}
 		
-		System.out.println(name);
-		
-		
 		output.drawSprite(getSprite(name), getBox());
 	}
 	
