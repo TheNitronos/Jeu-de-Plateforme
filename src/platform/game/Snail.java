@@ -14,19 +14,19 @@ public class Snail extends Actor {
 	private Vector position;
 	//valeur initiale du compteur
 	private final double COOLDOWN = 3.0;
-	//compteur
+	//compteur qui indique s'il est caché ou non (positif : il se cache)
 	private double countdown;
 	private Vector velocity;
 	private final double SIZE = 0.5;
 	
+	//compteur lui permettant d'altérner entre les 2 positions
 	private double maj;
-	private double majCos;
+
 	
 	public Snail(Vector nPosition, Vector nVelocity) {
 		position = nPosition;
 		velocity = nVelocity;
 		maj = COOLDOWN/4;
-		majCos = 2* Math.PI;	
 	}
 	
 	@Override
@@ -76,15 +76,11 @@ public class Snail extends Actor {
 		
 		countdown -= input.getDeltaTime();
 		
+		//décrémente le compteur et le laisse négatif mais évite qu'il devienne trop petit
 		if (countdown < -1) {
 			countdown = -1;
 		}
-		
-		majCos -= input.getDeltaTime();
-		
-		if(majCos < 0.0) {
-			majCos = 2 * Math.PI;
-		}
+
 		
 		double delta = input.getDeltaTime();
 		Vector acceleration = this.getWorld().getGravity();
