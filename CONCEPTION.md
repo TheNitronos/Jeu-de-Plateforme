@@ -19,7 +19,9 @@ Cette classe simplifie la mise en place d'un fond d'écran : un simple appel au 
 ####ExitIndic
 Similaire à _Background_, il suffit de fournir en paramètre la position à laquelle doit se placer le panneau de sortie et l'instance est créée.
 ###LevelBlock
+_LevelBlock_ hérite de _Block_, il a la particularité d'être cliquable et de lancer le niveau dont il porte le chiffre.
 ###Breakable
+Les _Breakable_ sont des blocs sensibles aux dégâts de type _fire_. Ils prennent feu, brûlent et finissent par se casser.
 ###Command
 ###Snail
 ###Slime
