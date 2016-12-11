@@ -34,12 +34,17 @@ _LevelBlock_ hérite de _Block_, il a la particularité d'être cliquable et de 
 Les _Breakable_ sont des blocs sensibles aux dégâts de type _fire_. Ils prennent feu, brûlent et finissent par se casser.
 
 ###Command
+Une instance _Command_ est mise dans chaque niveau. Elle permet de gérer les touches pour recommencer le niveau et revenir au menu principal.
+
+###Selection
+
 
 Code particulier et expérience vidéoludique
 -------------------------------------------
 ###Méthodes de _level_ 
 
 ####_protected void niveauDeJeu(World nWorld)_
+Au lieu de créer des classes intermédiaire.
 
 ####_protected void miseEnPlaceJoueur(World nWorld, Vector nPosition)_
 
