@@ -50,6 +50,19 @@ public class Player extends Actor {
 		return new Box(position, SIZE, SIZE);
 	}
 	
+	public double getHealth() {
+		return health;
+	}
+	
+	public double getHealthMax() {
+		return MAXHEALTH;
+	}
+	
+	@Override
+	public double getVelocityY() {
+		return velocity.getY();
+	}
+	
 	@Override
 	public void draw(Input in, Output out) {
 		super.draw(in, out);
@@ -134,9 +147,11 @@ public class Player extends Actor {
 			Vector delta = other.getBox().getCollision(getBox());
 			
 			if (delta != null) {
+				//choc à true
 				colliding = true;
 				position = position.add(delta);
 				
+				//remise à zéro des vitesses selon l'axe de choc
 				if (delta.getX() != 0.0) {
 					velocity = new Vector(0.0, velocity.getY());
 				}
@@ -148,37 +163,50 @@ public class Player extends Actor {
 		}
 	}
 	
-	public boolean isDead(){
-		if (health <= 0.0){
+	/*
+	 * true si le player est mort false sinon
+	 */
+	public boolean isDead() {
+		if (health <= 0.0) {
 			return true;
 		}
+		
 		return false;
 	}
+	
 	@Override
 	public void preUpdate(Input input) {
+		//remis à false avant chaque update au cas où il serait dans les airs
 		colliding = false;
 	}
 	
 	@Override
 	public void postUpdate(Input input) {
 		super.postUpdate(input);
+		//remise en place de la vue sur le joueur
 		getWorld().setView(position, 10.0);
 	}
 	
 	@Override
 	public boolean hurt(Actor instigator, Damage type, double amount, Vector location) {
+		//si les dégats ont un effet, on retourne true
 		switch (type) {
 			case AIR:
+				//si le joueur subit de dégâts de type air il éjecte selon l'importance du dégât
 				velocity = getPosition().sub(location).resized(amount);
+				
 				return true;
 			
 			case VOID:
+				//perte de vie
 				health -= amount;
+				
 				return true;
 			
 			case HEAL:
+				//gain de vie
 				health += amount;
-				
+				//la vie ne dépasse pas la vie maximale
 				if (health >= MAXHEALTH) {
 					health = MAXHEALTH;
 				}
@@ -186,12 +214,17 @@ public class Player extends Actor {
 				return true;
 			
 			case PHYSICAL:
+				//perte de vie
 				health -= amount;
+				//ejection énooooooorme selon y
 				velocity = new Vector(velocity.getX(), 7.0);
 				
 			case MONSTER:
+				//perte de vie
 				health -= amount;
+				//création de fumée... COUP DE FOUDRE :)
 				getWorld().register(new Smoke(position, 0.8));
+				
 				return true;
 			
 			default:
@@ -199,7 +232,11 @@ public class Player extends Actor {
 		}
 				
 	}
-	
+	/*
+	 * faire mourrir le joueur
+	 * il perd de la priorité et saute à l'infini
+	 * jusqu'à passer au prochain niveau (même niveau donc)
+	 */
 	public void death(double delta) {
 		jump();
 		priority = -10;
@@ -210,19 +247,9 @@ public class Player extends Actor {
 		}
 	}
 	
-	public double getHealth() {
-		return health;
-	}
-	
-	public double getHealthMax() {
-		return MAXHEALTH;
-	}
-	
-	@Override
-	public double getVelocityY() {
-		return velocity.getY();
-	}
-	
+	/*
+	 * 
+	 */
 	private void jump() {
 		velocity = new Vector(velocity.getX(), 7.0);
 	}
