@@ -69,9 +69,7 @@ public class Level1 extends Level {
         Key key1 = new Key(new Vector(-9.0, 1), Color.GREEN);
         world.register(key1); 
         world.register(new Door(new Box(new Vector(-1.0, 3.0), 1.0, 1.0), key1, world.getLoader().getSprite("lock.green")));
-        //mise en place du joueur et de son overlay
-        Player player = new Player(new Vector(0, 5), new Vector(0.0, 1.0));
-        world.register(player);
-        world.register(new Overlay(player));
+        //mise en place du joueur et de son overlay avec la méthode de Level
+        miseEnPlaceJoueur(world, new Vector(0.0, 1.0));
 	}
 }

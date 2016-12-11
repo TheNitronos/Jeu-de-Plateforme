@@ -11,6 +11,8 @@ import platform.util.Sprite;
 import platform.util.Vector;
 import platform.game.Command;
 import platform.game.Limits;
+import platform.game.Overlay;
+import platform.game.Player;
 import platform.game.SimpleSprite;
 
 /**
@@ -52,14 +54,21 @@ public abstract class Level extends Actor {
     	//le niveau par défaut est le niveau de selection avec les boîtes
         return new Selection();
     }
-    
-    public void niveauDeJeu(World nWorld) {
-    	/*
-    	 * méthode pour la création de nouveaux niveaux de jeu en mettant en place, les commandes
-    	 * de menus, le fond et les limites de jeu
-    	 */
+    /*
+	 * méthode pour la création de nouveaux niveaux de jeu en mettant en place, les commandes
+	 * de menus, le fond et les limites de jeu
+	 */
+    protected void niveauDeJeu(World nWorld) {
     	nWorld.register(new Command(nWorld));
         nWorld.register(new SimpleSprite("background2", new Vector(0.0, 0.0), 150, false, Integer.MIN_VALUE));	
         nWorld.register(new Limits(new Box(new Vector(0.0,0.0), 50, 50)));
+    }
+    /*
+     * création du player dans le niveau et de son overlay
+     */
+    protected void miseEnPlaceJoueur(World nWorld, Vector nPosition){
+    	Player player = new Player(new Vector(0, 0), nPosition);
+        nWorld.register(player);
+        nWorld.register(new Overlay(player));	
     }
 }
