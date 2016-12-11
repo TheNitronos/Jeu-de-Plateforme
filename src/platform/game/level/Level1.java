@@ -1,26 +1,8 @@
 package platform.game.level;
 
-import platform.game.World;
-import platform.game.Block;
+import platform.game.*;
 import platform.util.Box;
 import platform.util.Vector;
-import platform.game.Player;
-import platform.game.SimpleSprite;
-import platform.game.Jumper;
-import platform.game.Limits;
-import platform.game.Overlay;
-import platform.game.Spike;
-import platform.game.Lever;
-import platform.game.Mover;
-import platform.game.Exit;
-import platform.game.ExitIndic;
-import platform.game.Breakable;
-import platform.game.Color;
-import platform.game.Command;
-import platform.game.Key;
-import platform.game.Door;
-import platform.game.Snail;
-
 
 public class Level1 extends Level {
 	@Override

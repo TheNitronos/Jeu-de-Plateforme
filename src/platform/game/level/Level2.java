@@ -1,10 +1,8 @@
 package platform.game.level;
 
 import platform.game.*;
-
 import platform.util.Box;
 import platform.util.Vector;
-
 
 public class Level2 extends Level{
 	@Override
@@ -58,25 +56,28 @@ public class Level2 extends Level{
         Slime slime = new Slime(new Vector(0, 1));
         world.register(slime);
         
+        //levier avec plateforme mouvante
         Lever lever1 = new Lever(new Vector(8.5, 2), 4.0);
         world.register(lever1);
-        
-        world.register(new Door(new Box(new Vector(8.0, 2.0), 2, 1), new And( new And(slime, torch1), torch2), world.getLoader().getSprite("stone.2")));
-        //mise en place du joueur et de son overlay avec la méthode de Level
-        miseEnPlaceJoueur(world, new Vector(-6.5, 2.0));
-        
         world.register(new Mover(new Box(new Vector(10.0, 1.0), 2, 1), world.getLoader().getSprite("stone.broken.2"), new Vector(10.0, -5), lever1));
-       
+        //bloc qui cache le levier de la plateforme et qui disparait si on tue le slime et allume les toches
+        world.register(new Door(new Box(new Vector(8.0, 2.0), 2, 1), new And( new And(slime, torch1), torch2), world.getLoader().getSprite("stone.2")));
+        
+        //trampoline
         world.register(new Jumper(new Vector(1.5, -11)));
         
-        Key key1 = new Key(new Vector(1.5, -9), Color.RED);
-        world.register(key1);
-        
-        //sortie vers niveau 3 et indicateur
-        world.register(new Exit(new Vector(-4.5, -5), key1, new Level3()));
-        world.register(new ExitIndic(new Vector(-3.5, -5)));
         //quelques vies
         world.register(new Heart(new Vector(6.5, 2)));
         world.register(new Heart(new Vector(7.5, -5)));
+        
+        //clef qui ouvre la porte
+        Key key1 = new Key(new Vector(1.5, -9), Color.RED);
+        world.register(key1);
+        
+        //mise en place du joueur et de son overlay avec la méthode de Level
+        miseEnPlaceJoueur(world, new Vector(-6.5, 2.0));
+        //sortie vers niveau 3 et indicateur
+        world.register(new Exit(new Vector(-4.5, -5), key1, new Level3()));
+        world.register(new ExitIndic(new Vector(-3.5, -5)));  
 	}
 }
