@@ -44,11 +44,19 @@ public class Level1 extends Level {
         world.register(new Block(new Box(new Vector(0.0, 2.0), 3, 1), world.getLoader().getSprite("stone.3")));
         world.register(new Block(new Box(new Vector(3.0, 2.0), 3, 1), world.getLoader().getSprite("stone.3")));
         world.register(new Block(new Box(new Vector(6.0, 2.0), 3, 1), world.getLoader().getSprite("stone.3")));
+<<<<<<< Updated upstream
         //panneau de sortie
         world.register(new ExitIndic(new Vector(-8.0, 3.0)));
         //serpent
         world.register(new Snail(new Vector(0.0, 3.0), new Vector(1.0,0.0)));
         //bout de pierre avec les piques et le trampoline
+=======
+        world.register(new Block(new Box(new Vector(7.0, 3.0), 1, 1), world.getLoader().getSprite("stone.1")));
+        
+        world.register(new ExitIndic(new Vector(-8.0, 3.0)));
+        world.register(new Snail(new Vector(0.0, 3.0), new Vector(0.1,0.0)));
+        
+>>>>>>> Stashed changes
         world.register(new Block(new Box(new Vector(9.0, -5.0), 3, 1), world.getLoader().getSprite("stone.3")));
         world.register(new Jumper(new Vector(9.0, -4.0)));
         world.register(new Spike(new Vector(8.0, -4.25)));
