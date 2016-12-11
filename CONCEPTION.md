@@ -50,6 +50,9 @@ Cette méthode permet de mettre en place le fond d'écran, les commandes et les 
 ####_protected void miseEnPlaceJoueur(World nWorld, Vector nPosition)_
 Avec la position en paramètre, cette méthode instancie le _Player_ et son _Overlay_.
 
+###Méthodes de _Player_
+Comme le code de _Player_ est conséquent, les actions relatives aux touches ont été mises sous formes de méthodes
+
 ###Bêbêtes monstrueuses :-)
 
 ####Snail
