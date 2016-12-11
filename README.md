@@ -44,3 +44,7 @@ Astuces
 - Le personnage peut jouir de frottement contre les murs s'il est sur le point de tomber et ainsi remonter sur sa plateforme
 - Certains animaux ne mordent pas mais ce n'est pas une raison pour les intimider !
 - Le chemin le plus évident n'est pas forcément le plus rapide ! :-)
+
+Remerciements et sources
+------------------------
+Les nouvelles images introduites ont été réalisées par une amie, étudiante en graphisme, que l'on remercie.
