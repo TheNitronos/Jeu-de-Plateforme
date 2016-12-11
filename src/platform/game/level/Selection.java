@@ -13,10 +13,8 @@ public class Selection extends Level {
 	    
 	    world.register(new SimpleSprite("background2", new Vector(0.0, 0.0), 80, false, Integer.MIN_VALUE));
 	    
-	    world.register(new LevelBlock(1, new Box(new Vector(-6.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty"), new Level1()));
-	    world.register(new LevelBlock(2, new Box(new Vector(-3.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty"), new Level2()));
-	    world.register(new LevelBlock(3, new Box(new Vector(0.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty"), new Level3()));
-	    world.register(new LevelBlock(4, new Box(new Vector(3.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty"), new Level4()));
-	    world.register(new LevelBlock(5, new Box(new Vector(6.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty"), new Level5()));   
+	    world.register(new LevelBlock(1, new Box(new Vector(-3.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty"), new Level1()));
+	    world.register(new LevelBlock(2, new Box(new Vector(0.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty"), new Level2()));
+	    world.register(new LevelBlock(3, new Box(new Vector(3.0, 0.0), 2, 2), world.getLoader().getSprite("box.empty"), new Level3()));  
 	}
 }
