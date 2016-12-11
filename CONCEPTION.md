@@ -11,4 +11,14 @@ Classes spéciales
 ###Fire
 ###background
 ###ExitIndic
+###LevelBlock
 ###Breakable
+###Command
+###Snail
+###Slime
+
+Code particulier et expérience vidéoludique
+-------------------------------------------
+
+A améliorer
+-----------
