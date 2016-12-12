@@ -1,6 +1,6 @@
 package platform.game;
 
-import com.sun.glass.events.KeyEvent;
+import java.awt.event.KeyEvent;
 import platform.util.Box;
 import platform.util.Input;
 import platform.util.Output;

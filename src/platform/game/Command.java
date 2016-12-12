@@ -1,6 +1,6 @@
 package platform.game;
 
-import com.sun.glass.events.KeyEvent;
+import java.awt.event.KeyEvent;
 import platform.game.level.Selection;
 import platform.util.Input;
 
