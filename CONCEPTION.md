@@ -67,17 +67,12 @@ Lorsque le joueur meurt, son expression devient morbide et il s'envole vers les 
 ###Spikes
 Lorsque le joueur se pique, ses réflexes psycho-moteurs le poussent à sauter de douleur.
 
-A améliorer
------------
+Perspectives
+------------
 
-###Modularisation
-Idéalement, il serait intéressant de partager les classe de _platform.game_ en différents paquetages.
 
 ###Dessin des niveaux
-La création des niveaux est rudimentaire. On pourrait créer un système qui gèrerait la création de niveaux plus proprement. Un premier pas serait de remplacer certaines suites d'acteurs répétées par des boucles.
-
-###Bêbêtes sauvages !
-Améliorer leurs intelligences pour les faire changer de direction spontanément, par exemple.
+La création des niveaux est rudimentaire. On pourrait créer un système qui gèrerait la création de niveaux plus proprement.
 
 ###Système de points
 Evaluer le score des parties permettrait aux joueurs de comparer leurs performances.

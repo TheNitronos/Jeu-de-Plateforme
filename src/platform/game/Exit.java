@@ -68,9 +68,13 @@ public class Exit extends Actor {
 		 */
 		if (getBox().isColliding(other.getBox()) 
 				&& (other instanceof Player)) {
+			Player player = (Player) other;
+			//si le joueur est mort, il ne peut pas passé au niveau suivant
+			if (!player.isDead()){
+				getWorld().setNextLevel(LEVEL);
+				getWorld().nextLevel();
+			}
 			
-			getWorld().setNextLevel(LEVEL);
-			getWorld().nextLevel();
 		}
 	}
 	
