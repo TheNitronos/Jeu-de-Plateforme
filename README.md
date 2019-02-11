@@ -57,7 +57,7 @@ Solutions des niveaux
 EPFL : introduction à la programmation  
 Samuel (IN-BA1) et Daniel (SC-BA1)
 
-###niveau 1
+### Niveau 1
 1. Casser les blocs inflammables avec des boules de feu
 2. Sauter sur le trampoline et passer à l'étage du haut grâce aux frottements contre les murs
 3. Attraper la clef verte par l'autre côté
@@ -65,16 +65,16 @@ Samuel (IN-BA1) et Daniel (SC-BA1)
 5. Actionner le levier
 6. Rejoindre la porte de sortie
 
-###Niveau 2
+### Niveau 2
 
-####Facilité
+#### Facilité
 1. Sauter à gauche
 2. Atterrir sur les piques
 3. Re-sauter sur le trampoline
 4. Attraper la clef rouge
 5. Rejoindre la porte de sortie
 
-####Vraie
+#### Vraie
 1. Tuer le Slime
 2. Allumer les torches
 3. Actionner le levier
@@ -82,7 +82,7 @@ Samuel (IN-BA1) et Daniel (SC-BA1)
 5. Attraper la clef rouge
 6. Rejoindre la porte de sortie
 
-###Niveau 3
+### Niveau 3
 
 1. Attraper les deux clefs accessibles à gauches
 2. Observer les escargots faire la course
