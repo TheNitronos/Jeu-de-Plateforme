@@ -2,8 +2,8 @@ Projet de programmation 2 : jeu de plateforme
 =============================================
 README
 ------
-EPFL : introduction à la programmation  
-Samuel (IN-BA1) et Daniel (SC-BA1)
+EPFL : Introduction à la programmation  
+Samuel Chassot (IN-BA1) et Daniel Filipe Nunes Silva (SC-BA1)
 
 Lancer le jeu
 -------------
@@ -47,15 +47,10 @@ Astuces
 
 Remerciements et sources
 ------------------------
-Les nouvelles images introduites ont été réalisées par une amie, étudiante en graphisme, que l'on remercie.
-
-
+Les nouvelles images introduites ont été réalisées par Sidonie Bays, étudiante en graphisme, que l'on remercie.
 
 Solutions des niveaux
 ---------------------
-
-EPFL : introduction à la programmation  
-Samuel (IN-BA1) et Daniel (SC-BA1)
 
 ### Niveau 1
 1. Casser les blocs inflammables avec des boules de feu
